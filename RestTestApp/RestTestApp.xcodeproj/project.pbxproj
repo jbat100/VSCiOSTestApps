@@ -22,6 +22,15 @@
 		10273A5716BA9494008E42CA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10273A2F16BA9493008E42CA /* Foundation.framework */; };
 		10273A5F16BA9494008E42CA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 10273A5D16BA9494008E42CA /* InfoPlist.strings */; };
 		10273A6216BA9494008E42CA /* RestTestAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 10273A6116BA9494008E42CA /* RestTestAppTests.m */; };
+		1068514116BB06FF00505F04 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1068514016BB06FF00505F04 /* LoginViewController.m */; };
+		1068514416BB073600505F04 /* AccountCreationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1068514316BB073600505F04 /* AccountCreationViewController.m */; };
+		1068514916BB085100505F04 /* CreditCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1068514816BB085100505F04 /* CreditCardViewController.m */; };
+		1068514C16BB08BC00505F04 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1068514B16BB08BC00505F04 /* HomeViewController.m */; };
+		1068514F16BB092200505F04 /* ProductTypeSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1068514E16BB092200505F04 /* ProductTypeSelectionViewController.m */; };
+		1068515516BB099F00505F04 /* ProductDescriptionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1068515416BB099F00505F04 /* ProductDescriptionViewController.m */; };
+		1068515816BB09B400505F04 /* ProductListingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1068515716BB09B400505F04 /* ProductListingViewController.m */; };
+		1068515D16BB0A8400505F04 /* ShoppingCartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1068515C16BB0A8400505F04 /* ShoppingCartViewController.m */; };
+		1068516016BB0B5000505F04 /* LocationMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1068515F16BB0B5000505F04 /* LocationMapViewController.m */; };
 		10F1496216BA9EFF00309C93 /* EntryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10F1495F16BA9EFF00309C93 /* EntryViewController.m */; };
 		10F1496316BA9EFF00309C93 /* RestTestAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 10F1496116BA9EFF00309C93 /* RestTestAppDelegate.m */; };
 		10F1496C16BAD2A400309C93 /* libCardIO.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 10F1496B16BAD2A400309C93 /* libCardIO.a */; };
@@ -34,7 +43,6 @@
 		10F1497B16BAD50900309C93 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10F1497316BAD50900309C93 /* QuartzCore.framework */; };
 		10F1497C16BAD50900309C93 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10F1497416BAD50900309C93 /* Security.framework */; };
 		10F1498016BAD95C00309C93 /* PaymentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10F1497E16BAD95C00309C93 /* PaymentViewController.m */; };
-		10F1498116BAD95C00309C93 /* PaymentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10F1497F16BAD95C00309C93 /* PaymentViewController.xib */; };
 		2A204C42306F4F9B9EDC9A32 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 63E089D5A3004C2D93373A4D /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -68,6 +76,25 @@
 		10273A5E16BA9494008E42CA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		10273A6016BA9494008E42CA /* RestTestAppTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RestTestAppTests.h; sourceTree = "<group>"; };
 		10273A6116BA9494008E42CA /* RestTestAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RestTestAppTests.m; sourceTree = "<group>"; };
+		1068513F16BB06FF00505F04 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginViewController.h; path = Classes/LoginViewController.h; sourceTree = "<group>"; };
+		1068514016BB06FF00505F04 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginViewController.m; path = Classes/LoginViewController.m; sourceTree = "<group>"; };
+		1068514216BB073600505F04 /* AccountCreationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AccountCreationViewController.h; path = Classes/AccountCreationViewController.h; sourceTree = "<group>"; };
+		1068514316BB073600505F04 /* AccountCreationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AccountCreationViewController.m; path = Classes/AccountCreationViewController.m; sourceTree = "<group>"; };
+		1068514616BB07CA00505F04 /* apps-streatit-wireframe.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = "apps-streatit-wireframe.pdf"; path = "RestTestApp/Documents/apps-streatit-wireframe.pdf"; sourceTree = "<group>"; };
+		1068514716BB085100505F04 /* CreditCardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CreditCardViewController.h; path = Classes/CreditCardViewController.h; sourceTree = "<group>"; };
+		1068514816BB085100505F04 /* CreditCardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CreditCardViewController.m; path = Classes/CreditCardViewController.m; sourceTree = "<group>"; };
+		1068514A16BB08BC00505F04 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HomeViewController.h; path = Classes/HomeViewController.h; sourceTree = "<group>"; };
+		1068514B16BB08BC00505F04 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HomeViewController.m; path = Classes/HomeViewController.m; sourceTree = "<group>"; };
+		1068514D16BB092200505F04 /* ProductTypeSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProductTypeSelectionViewController.h; path = Classes/ProductTypeSelectionViewController.h; sourceTree = "<group>"; };
+		1068514E16BB092200505F04 /* ProductTypeSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProductTypeSelectionViewController.m; path = Classes/ProductTypeSelectionViewController.m; sourceTree = "<group>"; };
+		1068515316BB099F00505F04 /* ProductDescriptionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProductDescriptionViewController.h; path = Classes/ProductDescriptionViewController.h; sourceTree = "<group>"; };
+		1068515416BB099F00505F04 /* ProductDescriptionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProductDescriptionViewController.m; path = Classes/ProductDescriptionViewController.m; sourceTree = "<group>"; };
+		1068515616BB09B300505F04 /* ProductListingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProductListingViewController.h; path = Classes/ProductListingViewController.h; sourceTree = "<group>"; };
+		1068515716BB09B400505F04 /* ProductListingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProductListingViewController.m; path = Classes/ProductListingViewController.m; sourceTree = "<group>"; };
+		1068515B16BB0A8400505F04 /* ShoppingCartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShoppingCartViewController.h; path = Classes/ShoppingCartViewController.h; sourceTree = "<group>"; };
+		1068515C16BB0A8400505F04 /* ShoppingCartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShoppingCartViewController.m; path = Classes/ShoppingCartViewController.m; sourceTree = "<group>"; };
+		1068515E16BB0B5000505F04 /* LocationMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LocationMapViewController.h; path = Classes/LocationMapViewController.h; sourceTree = "<group>"; };
+		1068515F16BB0B5000505F04 /* LocationMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LocationMapViewController.m; path = Classes/LocationMapViewController.m; sourceTree = "<group>"; };
 		10F1495E16BA9EFF00309C93 /* EntryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EntryViewController.h; path = Classes/EntryViewController.h; sourceTree = "<group>"; };
 		10F1495F16BA9EFF00309C93 /* EntryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EntryViewController.m; path = Classes/EntryViewController.m; sourceTree = "<group>"; };
 		10F1496016BA9EFF00309C93 /* RestTestAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RestTestAppDelegate.h; path = Classes/RestTestAppDelegate.h; sourceTree = "<group>"; };
@@ -87,7 +114,6 @@
 		10F1497416BAD50900309C93 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		10F1497D16BAD95C00309C93 /* PaymentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PaymentViewController.h; path = Classes/PaymentViewController.h; sourceTree = "<group>"; };
 		10F1497E16BAD95C00309C93 /* PaymentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PaymentViewController.m; path = Classes/PaymentViewController.m; sourceTree = "<group>"; };
-		10F1497F16BAD95C00309C93 /* PaymentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PaymentViewController.xib; path = Classes/PaymentViewController.xib; sourceTree = "<group>"; };
 		63E089D5A3004C2D93373A4D /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCC5E4D26B4F4E8E9E54AAEA /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
@@ -129,6 +155,7 @@
 		10273A2116BA9492008E42CA = {
 			isa = PBXGroup;
 			children = (
+				1068514516BB07A300505F04 /* Documents */,
 				10F1496616BAD28300309C93 /* CardIOSDK */,
 				10273A3316BA9493008E42CA /* RestTestApp */,
 				10273A5A16BA9494008E42CA /* RestTestAppTests */,
@@ -171,15 +198,8 @@
 		10273A3316BA9493008E42CA /* RestTestApp */ = {
 			isa = PBXGroup;
 			children = (
-				10F1495E16BA9EFF00309C93 /* EntryViewController.h */,
-				10F1495F16BA9EFF00309C93 /* EntryViewController.m */,
-				10F1496016BA9EFF00309C93 /* RestTestAppDelegate.h */,
-				10F1496116BA9EFF00309C93 /* RestTestAppDelegate.m */,
-				10F1497D16BAD95C00309C93 /* PaymentViewController.h */,
-				10F1497E16BAD95C00309C93 /* PaymentViewController.m */,
-				10F1497F16BAD95C00309C93 /* PaymentViewController.xib */,
-				10273A4516BA9493008E42CA /* MainStoryboard_iPhone.storyboard */,
-				10273A4816BA9493008E42CA /* MainStoryboard_iPad.storyboard */,
+				1068515916BB09FE00505F04 /* Classes */,
+				1068515A16BB0A1000505F04 /* Interface */,
 				10273A3416BA9493008E42CA /* Supporting Files */,
 			);
 			path = RestTestApp;
@@ -216,6 +236,54 @@
 				10273A5D16BA9494008E42CA /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		1068514516BB07A300505F04 /* Documents */ = {
+			isa = PBXGroup;
+			children = (
+				1068514616BB07CA00505F04 /* apps-streatit-wireframe.pdf */,
+			);
+			name = Documents;
+			sourceTree = "<group>";
+		};
+		1068515916BB09FE00505F04 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				10F1496016BA9EFF00309C93 /* RestTestAppDelegate.h */,
+				10F1496116BA9EFF00309C93 /* RestTestAppDelegate.m */,
+				10F1495E16BA9EFF00309C93 /* EntryViewController.h */,
+				10F1495F16BA9EFF00309C93 /* EntryViewController.m */,
+				1068513F16BB06FF00505F04 /* LoginViewController.h */,
+				1068514016BB06FF00505F04 /* LoginViewController.m */,
+				1068514216BB073600505F04 /* AccountCreationViewController.h */,
+				1068514316BB073600505F04 /* AccountCreationViewController.m */,
+				1068514A16BB08BC00505F04 /* HomeViewController.h */,
+				1068514B16BB08BC00505F04 /* HomeViewController.m */,
+				1068514716BB085100505F04 /* CreditCardViewController.h */,
+				1068514816BB085100505F04 /* CreditCardViewController.m */,
+				1068515E16BB0B5000505F04 /* LocationMapViewController.h */,
+				1068515F16BB0B5000505F04 /* LocationMapViewController.m */,
+				1068514D16BB092200505F04 /* ProductTypeSelectionViewController.h */,
+				1068514E16BB092200505F04 /* ProductTypeSelectionViewController.m */,
+				1068515616BB09B300505F04 /* ProductListingViewController.h */,
+				1068515716BB09B400505F04 /* ProductListingViewController.m */,
+				1068515316BB099F00505F04 /* ProductDescriptionViewController.h */,
+				1068515416BB099F00505F04 /* ProductDescriptionViewController.m */,
+				1068515B16BB0A8400505F04 /* ShoppingCartViewController.h */,
+				1068515C16BB0A8400505F04 /* ShoppingCartViewController.m */,
+				10F1497D16BAD95C00309C93 /* PaymentViewController.h */,
+				10F1497E16BAD95C00309C93 /* PaymentViewController.m */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		1068515A16BB0A1000505F04 /* Interface */ = {
+			isa = PBXGroup;
+			children = (
+				10273A4516BA9493008E42CA /* MainStoryboard_iPhone.storyboard */,
+				10273A4816BA9493008E42CA /* MainStoryboard_iPad.storyboard */,
+			);
+			name = Interface;
 			sourceTree = "<group>";
 		};
 		10F1496616BAD28300309C93 /* CardIOSDK */ = {
@@ -307,7 +375,6 @@
 				10273A4416BA9493008E42CA /* Default-568h@2x.png in Resources */,
 				10273A4716BA9493008E42CA /* MainStoryboard_iPhone.storyboard in Resources */,
 				10273A4A16BA9493008E42CA /* MainStoryboard_iPad.storyboard in Resources */,
-				10F1498116BAD95C00309C93 /* PaymentViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -360,6 +427,15 @@
 				10F1496216BA9EFF00309C93 /* EntryViewController.m in Sources */,
 				10F1496316BA9EFF00309C93 /* RestTestAppDelegate.m in Sources */,
 				10F1498016BAD95C00309C93 /* PaymentViewController.m in Sources */,
+				1068514116BB06FF00505F04 /* LoginViewController.m in Sources */,
+				1068514416BB073600505F04 /* AccountCreationViewController.m in Sources */,
+				1068514916BB085100505F04 /* CreditCardViewController.m in Sources */,
+				1068514C16BB08BC00505F04 /* HomeViewController.m in Sources */,
+				1068514F16BB092200505F04 /* ProductTypeSelectionViewController.m in Sources */,
+				1068515516BB099F00505F04 /* ProductDescriptionViewController.m in Sources */,
+				1068515816BB09B400505F04 /* ProductListingViewController.m in Sources */,
+				1068515D16BB0A8400505F04 /* ShoppingCartViewController.m in Sources */,
+				1068516016BB0B5000505F04 /* LocationMapViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -10,4 +10,10 @@
 
 @interface EntryViewController : UIViewController
 
+@property (strong, nonatomic) IBOutlet UIView *loginTextField;
+
+@property (strong, nonatomic) IBOutlet UIView *passwordTextField;
+
+@property (strong, nonatomic) IBOutlet UIView *createAccountButton;
+
 @end

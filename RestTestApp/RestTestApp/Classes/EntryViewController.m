@@ -26,4 +26,10 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)viewDidUnload {
+    [self setLoginTextField:nil];
+    [self setPasswordTextField:nil];
+    [self setCreateAccountButton:nil];
+    [super viewDidUnload];
+}
 @end
