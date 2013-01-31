@@ -35,4 +35,12 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)viewDidUnload {
+    [self setTitlteLabel:nil];
+    [self setSurnameTextField:nil];
+    [self setFirstNameTextField:nil];
+    [self setEmailTextField:nil];
+    [self setPasswordTextField:nil];
+    [super viewDidUnload];
+}
 @end

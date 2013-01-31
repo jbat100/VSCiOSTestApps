@@ -22,7 +22,6 @@
 		10273A5716BA9494008E42CA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10273A2F16BA9493008E42CA /* Foundation.framework */; };
 		10273A5F16BA9494008E42CA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 10273A5D16BA9494008E42CA /* InfoPlist.strings */; };
 		10273A6216BA9494008E42CA /* RestTestAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 10273A6116BA9494008E42CA /* RestTestAppTests.m */; };
-		1068514116BB06FF00505F04 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1068514016BB06FF00505F04 /* LoginViewController.m */; };
 		1068514416BB073600505F04 /* AccountCreationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1068514316BB073600505F04 /* AccountCreationViewController.m */; };
 		1068514916BB085100505F04 /* CreditCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1068514816BB085100505F04 /* CreditCardViewController.m */; };
 		1068514C16BB08BC00505F04 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1068514B16BB08BC00505F04 /* HomeViewController.m */; };
@@ -76,8 +75,6 @@
 		10273A5E16BA9494008E42CA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		10273A6016BA9494008E42CA /* RestTestAppTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RestTestAppTests.h; sourceTree = "<group>"; };
 		10273A6116BA9494008E42CA /* RestTestAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RestTestAppTests.m; sourceTree = "<group>"; };
-		1068513F16BB06FF00505F04 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginViewController.h; path = Classes/LoginViewController.h; sourceTree = "<group>"; };
-		1068514016BB06FF00505F04 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginViewController.m; path = Classes/LoginViewController.m; sourceTree = "<group>"; };
 		1068514216BB073600505F04 /* AccountCreationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AccountCreationViewController.h; path = Classes/AccountCreationViewController.h; sourceTree = "<group>"; };
 		1068514316BB073600505F04 /* AccountCreationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AccountCreationViewController.m; path = Classes/AccountCreationViewController.m; sourceTree = "<group>"; };
 		1068514616BB07CA00505F04 /* apps-streatit-wireframe.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = "apps-streatit-wireframe.pdf"; path = "RestTestApp/Documents/apps-streatit-wireframe.pdf"; sourceTree = "<group>"; };
@@ -253,8 +250,6 @@
 				10F1496116BA9EFF00309C93 /* RestTestAppDelegate.m */,
 				10F1495E16BA9EFF00309C93 /* EntryViewController.h */,
 				10F1495F16BA9EFF00309C93 /* EntryViewController.m */,
-				1068513F16BB06FF00505F04 /* LoginViewController.h */,
-				1068514016BB06FF00505F04 /* LoginViewController.m */,
 				1068514216BB073600505F04 /* AccountCreationViewController.h */,
 				1068514316BB073600505F04 /* AccountCreationViewController.m */,
 				1068514A16BB08BC00505F04 /* HomeViewController.h */,
@@ -427,7 +422,6 @@
 				10F1496216BA9EFF00309C93 /* EntryViewController.m in Sources */,
 				10F1496316BA9EFF00309C93 /* RestTestAppDelegate.m in Sources */,
 				10F1498016BAD95C00309C93 /* PaymentViewController.m in Sources */,
-				1068514116BB06FF00505F04 /* LoginViewController.m in Sources */,
 				1068514416BB073600505F04 /* AccountCreationViewController.m in Sources */,
 				1068514916BB085100505F04 /* CreditCardViewController.m in Sources */,
 				1068514C16BB08BC00505F04 /* HomeViewController.m in Sources */,
