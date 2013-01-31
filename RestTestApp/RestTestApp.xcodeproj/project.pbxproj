@@ -24,6 +24,17 @@
 		10273A6216BA9494008E42CA /* RestTestAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 10273A6116BA9494008E42CA /* RestTestAppTests.m */; };
 		10F1496216BA9EFF00309C93 /* EntryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10F1495F16BA9EFF00309C93 /* EntryViewController.m */; };
 		10F1496316BA9EFF00309C93 /* RestTestAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 10F1496116BA9EFF00309C93 /* RestTestAppDelegate.m */; };
+		10F1496C16BAD2A400309C93 /* libCardIO.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 10F1496B16BAD2A400309C93 /* libCardIO.a */; };
+		10F1497516BAD50900309C93 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10F1496D16BAD50900309C93 /* AudioToolbox.framework */; };
+		10F1497616BAD50900309C93 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10F1496E16BAD50900309C93 /* AVFoundation.framework */; };
+		10F1497716BAD50900309C93 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10F1496F16BAD50900309C93 /* CoreMedia.framework */; };
+		10F1497816BAD50900309C93 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10F1497016BAD50900309C93 /* CoreVideo.framework */; };
+		10F1497916BAD50900309C93 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10F1497116BAD50900309C93 /* MobileCoreServices.framework */; };
+		10F1497A16BAD50900309C93 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10F1497216BAD50900309C93 /* OpenGLES.framework */; };
+		10F1497B16BAD50900309C93 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10F1497316BAD50900309C93 /* QuartzCore.framework */; };
+		10F1497C16BAD50900309C93 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10F1497416BAD50900309C93 /* Security.framework */; };
+		10F1498016BAD95C00309C93 /* PaymentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10F1497E16BAD95C00309C93 /* PaymentViewController.m */; };
+		10F1498116BAD95C00309C93 /* PaymentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10F1497F16BAD95C00309C93 /* PaymentViewController.xib */; };
 		2A204C42306F4F9B9EDC9A32 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 63E089D5A3004C2D93373A4D /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -61,6 +72,22 @@
 		10F1495F16BA9EFF00309C93 /* EntryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EntryViewController.m; path = Classes/EntryViewController.m; sourceTree = "<group>"; };
 		10F1496016BA9EFF00309C93 /* RestTestAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RestTestAppDelegate.h; path = Classes/RestTestAppDelegate.h; sourceTree = "<group>"; };
 		10F1496116BA9EFF00309C93 /* RestTestAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RestTestAppDelegate.m; path = Classes/RestTestAppDelegate.m; sourceTree = "<group>"; };
+		10F1496716BAD2A400309C93 /* CardIO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CardIO.h; path = RestTestApp/CardIOSDK/CardIO/CardIO.h; sourceTree = "<group>"; };
+		10F1496816BAD2A400309C93 /* CardIOCreditCardInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CardIOCreditCardInfo.h; path = RestTestApp/CardIOSDK/CardIO/CardIOCreditCardInfo.h; sourceTree = "<group>"; };
+		10F1496916BAD2A400309C93 /* CardIOPaymentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CardIOPaymentViewController.h; path = RestTestApp/CardIOSDK/CardIO/CardIOPaymentViewController.h; sourceTree = "<group>"; };
+		10F1496A16BAD2A400309C93 /* CardIOPaymentViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CardIOPaymentViewControllerDelegate.h; path = RestTestApp/CardIOSDK/CardIO/CardIOPaymentViewControllerDelegate.h; sourceTree = "<group>"; };
+		10F1496B16BAD2A400309C93 /* libCardIO.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libCardIO.a; path = RestTestApp/CardIOSDK/CardIO/libCardIO.a; sourceTree = "<group>"; };
+		10F1496D16BAD50900309C93 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		10F1496E16BAD50900309C93 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		10F1496F16BAD50900309C93 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		10F1497016BAD50900309C93 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		10F1497116BAD50900309C93 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		10F1497216BAD50900309C93 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		10F1497316BAD50900309C93 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		10F1497416BAD50900309C93 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		10F1497D16BAD95C00309C93 /* PaymentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PaymentViewController.h; path = Classes/PaymentViewController.h; sourceTree = "<group>"; };
+		10F1497E16BAD95C00309C93 /* PaymentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PaymentViewController.m; path = Classes/PaymentViewController.m; sourceTree = "<group>"; };
+		10F1497F16BAD95C00309C93 /* PaymentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PaymentViewController.xib; path = Classes/PaymentViewController.xib; sourceTree = "<group>"; };
 		63E089D5A3004C2D93373A4D /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCC5E4D26B4F4E8E9E54AAEA /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
@@ -70,10 +97,19 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				10F1497516BAD50900309C93 /* AudioToolbox.framework in Frameworks */,
+				10F1497616BAD50900309C93 /* AVFoundation.framework in Frameworks */,
+				10F1497716BAD50900309C93 /* CoreMedia.framework in Frameworks */,
+				10F1497816BAD50900309C93 /* CoreVideo.framework in Frameworks */,
+				10F1497916BAD50900309C93 /* MobileCoreServices.framework in Frameworks */,
+				10F1497A16BAD50900309C93 /* OpenGLES.framework in Frameworks */,
+				10F1497B16BAD50900309C93 /* QuartzCore.framework in Frameworks */,
+				10F1497C16BAD50900309C93 /* Security.framework in Frameworks */,
 				10273A2E16BA9493008E42CA /* UIKit.framework in Frameworks */,
 				10273A3016BA9493008E42CA /* Foundation.framework in Frameworks */,
 				10273A3216BA9493008E42CA /* CoreGraphics.framework in Frameworks */,
 				2A204C42306F4F9B9EDC9A32 /* libPods.a in Frameworks */,
+				10F1496C16BAD2A400309C93 /* libCardIO.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,6 +129,7 @@
 		10273A2116BA9492008E42CA = {
 			isa = PBXGroup;
 			children = (
+				10F1496616BAD28300309C93 /* CardIOSDK */,
 				10273A3316BA9493008E42CA /* RestTestApp */,
 				10273A5A16BA9494008E42CA /* RestTestAppTests */,
 				10273A2C16BA9492008E42CA /* Frameworks */,
@@ -113,6 +150,15 @@
 		10273A2C16BA9492008E42CA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				10F1496B16BAD2A400309C93 /* libCardIO.a */,
+				10F1496D16BAD50900309C93 /* AudioToolbox.framework */,
+				10F1496E16BAD50900309C93 /* AVFoundation.framework */,
+				10F1496F16BAD50900309C93 /* CoreMedia.framework */,
+				10F1497016BAD50900309C93 /* CoreVideo.framework */,
+				10F1497116BAD50900309C93 /* MobileCoreServices.framework */,
+				10F1497216BAD50900309C93 /* OpenGLES.framework */,
+				10F1497316BAD50900309C93 /* QuartzCore.framework */,
+				10F1497416BAD50900309C93 /* Security.framework */,
 				10273A2D16BA9492008E42CA /* UIKit.framework */,
 				10273A2F16BA9493008E42CA /* Foundation.framework */,
 				10273A3116BA9493008E42CA /* CoreGraphics.framework */,
@@ -129,6 +175,9 @@
 				10F1495F16BA9EFF00309C93 /* EntryViewController.m */,
 				10F1496016BA9EFF00309C93 /* RestTestAppDelegate.h */,
 				10F1496116BA9EFF00309C93 /* RestTestAppDelegate.m */,
+				10F1497D16BAD95C00309C93 /* PaymentViewController.h */,
+				10F1497E16BAD95C00309C93 /* PaymentViewController.m */,
+				10F1497F16BAD95C00309C93 /* PaymentViewController.xib */,
 				10273A4516BA9493008E42CA /* MainStoryboard_iPhone.storyboard */,
 				10273A4816BA9493008E42CA /* MainStoryboard_iPad.storyboard */,
 				10273A3416BA9493008E42CA /* Supporting Files */,
@@ -167,6 +216,17 @@
 				10273A5D16BA9494008E42CA /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		10F1496616BAD28300309C93 /* CardIOSDK */ = {
+			isa = PBXGroup;
+			children = (
+				10F1496716BAD2A400309C93 /* CardIO.h */,
+				10F1496816BAD2A400309C93 /* CardIOCreditCardInfo.h */,
+				10F1496916BAD2A400309C93 /* CardIOPaymentViewController.h */,
+				10F1496A16BAD2A400309C93 /* CardIOPaymentViewControllerDelegate.h */,
+			);
+			name = CardIOSDK;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -247,6 +307,7 @@
 				10273A4416BA9493008E42CA /* Default-568h@2x.png in Resources */,
 				10273A4716BA9493008E42CA /* MainStoryboard_iPhone.storyboard in Resources */,
 				10273A4A16BA9493008E42CA /* MainStoryboard_iPad.storyboard in Resources */,
+				10F1498116BAD95C00309C93 /* PaymentViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -298,6 +359,7 @@
 				10273A3A16BA9493008E42CA /* main.m in Sources */,
 				10F1496216BA9EFF00309C93 /* EntryViewController.m in Sources */,
 				10F1496316BA9EFF00309C93 /* RestTestAppDelegate.m in Sources */,
+				10F1498016BAD95C00309C93 /* PaymentViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -380,7 +442,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -405,7 +467,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -420,6 +482,11 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RestTestApp/RestTestApp-Prefix.pch";
 				INFOPLIST_FILE = "RestTestApp/RestTestApp-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/RestTestApp/CardIOSDK/CardIO\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -432,6 +499,11 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RestTestApp/RestTestApp-Prefix.pch";
 				INFOPLIST_FILE = "RestTestApp/RestTestApp-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/RestTestApp/CardIOSDK/CardIO\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
