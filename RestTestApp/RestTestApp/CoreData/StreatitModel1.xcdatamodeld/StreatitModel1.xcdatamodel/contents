@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="2057" systemVersion="12C60" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Product" representedClassName="Product" syncable="YES">
+        <attribute name="briefDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="detailedDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="identifier" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="imageURLString" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="price" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <relationship name="productType" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="ProductType" inverseName="products" inverseEntity="ProductType" syncable="YES"/>
+    </entity>
+    <entity name="ProductType" representedClassName="ProductType" syncable="YES">
+        <attribute name="imageURLString" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="products" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Product" inverseName="productType" inverseEntity="Product" syncable="YES"/>
+    </entity>
+    <entity name="Shop" representedClassName="Shop" syncable="YES">
+        <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="identifier" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="latitude" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="longitude" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Product" positionX="-209" positionY="-144" width="128" height="150"/>
+        <element name="ProductType" positionX="-479" positionY="-160" width="128" height="88"/>
+        <element name="Shop" positionX="-380" positionY="-315" width="128" height="120"/>
+    </elements>
+</model>

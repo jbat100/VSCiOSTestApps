@@ -12,5 +12,16 @@
 
 @interface ProductType : NSManagedObject
 
+@property (nonatomic, retain) NSString * imageURLString;
+@property (nonatomic, retain) NSString * name;
+@property (nonatomic, retain) NSSet *products;
+@end
+
+@interface ProductType (CoreDataGeneratedAccessors)
+
+- (void)addProductsObject:(NSManagedObject *)value;
+- (void)removeProductsObject:(NSManagedObject *)value;
+- (void)addProducts:(NSSet *)values;
+- (void)removeProducts:(NSSet *)values;
 
 @end

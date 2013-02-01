@@ -8,6 +8,8 @@
 
 #import "RestTestAppDelegate.h"
 
+#import "DDLog.h"
+
 @implementation RestTestAppDelegate
 
 +(RestTestAppDelegate*) delegate
@@ -17,7 +19,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
+    [DDLog addLogger:[DDASLLogger sharedInstance]];
+    [DDLog addLogger:[DDTTYLogger sharedInstance]];
+    
     return YES;
 }
 							

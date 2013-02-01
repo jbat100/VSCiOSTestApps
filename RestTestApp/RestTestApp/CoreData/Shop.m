@@ -1,18 +1,20 @@
 //
-//  ProductType.m
+//  Shop.m
 //  RestTestApp
 //
 //  Created by Jonathan Thorpe on 2/1/13.
 //  Copyright (c) 2013 Jonathan Thorpe. All rights reserved.
 //
 
-#import "ProductType.h"
+#import "Shop.h"
 
 
-@implementation ProductType
+@implementation Shop
 
-@dynamic imageURLString;
+@dynamic address;
+@dynamic identifier;
+@dynamic latitude;
+@dynamic longitude;
 @dynamic name;
-@dynamic products;
 
 @end
