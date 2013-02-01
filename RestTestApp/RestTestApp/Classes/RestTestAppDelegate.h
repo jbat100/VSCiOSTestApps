@@ -10,6 +10,8 @@
 
 @interface RestTestAppDelegate : UIResponder <UIApplicationDelegate>
 
++(RestTestAppDelegate*) delegate;
+
 @property (strong, nonatomic) UIWindow *window;
 
 @end

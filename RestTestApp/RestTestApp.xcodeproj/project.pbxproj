@@ -30,6 +30,10 @@
 		1068515816BB09B400505F04 /* ProductListingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1068515716BB09B400505F04 /* ProductListingViewController.m */; };
 		1068515D16BB0A8400505F04 /* ShoppingCartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1068515C16BB0A8400505F04 /* ShoppingCartViewController.m */; };
 		1068516016BB0B5000505F04 /* LocationMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1068515F16BB0B5000505F04 /* LocationMapViewController.m */; };
+		10B9535E16BC176C007A23D2 /* StreatitHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B9535D16BC176C007A23D2 /* StreatitHTTPClient.m */; };
+		10B9536516BC275A007A23D2 /* StreatitModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 10B9536316BC275A007A23D2 /* StreatitModel.xcdatamodeld */; };
+		10B9536816BC2BB7007A23D2 /* ProductType.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B9536716BC2BB7007A23D2 /* ProductType.m */; };
+		10B9536B16BC2BEA007A23D2 /* StreatitDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B9536A16BC2BEA007A23D2 /* StreatitDataManager.m */; };
 		10F1496216BA9EFF00309C93 /* EntryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10F1495F16BA9EFF00309C93 /* EntryViewController.m */; };
 		10F1496316BA9EFF00309C93 /* RestTestAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 10F1496116BA9EFF00309C93 /* RestTestAppDelegate.m */; };
 		10F1496C16BAD2A400309C93 /* libCardIO.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 10F1496B16BAD2A400309C93 /* libCardIO.a */; };
@@ -92,6 +96,13 @@
 		1068515C16BB0A8400505F04 /* ShoppingCartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShoppingCartViewController.m; path = Classes/ShoppingCartViewController.m; sourceTree = "<group>"; };
 		1068515E16BB0B5000505F04 /* LocationMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LocationMapViewController.h; path = Classes/LocationMapViewController.h; sourceTree = "<group>"; };
 		1068515F16BB0B5000505F04 /* LocationMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LocationMapViewController.m; path = Classes/LocationMapViewController.m; sourceTree = "<group>"; };
+		10B9535C16BC176C007A23D2 /* StreatitHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StreatitHTTPClient.h; path = Classes/StreatitHTTPClient.h; sourceTree = "<group>"; };
+		10B9535D16BC176C007A23D2 /* StreatitHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StreatitHTTPClient.m; path = Classes/StreatitHTTPClient.m; sourceTree = "<group>"; };
+		10B9536416BC275A007A23D2 /* StreatitModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = StreatitModel.xcdatamodel; sourceTree = "<group>"; };
+		10B9536616BC2BB7007A23D2 /* ProductType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProductType.h; path = CoreData/ProductType.h; sourceTree = "<group>"; };
+		10B9536716BC2BB7007A23D2 /* ProductType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProductType.m; path = CoreData/ProductType.m; sourceTree = "<group>"; };
+		10B9536916BC2BEA007A23D2 /* StreatitDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StreatitDataManager.h; path = Classes/StreatitDataManager.h; sourceTree = "<group>"; };
+		10B9536A16BC2BEA007A23D2 /* StreatitDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StreatitDataManager.m; path = Classes/StreatitDataManager.m; sourceTree = "<group>"; };
 		10F1495E16BA9EFF00309C93 /* EntryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EntryViewController.h; path = Classes/EntryViewController.h; sourceTree = "<group>"; };
 		10F1495F16BA9EFF00309C93 /* EntryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EntryViewController.m; path = Classes/EntryViewController.m; sourceTree = "<group>"; };
 		10F1496016BA9EFF00309C93 /* RestTestAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RestTestAppDelegate.h; path = Classes/RestTestAppDelegate.h; sourceTree = "<group>"; };
@@ -246,8 +257,38 @@
 		1068515916BB09FE00505F04 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				10B9536216BC2720007A23D2 /* Model */,
+				10B9535A16BC16F5007A23D2 /* Delegate And Managers */,
+				10B9535B16BC1711007A23D2 /* View Controllers */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		1068515A16BB0A1000505F04 /* Interface */ = {
+			isa = PBXGroup;
+			children = (
+				10273A4516BA9493008E42CA /* MainStoryboard_iPhone.storyboard */,
+				10273A4816BA9493008E42CA /* MainStoryboard_iPad.storyboard */,
+			);
+			name = Interface;
+			sourceTree = "<group>";
+		};
+		10B9535A16BC16F5007A23D2 /* Delegate And Managers */ = {
+			isa = PBXGroup;
+			children = (
 				10F1496016BA9EFF00309C93 /* RestTestAppDelegate.h */,
 				10F1496116BA9EFF00309C93 /* RestTestAppDelegate.m */,
+				10B9535C16BC176C007A23D2 /* StreatitHTTPClient.h */,
+				10B9535D16BC176C007A23D2 /* StreatitHTTPClient.m */,
+				10B9536916BC2BEA007A23D2 /* StreatitDataManager.h */,
+				10B9536A16BC2BEA007A23D2 /* StreatitDataManager.m */,
+			);
+			name = "Delegate And Managers";
+			sourceTree = "<group>";
+		};
+		10B9535B16BC1711007A23D2 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
 				10F1495E16BA9EFF00309C93 /* EntryViewController.h */,
 				10F1495F16BA9EFF00309C93 /* EntryViewController.m */,
 				1068514216BB073600505F04 /* AccountCreationViewController.h */,
@@ -269,16 +310,17 @@
 				10F1497D16BAD95C00309C93 /* PaymentViewController.h */,
 				10F1497E16BAD95C00309C93 /* PaymentViewController.m */,
 			);
-			name = Classes;
+			name = "View Controllers";
 			sourceTree = "<group>";
 		};
-		1068515A16BB0A1000505F04 /* Interface */ = {
+		10B9536216BC2720007A23D2 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				10273A4516BA9493008E42CA /* MainStoryboard_iPhone.storyboard */,
-				10273A4816BA9493008E42CA /* MainStoryboard_iPad.storyboard */,
+				10B9536316BC275A007A23D2 /* StreatitModel.xcdatamodeld */,
+				10B9536616BC2BB7007A23D2 /* ProductType.h */,
+				10B9536716BC2BB7007A23D2 /* ProductType.m */,
 			);
-			name = Interface;
+			name = Model;
 			sourceTree = "<group>";
 		};
 		10F1496616BAD28300309C93 /* CardIOSDK */ = {
@@ -430,6 +472,10 @@
 				1068515816BB09B400505F04 /* ProductListingViewController.m in Sources */,
 				1068515D16BB0A8400505F04 /* ShoppingCartViewController.m in Sources */,
 				1068516016BB0B5000505F04 /* LocationMapViewController.m in Sources */,
+				10B9535E16BC176C007A23D2 /* StreatitHTTPClient.m in Sources */,
+				10B9536516BC275A007A23D2 /* StreatitModel.xcdatamodeld in Sources */,
+				10B9536816BC2BB7007A23D2 /* ProductType.m in Sources */,
+				10B9536B16BC2BEA007A23D2 /* StreatitDataManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -557,6 +603,10 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/RestTestApp/CardIOSDK/CardIO\"",
 				);
+				OTHER_LDFLAGS = (
+					$inherited,
+					"-lstdc++",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -573,6 +623,10 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/RestTestApp/CardIOSDK/CardIO\"",
+				);
+				OTHER_LDFLAGS = (
+					$inherited,
+					"-lstdc++",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -644,6 +698,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		10B9536316BC275A007A23D2 /* StreatitModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				10B9536416BC275A007A23D2 /* StreatitModel.xcdatamodel */,
+			);
+			currentVersion = 10B9536416BC275A007A23D2 /* StreatitModel.xcdatamodel */;
+			name = StreatitModel.xcdatamodeld;
+			path = CoreData/StreatitModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 10273A2216BA9492008E42CA /* Project object */;
 }

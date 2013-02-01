@@ -8,7 +8,13 @@
 
 #import "EntryViewController.h"
 
+#import "AFNetworking.h"
+#import "SVProgressHUD.h"
+#import "StreatitHTTPClient.h"
+
 @interface EntryViewController ()
+
+
 
 @end
 
@@ -26,10 +32,41 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)viewDidUnload {
+- (void)viewDidUnload
+{
     [self setLoginTextField:nil];
     [self setPasswordTextField:nil];
     [self setCreateAccountButton:nil];
+    
     [super viewDidUnload];
 }
+
+-(IBAction)createAccountButtonTouched:(id)sender
+{
+    /*
+     *  Testing with the twitter API for now 
+     */
+    
+    NSDictionary* parameters = @{@"q" : @"Potato"};
+    
+    NSMutableURLRequest *request = [[StreatitHTTPClient sharedClient] requestWithMethod:@"GET"
+                                                                                   path:@"search/tweets.json"
+                                                                             parameters:parameters];
+    
+    AFJSONRequestOperation *operation = nil;
+    
+    operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
+                success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+                    NSLog(@"Operation succeeded: %@", JSON);
+                    [SVProgressHUD showSuccessWithStatus:@"Connection établie"];
+                }
+                failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+                    NSLog(@"Operation failed: %@ (error: %@)", JSON, error);
+                    [SVProgressHUD showErrorWithStatus:@"La connection a échouée"];
+                }];
+    
+    [operation start];
+
+}
+
 @end

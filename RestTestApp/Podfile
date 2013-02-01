@@ -1,3 +1,6 @@
 platform :ios, '5.0'
 pod 'RestKit', '~> 0.20.0pre6'
 pod 'AFNetworking', '>= 1.1.0'
+pod 'SVProgressHUD', '>= 0.9'
+pod 'SVStatusHUD', '>= 0.0.1'
+

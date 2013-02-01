@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="2057" systemVersion="11G63b" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Product" syncable="YES"/>
+    <entity name="ProductType" representedClassName="ProductType" syncable="YES"/>
+    <entity name="Restaurant" syncable="YES"/>
+    <elements>
+        <element name="ProductType" positionX="-432" positionY="-171" width="128" height="45"/>
+        <element name="Product" positionX="-279" positionY="-81" width="128" height="45"/>
+        <element name="Restaurant" positionX="-227" positionY="-252" width="128" height="45"/>
+    </elements>
+</model>

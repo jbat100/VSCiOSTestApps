@@ -8,12 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface EntryViewController : UIViewController
+@interface EntryViewController : UIViewController <UITextFieldDelegate>
 
-@property (strong, nonatomic) IBOutlet UIView *loginTextField;
+@property (strong, nonatomic) IBOutlet UITextField *loginTextField;
+@property (strong, nonatomic) IBOutlet UITextField *passwordTextField;
+@property (strong, nonatomic) IBOutlet UIButton *createAccountButton;
 
-@property (strong, nonatomic) IBOutlet UIView *passwordTextField;
-
-@property (strong, nonatomic) IBOutlet UIView *createAccountButton;
+-(IBAction)createAccountButtonTouched:(id)sender;
 
 @end
