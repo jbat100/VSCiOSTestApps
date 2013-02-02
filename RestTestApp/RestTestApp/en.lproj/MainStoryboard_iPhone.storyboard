@@ -168,17 +168,87 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="127" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="h90-98-fCf">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="180" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="h90-98-fCf">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="ProductDescriptionCell" rowHeight="127" id="RgL-tT-ZPH">
-                                        <rect key="frame" x="0.0" y="22" width="320" height="127"/>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="ProductDescriptionCell" rowHeight="180" id="RgL-tT-ZPH">
+                                        <rect key="frame" x="0.0" y="22" width="320" height="180"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="126"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="179"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Some Sandwidch bla bla bla" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" minimumScaleFactor="0.59999999999999998" adjustsLetterSpacingToFitWidth="YES" preferredMaxLayoutWidth="133" translatesAutoresizingMaskIntoConstraints="NO" id="INn-X2-gLk">
+                                                    <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="59" id="Qhe-YE-EAB"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="17"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="wordWrap" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="300" translatesAutoresizingMaskIntoConstraints="NO" id="Fc0-SZ-noP">
+                                                    <color key="backgroundColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                                    <string key="text">A sandwich is a food item, consisting of two or more slices of bread with one or more fillings between them. A sandwich is a food item, consisting of two or more slices of bread with one or more fillings between them.</string>
+                                                    <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="16"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="14.99" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Ed-Qq-Wfu">
+                                                    <color key="backgroundColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="83" id="22y-MV-aT4"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="AvenirNext-Heavy" family="Avenir Next" pointSize="22"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gyt-De-ubh">
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="30" id="pwQ-0h-8rJ"/>
+                                                        <constraint firstAttribute="height" constant="30" id="vM1-y8-pdc"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                    <state key="normal" image="remove-small.png">
+                                                        <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <state key="highlighted">
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iDl-Ip-vIh">
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="30" id="9rO-7X-GAV"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                    <state key="normal" image="add-small.png">
+                                                        <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <state key="highlighted">
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                </button>
+                                            </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <constraints>
+                                            <constraint firstItem="iDl-Ip-vIh" firstAttribute="trailing" secondItem="Fc0-SZ-noP" secondAttribute="trailing" type="default" id="22s-VF-wpV"/>
+                                            <constraint firstItem="Fc0-SZ-noP" firstAttribute="top" secondItem="INn-X2-gLk" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="DZM-xX-t97"/>
+                                            <constraint firstAttribute="bottom" secondItem="Fc0-SZ-noP" secondAttribute="bottom" constant="10" type="user" id="IMA-YM-fTq"/>
+                                            <constraint firstItem="INn-X2-gLk" firstAttribute="top" secondItem="RgL-tT-ZPH" secondAttribute="top" constant="10" type="user" id="J4k-qd-FkS"/>
+                                            <constraint firstItem="Fc0-SZ-noP" firstAttribute="top" secondItem="6Ed-Qq-Wfu" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="KSW-0P-DpV"/>
+                                            <constraint firstItem="6Ed-Qq-Wfu" firstAttribute="top" secondItem="INn-X2-gLk" secondAttribute="top" type="default" id="Me7-Uc-VWF"/>
+                                            <constraint firstItem="Gyt-De-ubh" firstAttribute="leading" secondItem="6Ed-Qq-Wfu" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="PoM-E8-ksD"/>
+                                            <constraint firstItem="iDl-Ip-vIh" firstAttribute="leading" secondItem="Gyt-De-ubh" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="SqX-eL-Vua"/>
+                                            <constraint firstItem="Fc0-SZ-noP" firstAttribute="leading" secondItem="INn-X2-gLk" secondAttribute="leading" type="user" id="YCP-4D-bZu"/>
+                                            <constraint firstItem="iDl-Ip-vIh" firstAttribute="bottom" secondItem="Gyt-De-ubh" secondAttribute="bottom" type="default" id="aLM-7G-YMf"/>
+                                            <constraint firstItem="Gyt-De-ubh" firstAttribute="top" secondItem="RgL-tT-ZPH" secondAttribute="top" constant="25" id="eQx-r8-ni5"/>
+                                            <constraint firstItem="INn-X2-gLk" firstAttribute="leading" secondItem="RgL-tT-ZPH" secondAttribute="leading" constant="10" type="user" id="ivT-dc-c8a"/>
+                                            <constraint firstAttribute="trailing" secondItem="Fc0-SZ-noP" secondAttribute="trailing" constant="10" type="user" id="xlQ-4d-7oh"/>
+                                            <constraint firstItem="iDl-Ip-vIh" firstAttribute="top" secondItem="Gyt-De-ubh" secondAttribute="top" type="default" id="yFO-rc-2Lb"/>
+                                            <constraint firstItem="6Ed-Qq-Wfu" firstAttribute="leading" secondItem="INn-X2-gLk" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="zKB-te-4VW"/>
+                                        </constraints>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -227,26 +297,8 @@
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="119"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9FD-gM-1TQ">
-                                                    <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                                </view>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WXz-LM-sNC">
-                                                    <color key="backgroundColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                                </view>
-                                            </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
-                                        <constraints>
-                                            <constraint firstItem="WXz-LM-sNC" firstAttribute="trailing" secondItem="MlA-pp-OhV" secondAttribute="trailing" type="default" id="4Oq-AF-1mF"/>
-                                            <constraint firstItem="WXz-LM-sNC" firstAttribute="leading" secondItem="9FD-gM-1TQ" secondAttribute="trailing" type="user" id="7rq-bf-xGA"/>
-                                            <constraint firstItem="WXz-LM-sNC" firstAttribute="width" secondItem="9FD-gM-1TQ" secondAttribute="width" type="user" id="9hC-eH-omj"/>
-                                            <constraint firstItem="WXz-LM-sNC" firstAttribute="bottom" secondItem="MlA-pp-OhV" secondAttribute="bottom" type="default" id="Mn6-dA-1UJ"/>
-                                            <constraint firstItem="9FD-gM-1TQ" firstAttribute="top" secondItem="MlA-pp-OhV" secondAttribute="top" type="default" id="UHw-wC-wWX"/>
-                                            <constraint firstAttribute="bottom" secondItem="9FD-gM-1TQ" secondAttribute="bottom" type="user" id="ZfE-rA-Wsv"/>
-                                            <constraint firstItem="WXz-LM-sNC" firstAttribute="top" secondItem="MlA-pp-OhV" secondAttribute="top" type="default" id="bNa-fF-s5G"/>
-                                            <constraint firstItem="9FD-gM-1TQ" firstAttribute="leading" secondItem="MlA-pp-OhV" secondAttribute="leading" type="user" id="dhN-9j-zG8"/>
-                                        </constraints>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -491,6 +543,10 @@
             <point key="canvasLocation" x="-221" y="-269"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="add-small.png" width="40" height="40"/>
+        <image name="remove-small.png" width="40" height="40"/>
+    </resources>
     <classes>
         <class className="AccountCreationViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/AccountCreationViewController.h"/>
@@ -560,6 +616,6 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="WqQ-Cc-I9c"/>
-        <segue reference="qxD-b0-gSI"/>
+        <segue reference="qT1-ry-PXe"/>
     </inferredMetricsTieBreakers>
 </document>

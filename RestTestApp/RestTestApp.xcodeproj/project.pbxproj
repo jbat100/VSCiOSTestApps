@@ -35,7 +35,10 @@
 		1068516016BB0B5000505F04 /* LocationMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1068515F16BB0B5000505F04 /* LocationMapViewController.m */; };
 		106B9EBB16BD5F8C001B121B /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 106B9EBA16BD5F8C001B121B /* MapKit.framework */; };
 		106B9EBF16BD61B9001B121B /* ProductTypeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 106B9EBE16BD61B9001B121B /* ProductTypeView.m */; };
-		106B9EC216BD6284001B121B /* ProductListingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 106B9EC116BD6284001B121B /* ProductListingView.m */; };
+		106B9EC716BD63AC001B121B /* ProductListingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 106B9EC616BD63AC001B121B /* ProductListingView.m */; };
+		106B9EC916BD666C001B121B /* ProductTypeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 106B9EC816BD666C001B121B /* ProductTypeView.xib */; };
+		106B9ECE16BD8685001B121B /* add-small.png in Resources */ = {isa = PBXBuildFile; fileRef = 106B9ECC16BD8685001B121B /* add-small.png */; };
+		106B9ECF16BD8685001B121B /* remove-small.png in Resources */ = {isa = PBXBuildFile; fileRef = 106B9ECD16BD8685001B121B /* remove-small.png */; };
 		10B9535E16BC176C007A23D2 /* StreatitHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B9535D16BC176C007A23D2 /* StreatitHTTPClient.m */; };
 		10B9536516BC275A007A23D2 /* StreatitModel1.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 10B9536316BC275A007A23D2 /* StreatitModel1.xcdatamodeld */; };
 		10B9536B16BC2BEA007A23D2 /* StreatitDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B9536A16BC2BEA007A23D2 /* StreatitDataManager.m */; };
@@ -110,8 +113,11 @@
 		106B9EBA16BD5F8C001B121B /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		106B9EBD16BD61B9001B121B /* ProductTypeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProductTypeView.h; path = Classes/ProductTypeView.h; sourceTree = "<group>"; };
 		106B9EBE16BD61B9001B121B /* ProductTypeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProductTypeView.m; path = Classes/ProductTypeView.m; sourceTree = "<group>"; };
-		106B9EC016BD6284001B121B /* ProductListingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductListingView.h; sourceTree = "<group>"; };
-		106B9EC116BD6284001B121B /* ProductListingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductListingView.m; sourceTree = "<group>"; };
+		106B9EC516BD63AC001B121B /* ProductListingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProductListingView.h; path = Classes/ProductListingView.h; sourceTree = "<group>"; };
+		106B9EC616BD63AC001B121B /* ProductListingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProductListingView.m; path = Classes/ProductListingView.m; sourceTree = "<group>"; };
+		106B9EC816BD666C001B121B /* ProductTypeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ProductTypeView.xib; path = Classes/ProductTypeView.xib; sourceTree = "<group>"; };
+		106B9ECC16BD8685001B121B /* add-small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "add-small.png"; path = "RestTestApp/Resources/add-small.png"; sourceTree = "<group>"; };
+		106B9ECD16BD8685001B121B /* remove-small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "remove-small.png"; path = "RestTestApp/Resources/remove-small.png"; sourceTree = "<group>"; };
 		10B9535C16BC176C007A23D2 /* StreatitHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StreatitHTTPClient.h; path = Classes/StreatitHTTPClient.h; sourceTree = "<group>"; };
 		10B9535D16BC176C007A23D2 /* StreatitHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StreatitHTTPClient.m; path = Classes/StreatitHTTPClient.m; sourceTree = "<group>"; };
 		10B9536416BC275A007A23D2 /* StreatitModel1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = StreatitModel1.xcdatamodel; sourceTree = "<group>"; };
@@ -178,6 +184,7 @@
 		10273A2116BA9492008E42CA = {
 			isa = PBXGroup;
 			children = (
+				106B9ECA16BD8654001B121B /* Resources */,
 				1068514516BB07A300505F04 /* Documents */,
 				10F1496616BAD28300309C93 /* CardIOSDK */,
 				10273A3316BA9493008E42CA /* RestTestApp */,
@@ -295,10 +302,28 @@
 			children = (
 				106B9EBD16BD61B9001B121B /* ProductTypeView.h */,
 				106B9EBE16BD61B9001B121B /* ProductTypeView.m */,
-				106B9EC016BD6284001B121B /* ProductListingView.h */,
-				106B9EC116BD6284001B121B /* ProductListingView.m */,
+				106B9EC516BD63AC001B121B /* ProductListingView.h */,
+				106B9EC616BD63AC001B121B /* ProductListingView.m */,
+				106B9EC816BD666C001B121B /* ProductTypeView.xib */,
 			);
 			name = Views;
+			sourceTree = "<group>";
+		};
+		106B9ECA16BD8654001B121B /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				106B9ECB16BD865D001B121B /* Buttons */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		106B9ECB16BD865D001B121B /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				106B9ECC16BD8685001B121B /* add-small.png */,
+				106B9ECD16BD8685001B121B /* remove-small.png */,
+			);
+			name = Buttons;
 			sourceTree = "<group>";
 		};
 		10B9535A16BC16F5007A23D2 /* Delegate And Managers */ = {
@@ -444,6 +469,9 @@
 				10273A4416BA9493008E42CA /* Default-568h@2x.png in Resources */,
 				10273A4716BA9493008E42CA /* MainStoryboard_iPhone.storyboard in Resources */,
 				10273A4A16BA9493008E42CA /* MainStoryboard_iPad.storyboard in Resources */,
+				106B9EC916BD666C001B121B /* ProductTypeView.xib in Resources */,
+				106B9ECE16BD8685001B121B /* add-small.png in Resources */,
+				106B9ECF16BD8685001B121B /* remove-small.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -511,7 +539,7 @@
 				103491CA16BC78EB00075C20 /* Product.m in Sources */,
 				103491CD16BC790500075C20 /* Shop.m in Sources */,
 				106B9EBF16BD61B9001B121B /* ProductTypeView.m in Sources */,
-				106B9EC216BD6284001B121B /* ProductListingView.m in Sources */,
+				106B9EC716BD63AC001B121B /* ProductListingView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
