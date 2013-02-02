@@ -7,23 +7,58 @@
 //
 
 #import "EntryViewController.h"
+#import "StreatitHTTPClient.h"
 
+#import "DDLog.h"
 #import "AFNetworking.h"
 #import "SVProgressHUD.h"
-#import "StreatitHTTPClient.h"
 
 @interface EntryViewController ()
 
+@property (nonatomic, assign) CGFloat restLoginTopConstraintConstant;
 
+@property (nonatomic, strong) IBOutlet NSLayoutConstraint* loginTopContraint;
+
+@property (nonatomic, strong) UIBarButtonItem* loginBarButtonItem;
+@property (nonatomic, strong) UIBarButtonItem* cancelBarButtonItem;
+
+-(void) performLogin:(id)sender;
+
+-(BOOL) isLoginPossible;
 
 @end
 
 @implementation EntryViewController
 
+#pragma mark - UIViewController Methods
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    
+    assert(self.loginTextField);
+    assert(self.passwordTextField);
+    assert(self.createAccountButton);
+    assert(self.loginTopContraint);
+    
+    self.restLoginTopConstraintConstant = self.loginTopContraint.constant;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(enterEditMode:)
+                                                 name:UIKeyboardWillShowNotification
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(exitEditMode:)
+                                                 name:UIKeyboardWillHideNotification
+                                               object:nil];
+    
+    self.loginTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
+    self.passwordTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
+    
+    [self.loginTextField addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
+    [self.passwordTextField addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
 }
 
 - (void)didReceiveMemoryWarning
@@ -34,6 +69,7 @@
 
 - (void)viewDidUnload
 {
+    
     [self setLoginTextField:nil];
     [self setPasswordTextField:nil];
     [self setCreateAccountButton:nil];
@@ -41,9 +77,79 @@
     [super viewDidUnload];
 }
 
+-(void) viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    //self.navigationItem.title = @"Login";
+    
+    //self.navigationController.navigationBar.hidden = YES;
+    
+    self.loginBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Connexion"
+                                                               style:UIBarButtonItemStyleBordered
+                                                              target:self
+                                                              action:@selector(performLogin:)];
+    
+    self.navigationItem.rightBarButtonItem = self.loginBarButtonItem;
+    self.loginBarButtonItem.enabled = [self isLoginPossible];
+    
+    self.cancelBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Annuler"
+                                                                style:UIBarButtonItemStyleBordered
+                                                               target:self
+                                                               action:@selector(cancelLogin:)];
+    
+    //self.navigationItem.leftBarButtonItem = self.cancelBarButtonItem;
+    
+    
+    
+    
+}
+
+-(void) viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    DDLogVerbose(@"%@ viewDidAppear loginTextField.frame %@, passwordTextField.frame %@",
+                 self, NSStringFromCGRect(self.loginTextField.frame), NSStringFromCGRect(self.passwordTextField.frame));
+}
+
+#pragma mark - Helpers
+
+-(BOOL) isLoginPossible
+{
+    assert([self.loginTextField isKindOfClass:[UITextField class]]);
+    assert([self.passwordTextField isKindOfClass:[UITextField class]]);
+    
+    NSString* loginString = [self.loginTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    NSString* passwordString = [self.passwordTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    
+    if ([loginString length] > 0 && [passwordString length] > 0)
+    {
+        DDLogVerbose(@"Tested login: Good to go");
+        return YES;
+    }
+    
+    DDLogVerbose(@"Tested login: No go");
+    
+    return NO;
+}
+
+#pragma mark - UI Actions
+
+-(void) loginButtonTouched:(id)sender
+{
+    if([self.loginTextField isEditing]) [self.loginTextField endEditing:YES];
+    if([self.passwordTextField isEditing]) [self.passwordTextField endEditing:YES];
+}
+
 -(IBAction)createAccountButtonTouched:(id)sender
 {
-    /*
+    
+}
+
+-(void) performLogin:(id)sender
+{
+        /*
      *  Testing with the twitter API for now 
      */
     
@@ -67,6 +173,111 @@
     
     [operation start];
 
+}
+
+-(void) cancelLogin:(id)sender
+{
+    if([self.loginTextField isEditing]) [self.loginTextField endEditing:YES];
+    if([self.passwordTextField isEditing]) [self.passwordTextField endEditing:YES];
+    
+}
+
+#pragma mark - UITextFieldDelegate Methods
+
+-(BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    /*
+     *  Every time the user types in a new character, test if we can login or not...
+     *  In fact use notifications instead, here the text HAS NOT YET BEEN CHANGED
+     */
+    
+    //self.loginBarButtonItem.enabled = [self isLoginPossible];
+    
+    return YES;
+}
+
+-(void) textFieldDidChange:(id)sender
+{
+    if (sender == self.loginTextField || sender == self.passwordTextField)
+    {
+        self.loginBarButtonItem.enabled = [self isLoginPossible];
+    }
+}
+
+#pragma mark - Keyboard Notifications
+
+-(void) enterEditMode:(NSNotification*)notification
+{
+    DDLogVerbose(@"%@ enterEditMode: %@", self, notification);
+    
+    NSValue* keyboardFrameEnd = [[notification userInfo] objectForKey:UIKeyboardFrameEndUserInfoKey];
+    NSNumber* durationNumber = [[notification userInfo] objectForKey:UIKeyboardAnimationDurationUserInfoKey];
+    assert(keyboardFrameEnd);
+    assert(durationNumber);
+    
+    if (keyboardFrameEnd)
+    {
+        CGRect endFrame = [keyboardFrameEnd CGRectValue];
+        CGRect viewFrame = self.view.frame;
+        double duration = [durationNumber doubleValue];
+        CGRect passwordFieldFrame = self.passwordTextField.frame;
+        CGFloat passFieldBottom = passwordFieldFrame.origin.y + passwordFieldFrame.size.height;
+        CGFloat keyboardTop = viewFrame.size.height - endFrame.size.height;
+        //int offset = (int)(passFieldBottom - keyboardTop) - 10;
+        int offset = (int)(keyboardTop - passFieldBottom) - 10;
+        
+        DDLogVerbose(@"keyboardTop %.2f, passFieldBottom %.2f, offset %d, duration %.2f",
+                     keyboardTop, passFieldBottom, offset, duration);
+        
+        //if (offset < 0.0)
+        {
+            [UIView animateWithDuration:duration
+                             animations:^{
+                                 self.loginTopContraint.constant = self.restLoginTopConstraintConstant + offset;
+                                 //self.loginTopContraint.constant = offset;
+                                 [self.view layoutIfNeeded];
+                             }];
+        }
+        
+    }
+    
+    [[self navigationItem] setLeftBarButtonItem:self.cancelBarButtonItem animated:YES];
+}
+
+-(void) exitEditMode:(NSNotification*)notification
+{
+    DDLogVerbose(@"%@ exitEditMode: %@", self, notification);
+    
+    NSNumber* durationNumber = [[notification userInfo] objectForKey:UIKeyboardAnimationDurationUserInfoKey];
+    assert(durationNumber);
+    
+    if (durationNumber)
+    {
+        [UIView animateWithDuration:[durationNumber doubleValue]
+                         animations:^{
+                             self.loginTopContraint.constant = self.restLoginTopConstraintConstant;
+                             //self.loginTopContraint.constant = 0.0;
+                             [self.view layoutIfNeeded];
+                         }];
+    }
+    
+    else
+    {
+        [UIView animateWithDuration:0.25
+                         animations:^{
+                             self.loginTopContraint.constant = 0;
+                             [self.view layoutIfNeeded];
+                         }];
+    }
+    
+    [[self navigationItem] setLeftBarButtonItem:nil animated:YES];
+    
 }
 
 @end

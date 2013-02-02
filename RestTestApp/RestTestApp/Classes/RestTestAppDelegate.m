@@ -9,6 +9,8 @@
 #import "RestTestAppDelegate.h"
 
 #import "DDLog.h"
+#import "DDASLLogger.h"
+#import "DDTTYLogger.h"
 
 @implementation RestTestAppDelegate
 

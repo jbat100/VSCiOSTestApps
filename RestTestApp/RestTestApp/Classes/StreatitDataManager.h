@@ -14,6 +14,9 @@
 
 +(StreatitDataManager*) sharedManager;
 
++(NSString*) applicationDocumentsDirectoryString;
++(NSURL*) applicationDocumentsDirectoryURL;
+
 /*
  No need to make the properties atomic, we should only call these methods from the main
  thread anyway so as to make sure that we do not upset CoreData

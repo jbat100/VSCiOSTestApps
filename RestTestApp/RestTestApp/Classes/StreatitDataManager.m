@@ -13,10 +13,16 @@
 
 @interface StreatitDataManager ()
 
++(NSString*) applicationDocumentsDirectoryString;
++(NSURL*) applicationDocumentsDirectoryURL;
 
 @end
 
 @implementation StreatitDataManager
+
+@synthesize managedObjectModel = _managedObjectModel;
+@synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
+@synthesize managedObjectContext = _managedObjectContext;
 
 +(StreatitDataManager*) sharedManager
 {
@@ -35,6 +41,16 @@
 
     }
     return self;
+}
+
++(NSString*) applicationDocumentsDirectoryString
+{
+    return [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+}
+
++(NSURL*) applicationDocumentsDirectoryURL
+{
+    return [NSURL fileURLWithPath:[[self class] applicationDocumentsDirectoryString]];
 }
 
 - (NSManagedObjectModel *)managedObjectModel
@@ -68,7 +84,7 @@
         return _persistentStoreCoordinator;
     }
     
-    NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"StreatModel1.sqlite"];
+    NSURL *storeURL = [[[self class] applicationDocumentsDirectoryURL] URLByAppendingPathComponent:@"StreatModel1.sqlite"];
     NSError *error = nil;
     
     _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
@@ -99,7 +115,7 @@
     return _managedObjectContext;
 }
 
--(NSArray*) fetchShops
+-(NSArray*) fetchAllShops
 {
     NSEntityDescription* entityDescription = [NSEntityDescription entityForName:@"Shop"
                                                          inManagedObjectContext:[self managedObjectContext]];
@@ -115,12 +131,12 @@
         DDLogError(@"%@ fetchShops %@ : %@", self, error, [error userInfo]);
     }
     
-    DDLogVerbose(@"%@ fetchShops (%d results)", [fetchResults count]);
+    DDLogVerbose(@"%@ fetchShops (%lu results)", self, (unsigned long)[fetchResults count]);
     
     return fetchResults;
 }
 
--(NSArray*) fetchProductTypes
+-(NSArray*) fetchAllProductTypes
 {
     NSEntityDescription* entityDescription = [NSEntityDescription entityForName:@"ProductType"
                                                          inManagedObjectContext:[self managedObjectContext]];
@@ -136,12 +152,12 @@
         DDLogError(@"%@ fetchProductTypes %@ : %@", self, error, [error userInfo]);
     }
     
-    DDLogVerbose(@"%@ fetchProductTypes (%d results)", [fetchResults count]);
+    DDLogVerbose(@"%@ fetchProductTypes (%lu results)", self, (unsigned long)[fetchResults count]);
     
     return fetchResults;
 }
 
--(NSArray*) fetchProducts
+-(NSArray*) fetchAllProducts
 {
     NSEntityDescription* entityDescription = [NSEntityDescription entityForName:@"Product"
                                                          inManagedObjectContext:[self managedObjectContext]];
@@ -157,7 +173,7 @@
         DDLogError(@"%@ fetchProducts %@ : %@", self, error, [error userInfo]);
     }
     
-    DDLogVerbose(@"%@ fetchProducts (%d results)", [fetchResults count]);
+    DDLogVerbose(@"%@ fetchProducts (%lu results)", self, (unsigned long)[fetchResults count]);
     
     return fetchResults;
 }
