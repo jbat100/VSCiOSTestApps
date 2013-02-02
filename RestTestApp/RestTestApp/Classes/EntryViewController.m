@@ -82,8 +82,10 @@
     [super viewWillAppear:animated];
     
     //self.navigationItem.title = @"Login";
-    
     //self.navigationController.navigationBar.hidden = YES;
+    //self.loginTextField.text = @"";
+    
+    self.passwordTextField.text = @"";
     
     self.loginBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Connexion"
                                                                style:UIBarButtonItemStyleBordered
@@ -91,6 +93,7 @@
                                                               action:@selector(performLogin:)];
     
     self.navigationItem.rightBarButtonItem = self.loginBarButtonItem;
+    
     self.loginBarButtonItem.enabled = [self isLoginPossible];
     
     self.cancelBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Annuler"
@@ -111,6 +114,16 @@
     
     DDLogVerbose(@"%@ viewDidAppear loginTextField.frame %@, passwordTextField.frame %@",
                  self, NSStringFromCGRect(self.loginTextField.frame), NSStringFromCGRect(self.passwordTextField.frame));
+}
+
+#pragma mark - Storyboarding
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([[segue identifier] isEqualToString:@"Home"])
+    {
+        DDLogVerbose(@"%@ perparing for home segue %@", self, segue);
+    }
 }
 
 #pragma mark - Helpers
@@ -149,7 +162,10 @@
 
 -(void) performLogin:(id)sender
 {
-        /*
+    if([self.loginTextField isEditing]) [self.loginTextField endEditing:YES];
+    if([self.passwordTextField isEditing]) [self.passwordTextField endEditing:YES];
+    
+    /*
      *  Testing with the twitter API for now 
      */
     
@@ -159,17 +175,22 @@
                                                                                    path:@"search/tweets.json"
                                                                              parameters:parameters];
     
+    DDLogVerbose(@"%@ request %@", self, request);
+    
     AFJSONRequestOperation *operation = nil;
     
     operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
                 success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
-                    NSLog(@"Operation succeeded: %@", JSON);
+                    DDLogVerbose(@"Operation succeeded: %@", JSON);
                     [SVProgressHUD showSuccessWithStatus:@"Connection établie"];
                 }
                 failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
-                    NSLog(@"Operation failed: %@ (error: %@)", JSON, error);
+                    DDLogError(@"Operation failed: %@ (error: %@)", JSON, error);
                     [SVProgressHUD showErrorWithStatus:@"La connection a échouée"];
+                    [self performSegueWithIdentifier:@"Home" sender:self];
                 }];
+    
+    [SVProgressHUD showWithStatus:@"Connexion en cours" maskType:SVProgressHUDMaskTypeGradient];
     
     [operation start];
 
@@ -246,6 +267,8 @@
         }
         
     }
+    
+    //[[self navigationItem] setRightBarButtonItem:self.loginBarButtonItem animated:YES];
     
     [[self navigationItem] setLeftBarButtonItem:self.cancelBarButtonItem animated:YES];
 }

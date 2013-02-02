@@ -33,6 +33,9 @@
 		1068515816BB09B400505F04 /* ProductListingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1068515716BB09B400505F04 /* ProductListingViewController.m */; };
 		1068515D16BB0A8400505F04 /* ShoppingCartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1068515C16BB0A8400505F04 /* ShoppingCartViewController.m */; };
 		1068516016BB0B5000505F04 /* LocationMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1068515F16BB0B5000505F04 /* LocationMapViewController.m */; };
+		106B9EBB16BD5F8C001B121B /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 106B9EBA16BD5F8C001B121B /* MapKit.framework */; };
+		106B9EBF16BD61B9001B121B /* ProductTypeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 106B9EBE16BD61B9001B121B /* ProductTypeView.m */; };
+		106B9EC216BD6284001B121B /* ProductListingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 106B9EC116BD6284001B121B /* ProductListingView.m */; };
 		10B9535E16BC176C007A23D2 /* StreatitHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B9535D16BC176C007A23D2 /* StreatitHTTPClient.m */; };
 		10B9536516BC275A007A23D2 /* StreatitModel1.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 10B9536316BC275A007A23D2 /* StreatitModel1.xcdatamodeld */; };
 		10B9536B16BC2BEA007A23D2 /* StreatitDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B9536A16BC2BEA007A23D2 /* StreatitDataManager.m */; };
@@ -104,6 +107,11 @@
 		1068515C16BB0A8400505F04 /* ShoppingCartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShoppingCartViewController.m; path = Classes/ShoppingCartViewController.m; sourceTree = "<group>"; };
 		1068515E16BB0B5000505F04 /* LocationMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LocationMapViewController.h; path = Classes/LocationMapViewController.h; sourceTree = "<group>"; };
 		1068515F16BB0B5000505F04 /* LocationMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LocationMapViewController.m; path = Classes/LocationMapViewController.m; sourceTree = "<group>"; };
+		106B9EBA16BD5F8C001B121B /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		106B9EBD16BD61B9001B121B /* ProductTypeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProductTypeView.h; path = Classes/ProductTypeView.h; sourceTree = "<group>"; };
+		106B9EBE16BD61B9001B121B /* ProductTypeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProductTypeView.m; path = Classes/ProductTypeView.m; sourceTree = "<group>"; };
+		106B9EC016BD6284001B121B /* ProductListingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductListingView.h; sourceTree = "<group>"; };
+		106B9EC116BD6284001B121B /* ProductListingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductListingView.m; sourceTree = "<group>"; };
 		10B9535C16BC176C007A23D2 /* StreatitHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StreatitHTTPClient.h; path = Classes/StreatitHTTPClient.h; sourceTree = "<group>"; };
 		10B9535D16BC176C007A23D2 /* StreatitHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StreatitHTTPClient.m; path = Classes/StreatitHTTPClient.m; sourceTree = "<group>"; };
 		10B9536416BC275A007A23D2 /* StreatitModel1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = StreatitModel1.xcdatamodel; sourceTree = "<group>"; };
@@ -137,6 +145,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				106B9EBB16BD5F8C001B121B /* MapKit.framework in Frameworks */,
 				10F1497516BAD50900309C93 /* AudioToolbox.framework in Frameworks */,
 				10F1497616BAD50900309C93 /* AVFoundation.framework in Frameworks */,
 				10F1497716BAD50900309C93 /* CoreMedia.framework in Frameworks */,
@@ -192,6 +201,7 @@
 			isa = PBXGroup;
 			children = (
 				10F1496B16BAD2A400309C93 /* libCardIO.a */,
+				106B9EBA16BD5F8C001B121B /* MapKit.framework */,
 				10F1496D16BAD50900309C93 /* AudioToolbox.framework */,
 				10F1496E16BAD50900309C93 /* AVFoundation.framework */,
 				10F1496F16BAD50900309C93 /* CoreMedia.framework */,
@@ -263,6 +273,7 @@
 		1068515916BB09FE00505F04 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				106B9EBC16BD6171001B121B /* Views */,
 				10B9536216BC2720007A23D2 /* Model */,
 				10B9535A16BC16F5007A23D2 /* Delegate And Managers */,
 				10B9535B16BC1711007A23D2 /* View Controllers */,
@@ -277,6 +288,17 @@
 				10273A4816BA9493008E42CA /* MainStoryboard_iPad.storyboard */,
 			);
 			name = Interface;
+			sourceTree = "<group>";
+		};
+		106B9EBC16BD6171001B121B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				106B9EBD16BD61B9001B121B /* ProductTypeView.h */,
+				106B9EBE16BD61B9001B121B /* ProductTypeView.m */,
+				106B9EC016BD6284001B121B /* ProductListingView.h */,
+				106B9EC116BD6284001B121B /* ProductListingView.m */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 		10B9535A16BC16F5007A23D2 /* Delegate And Managers */ = {
@@ -488,6 +510,8 @@
 				103491C716BC78BC00075C20 /* ProductType.m in Sources */,
 				103491CA16BC78EB00075C20 /* Product.m in Sources */,
 				103491CD16BC790500075C20 /* Shop.m in Sources */,
+				106B9EBF16BD61B9001B121B /* ProductTypeView.m in Sources */,
+				106B9EC216BD6284001B121B /* ProductListingView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
