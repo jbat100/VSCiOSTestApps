@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 #import <CoreData/CoreData.h>
+#import <RestKit/RestKit.h>
 
 /**
  Error domains and codes.
@@ -58,9 +59,11 @@ extern NSString* const SISuccesKey;
  No need to make the properties atomic, we should only call these methods from the main thread anyway so as to make sure that we do not upset CoreData
  */
 
+@property (nonatomic, strong, readonly) RKObjectManager *restKitObjectManager;
+@property (nonatomic, strong, readonly) RKManagedObjectStore* restKitManagedObjectStore;
 @property (nonatomic, strong, readonly) NSManagedObjectModel* managedObjectModel;
-@property (nonatomic, strong, readonly) NSPersistentStoreCoordinator* persistentStoreCoordinator;
-@property (nonatomic, strong, readonly) NSManagedObjectContext* managedObjectContext;
+//@property (nonatomic, strong, readonly) NSPersistentStoreCoordinator* persistentStoreCoordinator;
+//@property (nonatomic, strong, readonly) NSManagedObjectContext* managedObjectContext;
 
 @property (nonatomic, assign, readonly) BOOL updatingShops;
 @property (nonatomic, assign, readonly) BOOL updatingProducts;

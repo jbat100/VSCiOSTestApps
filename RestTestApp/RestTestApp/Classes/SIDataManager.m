@@ -25,6 +25,8 @@ NSString* const SISuccesKey = @"SISuccesKey";
 
 @interface SIDataManager ()
 
++(NSURL*) dataWebServiceURL;
+
 +(NSString*) applicationDocumentsDirectoryURLString;
 +(NSURL*) applicationDocumentsDirectoryURL;
 
@@ -32,10 +34,20 @@ NSString* const SISuccesKey = @"SISuccesKey";
 +(NSString*) coreDataStoreURLString;
 +(NSURL*) coreDataStoreURL;
 
+/**
+ Setup should only be called once, in the static singleton accessor would be the only good place I can think of right now.
+ */
+
+-(void)setup;
+
+@property (nonatomic, assign, readwrite) BOOL setupSucceeded;
 @property (nonatomic, assign, readwrite) BOOL updatingShops;
 @property (nonatomic, assign, readwrite) BOOL updatingProducts;
 
-@property (nonatomic, strong) RKManagedObjectStore* restManagedObjectStore;
+@property (nonatomic, strong, readwrite) RKObjectManager *restKitObjectManager;
+@property (nonatomic, strong, readwrite) RKManagedObjectStore* restKitManagedObjectStore;
+@property (nonatomic, strong, readwrite) NSManagedObjectModel* managedObjectModel;
+@property (nonatomic, strong, readwrite) NSPersistentStore* persistentStore;
 
 @end
 
@@ -43,11 +55,12 @@ NSString* const SISuccesKey = @"SISuccesKey";
 
 @implementation SIDataManager
 
-@synthesize managedObjectModel = _managedObjectModel;
-@synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
-@synthesize managedObjectContext = _managedObjectContext;
+//@synthesize managedObjectModel = _managedObjectModel;
+//@synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
+//@synthesize managedObjectContext = _managedObjectContext;
 
-+(void) initialize
+
++(void) load
 {
     NSError *error = nil;
     BOOL success = RKEnsureDirectoryExistsAtPath(RKApplicationDataDirectory(), &error);
@@ -58,12 +71,16 @@ NSString* const SISuccesKey = @"SISuccesKey";
     }
 }
 
+#pragma mark - Initialization and Setup
+
 +(SIDataManager*) sharedManager
 {
     static SIDataManager *_sharedClient = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         _sharedClient = [[SIDataManager alloc] init];
+        assert(_sharedClient);
+        [_sharedClient setup];
     });
     return _sharedClient;
 }
@@ -77,8 +94,103 @@ NSString* const SISuccesKey = @"SISuccesKey";
     return self;
 }
 
-#pragma mark - Directories
+-(void)setup
+{
+    static BOOL done = NO;
+    
+    assert(done == NO);
+    
+    if (!done)
+    {
+        done = YES;
+        
+        // Create managedObjectModel
+        
+        self.managedObjectModel = [NSManagedObjectModel mergedModelFromBundles:nil];
+        assert(self.managedObjectModel);
+        if (!self.managedObjectModel)
+        {
+            DDLogError(@"%@ could not initialize managedObjectModel", self);
+            self.setupSucceeded = NO;
+            return;
+        }
+        
+        // Create restKitManagedObjectStore
+        
+        self.restKitManagedObjectStore = [[RKManagedObjectStore alloc] initWithManagedObjectModel:self.managedObjectModel];
+        assert(self.restKitManagedObjectStore);
+        if (!self.restKitManagedObjectStore)
+        {
+            DDLogError(@"%@ could not initialize restKitManagedObjectStore", self);
+            self.setupSucceeded = NO;
+            return;
+        }
+        
+        // Create persistentStore
+        
+        NSError* error = nil;
+        self.persistentStore = [self.restKitManagedObjectStore addSQLitePersistentStoreAtPath:[[self class] coreDataStoreURLString]
+                                                                       fromSeedDatabaseAtPath:nil
+                                                                            withConfiguration:nil
+                                                                                      options:nil
+                                                                                        error:&error];
+        assert(self.persistentStore);
+        if (!self.persistentStore)
+        {
+            DDLogError(@"%@ could not initialize persistentStore", self);
+            self.setupSucceeded = NO;
+            return;
+        }
+        
+        // Create managed object contexts (this will be used for threading)
+        
+        [self.restKitManagedObjectStore createManagedObjectContexts];
+        
+        // Create restKitObjectManager
+        
+        self.restKitObjectManager = [RKObjectManager managerWithBaseURL:[[self class] dataWebServiceURL]];
+        assert(self.restKitObjectManager);
+        if (!self.restKitObjectManager)
+        {
+            DDLogError(@"%@ could not initialize restKitObjectManager", self);
+            self.setupSucceeded = NO;
+            return;
+        }
+        
+        self.setupSucceeded = YES;
+        
+        // Create mappings
+        
+        RKEntityMapping *categoryMapping = [RKEntityMapping mappingForEntityForName:@"Category"
+                                                               inManagedObjectStore:self.restKitManagedObjectStore];
+        
+        [categoryMapping addAttributeMappingsFromDictionary:@{ @"id": @"categoryID", @"name": @"name" }];
+        
+        RKEntityMapping *articleMapping = [RKEntityMapping mappingForEntityForName:@"Article"
+                                                              inManagedObjectStore:self.restKitManagedObjectStore];
+        
+        [articleMapping addAttributeMappingsFromArray:@[@"title", @"author", @"body"]];
+        
+        [articleMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"categories"
+                                                                                       toKeyPath:@"categories"
+                                                                                     withMapping:categoryMapping]];
 
+    }
+    
+    else
+    {
+        DDLogError(@"%@ setup called multiple times", self);
+    }
+    
+
+}
+
+#pragma mark - URLs and Directories
+
++(NSURL*) dataWebServiceURL
+{
+    return [NSURL URLWithString:@"http://restkit.org"];
+}
 
 +(NSString*) applicationDocumentsDirectoryURLString
 {
@@ -105,19 +217,39 @@ NSString* const SISuccesKey = @"SISuccesKey";
     return [NSURL fileURLWithPath:[self coreDataStoreURLString]];
 }
 
+
+-(BOOL) checkSetup
+{
+    assert(self.restKitManagedObjectStore);
+    assert(self.managedObjectModel);
+    assert(self.restKitObjectManager);
+    
+    if (self.restKitManagedObjectStore == nil) return NO;
+    if (self.managedObjectModel == nil) return NO;
+    if (self.restKitObjectManager == nil) return NO;
+    
+    return YES;
+}
+
 #pragma mark - Update API
 
 -(BOOL) updateShopsError:(NSError**)pError
 {
+    [self checkSetup];
     
+    return NO;
 }
 
 -(BOOL) updateProductsError:(NSError**)pError
 {
+    [self checkSetup];
     
+    return NO;
 }
 
 #pragma mark - CoreData Setup
+
+/*
 
 - (NSManagedObjectModel *)managedObjectModel
 {
@@ -150,7 +282,7 @@ NSString* const SISuccesKey = @"SISuccesKey";
         return _persistentStoreCoordinator;
     }
     
-    NSURL *storeURL = [[[self class] applicationDocumentsDirectoryURL] URLByAppendingPathComponent:@"StreatModel1.sqlite"];
+    NSURL *storeURL = [[[self class] applicationDocumentsDirectoryURL] URLByAppendingPathComponent:@"SIData.sqlite"];
     NSError *error = nil;
     
     _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
@@ -180,8 +312,12 @@ NSString* const SISuccesKey = @"SISuccesKey";
 
     return _managedObjectContext;
 }
+ 
+ */
 
 #pragma mark - CoreData Fetches
+
+/*
 
 -(NSArray*) fetchAllShops
 {
@@ -245,5 +381,7 @@ NSString* const SISuccesKey = @"SISuccesKey";
     
     return fetchResults;
 }
+ 
+ */
 
 @end
