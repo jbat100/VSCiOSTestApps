@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Ciw-KR-3bM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="11G63b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Ciw-KR-3bM">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
@@ -7,7 +7,7 @@
         <!--Entry View Controller-->
         <scene sceneID="Mvr-w7-vAY">
             <objects>
-                <viewController id="9jN-k6-ach" customClass="EntryViewController" sceneMemberID="viewController">
+                <viewController id="9jN-k6-ach" customClass="SIEntryViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="upl-SC-ShC">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -71,7 +71,7 @@
         <!--Home View Controller - Menu Principal-->
         <scene sceneID="eTv-Gz-Tpu">
             <objects>
-                <viewController id="Kgs-qz-25R" customClass="HomeViewController" sceneMemberID="viewController">
+                <viewController id="Kgs-qz-25R" customClass="SIHomeViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9MA-pU-bhl">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -163,7 +163,7 @@
         <!--Product Listing View Controller-->
         <scene sceneID="5ek-6h-moq">
             <objects>
-                <viewController id="urL-BJ-WS1" customClass="ProductListingViewController" sceneMemberID="viewController">
+                <viewController id="urL-BJ-WS1" customClass="SIProductListingViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0xX-mO-8yQ">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -283,7 +283,7 @@
         <!--Product Type Selection View Controller - Catégories-->
         <scene sceneID="a7V-Ji-uPY">
             <objects>
-                <viewController id="Tt8-MO-cPS" customClass="ProductTypeSelectionViewController" sceneMemberID="viewController">
+                <viewController id="Tt8-MO-cPS" customClass="SIProductTypeSelectionViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Xam-oL-WwY">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -334,7 +334,7 @@
         <!--Location Map View Controller-->
         <scene sceneID="aZt-Gx-SwR">
             <objects>
-                <viewController id="zrN-Oe-vLI" customClass="LocationMapViewController" sceneMemberID="viewController">
+                <viewController id="zrN-Oe-vLI" customClass="SILocationMapViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8sP-yb-12n">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -349,7 +349,7 @@
         <!--Shopping Cart View Controller-->
         <scene sceneID="Gad-6x-Zhf">
             <objects>
-                <viewController id="0zr-J4-slc" customClass="ShoppingCartViewController" sceneMemberID="viewController">
+                <viewController id="0zr-J4-slc" customClass="SIShoppingCartViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Dpy-1T-qTK">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -368,7 +368,7 @@
         <!--Payment View Controller-->
         <scene sceneID="rkK-Vm-TfW">
             <objects>
-                <viewController id="uOA-Jf-PZw" customClass="PaymentViewController" sceneMemberID="viewController">
+                <viewController id="uOA-Jf-PZw" customClass="SIPaymentViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="a9b-sH-nAV">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -383,7 +383,7 @@
         <!--Product Description View Controller-->
         <scene sceneID="fym-jx-shV">
             <objects>
-                <viewController id="wBS-FZ-EAc" customClass="ProductDescriptionViewController" sceneMemberID="viewController">
+                <viewController id="wBS-FZ-EAc" customClass="SIProductDescriptionViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OrP-Gc-RrT">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -401,7 +401,7 @@
         <!--Location Map View Controller - Plan-->
         <scene sceneID="XGl-qA-jVr">
             <objects>
-                <viewController id="EVN-8a-i36" customClass="LocationMapViewController" sceneMemberID="viewController">
+                <viewController id="EVN-8a-i36" customClass="SILocationMapViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="PgI-g3-QVF">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -426,7 +426,7 @@
         <!--Account Creation View Controller-->
         <scene sceneID="fap-rP-njb">
             <objects>
-                <viewController id="m1G-AQ-ltc" customClass="AccountCreationViewController" sceneMemberID="viewController">
+                <viewController id="m1G-AQ-ltc" customClass="SIAccountCreationViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="L5p-cp-Gdo">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -490,7 +490,7 @@
         <!--Credit Card View Controller - Cartes de Paiement-->
         <scene sceneID="IGx-V9-t5H">
             <objects>
-                <viewController id="8Ea-eA-1Yg" customClass="CreditCardViewController" sceneMemberID="viewController">
+                <viewController id="8Ea-eA-1Yg" customClass="SICreditCardViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6YN-Pp-z8W">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -548,65 +548,8 @@
         <image name="remove-small.png" width="40" height="40"/>
     </resources>
     <classes>
-        <class className="AccountCreationViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/AccountCreationViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="emailTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="firstNameTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="passwordTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="surnameTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="titlteLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="CreditCardViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CreditCardViewController.h"/>
-        </class>
-        <class className="EntryViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/EntryViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="createAccountButtonTouched:"/>
-                <relationship kind="outlet" name="createAccountButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="loginTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="loginTopContraint" candidateClass="NSLayoutConstraint"/>
-                <relationship kind="outlet" name="passwordTextField" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="HomeViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/HomeViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="disconnect:"/>
-                <relationship kind="action" name="showCreditCards:"/>
-                <relationship kind="action" name="showMap:"/>
-                <relationship kind="action" name="showOrder:"/>
-                <relationship kind="outlet" name="creditCardButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="disconnectButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="mapButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="orderButton" candidateClass="UIButton"/>
-            </relationships>
-        </class>
-        <class className="LocationMapViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/LocationMapViewController.h"/>
-        </class>
         <class className="NSLayoutConstraint" superclassName="NSObject">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-        <class className="PaymentViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PaymentViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="scanCard:"/>
-            </relationships>
-        </class>
-        <class className="ProductDescriptionViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ProductDescriptionViewController.h"/>
-        </class>
-        <class className="ProductListingViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ProductListingViewController.h"/>
-        </class>
-        <class className="ProductTypeSelectionViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ProductTypeSelectionViewController.h"/>
-        </class>
-        <class className="ShoppingCartViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ShoppingCartViewController.h"/>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

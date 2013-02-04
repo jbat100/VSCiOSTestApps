@@ -10,7 +10,7 @@
 
 #import "CardIO.h"
 
-@interface PaymentViewController : UIViewController <CardIOPaymentViewControllerDelegate>
+@interface SIPaymentViewController : UIViewController <CardIOPaymentViewControllerDelegate>
 
 @property (nonatomic, strong) CardIOCreditCardInfo* creditCardInfo;
 

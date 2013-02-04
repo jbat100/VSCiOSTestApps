@@ -8,9 +8,9 @@
 
 #import "AFHTTPClient.h"
 
-@interface StreatitHTTPClient : AFHTTPClient
+@interface SIHTTPClient : AFHTTPClient
 
-+ (StreatitHTTPClient *)sharedClient;
++ (SIHTTPClient *)sharedClient;
 
 - (id)initWithBaseURL:(NSURL *)url;
 

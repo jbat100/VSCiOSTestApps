@@ -1,5 +1,5 @@
 //
-//  CreditCardViewController.h
+//  ProductDescriptionViewController.h
 //  RestTestApp
 //
 //  Created by Jonathan Thorpe on 1/31/13.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CreditCardViewController : UIViewController
+@interface SIProductDescriptionViewController : UIViewController
 
 @end

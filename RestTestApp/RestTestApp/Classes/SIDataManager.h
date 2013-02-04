@@ -10,9 +10,15 @@
 
 #import <CoreData/CoreData.h>
 
-@interface StreatitDataManager : NSObject
+extern NSString* const SIShopUpdateStartedNotification;
+extern NSString* const SIShopUpdateEndedNotification;
 
-+(StreatitDataManager*) sharedManager;
+extern NSString* const SIProductUpdateStartedNotification;
+extern NSString* const SIProductUpdateEndedNotification;
+
+@interface SIDataManager : NSObject
+
++(SIDataManager*) sharedManager;
 
 +(NSString*) applicationDocumentsDirectoryString;
 +(NSURL*) applicationDocumentsDirectoryURL;

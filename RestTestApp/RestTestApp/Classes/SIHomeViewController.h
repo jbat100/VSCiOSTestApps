@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HomeViewController : UIViewController
+@interface SIHomeViewController : UIViewController
 
 @property (strong, nonatomic) IBOutlet UIButton *creditCardButton;
 @property (strong, nonatomic) IBOutlet UIButton *mapButton;

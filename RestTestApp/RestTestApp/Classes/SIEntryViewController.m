@@ -6,14 +6,14 @@
 //  Copyright (c) 2013 Jonathan Thorpe. All rights reserved.
 //
 
-#import "EntryViewController.h"
-#import "StreatitHTTPClient.h"
+#import "SIEntryViewController.h"
+#import "SIHTTPClient.h"
 
 #import "DDLog.h"
 #import "AFNetworking.h"
 #import "SVProgressHUD.h"
 
-@interface EntryViewController ()
+@interface SIEntryViewController ()
 
 @property (nonatomic, assign) CGFloat restLoginTopConstraintConstant;
 
@@ -28,7 +28,7 @@
 
 @end
 
-@implementation EntryViewController
+@implementation SIEntryViewController
 
 #pragma mark - UIViewController Methods
 
@@ -171,7 +171,7 @@
     
     NSDictionary* parameters = @{@"q" : @"Potato"};
     
-    NSMutableURLRequest *request = [[StreatitHTTPClient sharedClient] requestWithMethod:@"GET"
+    NSMutableURLRequest *request = [[SIHTTPClient sharedClient] requestWithMethod:@"GET"
                                                                                    path:@"search/tweets.json"
                                                                              parameters:parameters];
     

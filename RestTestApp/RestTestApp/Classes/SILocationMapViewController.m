@@ -1,18 +1,18 @@
 //
-//  CreditCardViewController.m
+//  LocationMapViewController.m
 //  RestTestApp
 //
 //  Created by Jonathan Thorpe on 1/31/13.
 //  Copyright (c) 2013 Jonathan Thorpe. All rights reserved.
 //
 
-#import "CreditCardViewController.h"
+#import "SILocationMapViewController.h"
 
-@interface CreditCardViewController ()
+@interface SILocationMapViewController ()
 
 @end
 
-@implementation CreditCardViewController
+@implementation SILocationMapViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

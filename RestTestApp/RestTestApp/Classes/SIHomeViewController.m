@@ -6,13 +6,13 @@
 //  Copyright (c) 2013 Jonathan Thorpe. All rights reserved.
 //
 
-#import "HomeViewController.h"
+#import "SIHomeViewController.h"
 
-@interface HomeViewController ()
+@interface SIHomeViewController ()
 
 @end
 
-@implementation HomeViewController
+@implementation SIHomeViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

@@ -1,18 +1,18 @@
 //
-//  ProductListingViewController.m
+//  ShoppingCartViewController.m
 //  RestTestApp
 //
 //  Created by Jonathan Thorpe on 1/31/13.
 //  Copyright (c) 2013 Jonathan Thorpe. All rights reserved.
 //
 
-#import "ProductListingViewController.h"
+#import "SIShoppingCartViewController.h"
 
-@interface ProductListingViewController ()
+@interface SIShoppingCartViewController ()
 
 @end
 
-@implementation ProductListingViewController
+@implementation SIShoppingCartViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

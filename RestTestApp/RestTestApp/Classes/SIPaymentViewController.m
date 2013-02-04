@@ -6,15 +6,15 @@
 //  Copyright (c) 2013 Jonathan Thorpe. All rights reserved.
 //
 
-#import "PaymentViewController.h"
+#import "SIPaymentViewController.h"
 
-@interface PaymentViewController ()
+@interface SIPaymentViewController ()
 
 //@property (nonatomic, strong) CardIOPaymentViewController *scanViewController;
 
 @end
 
-@implementation PaymentViewController
+@implementation SIPaymentViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

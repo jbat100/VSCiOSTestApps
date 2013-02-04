@@ -1,5 +1,5 @@
 //
-//  LocationMapViewController.h
+//  CreditCardViewController.h
 //  RestTestApp
 //
 //  Created by Jonathan Thorpe on 1/31/13.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LocationMapViewController : UIViewController
+@interface SICreditCardViewController : UIViewController
 
 @end

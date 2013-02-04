@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AccountCreationViewController : UIViewController
+@interface SIAccountCreationViewController : UIViewController
 
 @property (strong, nonatomic) IBOutlet UILabel *titlteLabel;
 @property (strong, nonatomic) IBOutlet UITextField *surnameTextField;

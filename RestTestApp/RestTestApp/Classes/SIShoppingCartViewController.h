@@ -1,5 +1,5 @@
 //
-//  ProductDescriptionViewController.h
+//  ShoppingCartViewController.h
 //  RestTestApp
 //
 //  Created by Jonathan Thorpe on 1/31/13.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ProductDescriptionViewController : UIViewController
+@interface SIShoppingCartViewController : UIViewController
 
 @end

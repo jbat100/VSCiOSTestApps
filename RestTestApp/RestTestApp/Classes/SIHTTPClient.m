@@ -6,20 +6,20 @@
 //  Copyright (c) 2013 Jonathan Thorpe. All rights reserved.
 //
 
-#import "StreatitHTTPClient.h"
+#import "SIHTTPClient.h"
 
 #import "AFJSONRequestOperation.h"
 
 static NSString * const kStreatitAPIBaseURLString = @"https://api.twitter.com/1.1/";
 
-@implementation StreatitHTTPClient
+@implementation SIHTTPClient
 
-+ (StreatitHTTPClient *)sharedClient
++ (SIHTTPClient *)sharedClient
 {
-    static StreatitHTTPClient *_sharedClient = nil;
+    static SIHTTPClient *_sharedClient = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        _sharedClient = [[StreatitHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:kStreatitAPIBaseURLString]];
+        _sharedClient = [[SIHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:kStreatitAPIBaseURLString]];
     });
     
     return _sharedClient;

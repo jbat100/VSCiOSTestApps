@@ -6,30 +6,36 @@
 //  Copyright (c) 2013 Jonathan Thorpe. All rights reserved.
 //
 
-#import "StreatitDataManager.h"
+#import "SIDataManager.h"
 #import "DDLog.h"
 
 #import <CoreData/CoreData.h>
 
-@interface StreatitDataManager ()
+NSString* const SIShopUpdateStartedNotification = @"SIShopUpdateStartedNotification";
+NSString* const SIShopUpdateEndedNotification = @"SIShopUpdateEndedNotification";
+
+NSString* const SIProductUpdateStartedNotification = @"SIProductUpdateStartedNotification";
+NSString* const SIProductUpdateEndedNotification = @"SIProductUpdateEndedNotification";
+
+@interface SIDataManager ()
 
 +(NSString*) applicationDocumentsDirectoryString;
 +(NSURL*) applicationDocumentsDirectoryURL;
 
 @end
 
-@implementation StreatitDataManager
+@implementation SIDataManager
 
 @synthesize managedObjectModel = _managedObjectModel;
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
 @synthesize managedObjectContext = _managedObjectContext;
 
-+(StreatitDataManager*) sharedManager
++(SIDataManager*) sharedManager
 {
-    static StreatitDataManager *_sharedClient = nil;
+    static SIDataManager *_sharedClient = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        _sharedClient = [[StreatitDataManager alloc] init];
+        _sharedClient = [[SIDataManager alloc] init];
     });
     return _sharedClient;
 }
@@ -43,6 +49,8 @@
     return self;
 }
 
+#pragma mark - Directories
+
 +(NSString*) applicationDocumentsDirectoryString
 {
     return [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
@@ -52,6 +60,8 @@
 {
     return [NSURL fileURLWithPath:[[self class] applicationDocumentsDirectoryString]];
 }
+
+#pragma mark - CoreData Setup
 
 - (NSManagedObjectModel *)managedObjectModel
 {
@@ -114,6 +124,8 @@
 
     return _managedObjectContext;
 }
+
+#pragma mark - CoreData Fetches
 
 -(NSArray*) fetchAllShops
 {

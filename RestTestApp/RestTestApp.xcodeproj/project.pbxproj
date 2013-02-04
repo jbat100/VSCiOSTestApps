@@ -25,24 +25,24 @@
 		103491C716BC78BC00075C20 /* ProductType.m in Sources */ = {isa = PBXBuildFile; fileRef = 103491C616BC78BC00075C20 /* ProductType.m */; };
 		103491CA16BC78EB00075C20 /* Product.m in Sources */ = {isa = PBXBuildFile; fileRef = 103491C916BC78EB00075C20 /* Product.m */; };
 		103491CD16BC790500075C20 /* Shop.m in Sources */ = {isa = PBXBuildFile; fileRef = 103491CC16BC790500075C20 /* Shop.m */; };
-		1068514416BB073600505F04 /* AccountCreationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1068514316BB073600505F04 /* AccountCreationViewController.m */; };
-		1068514916BB085100505F04 /* CreditCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1068514816BB085100505F04 /* CreditCardViewController.m */; };
-		1068514C16BB08BC00505F04 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1068514B16BB08BC00505F04 /* HomeViewController.m */; };
-		1068514F16BB092200505F04 /* ProductTypeSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1068514E16BB092200505F04 /* ProductTypeSelectionViewController.m */; };
-		1068515516BB099F00505F04 /* ProductDescriptionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1068515416BB099F00505F04 /* ProductDescriptionViewController.m */; };
-		1068515816BB09B400505F04 /* ProductListingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1068515716BB09B400505F04 /* ProductListingViewController.m */; };
-		1068515D16BB0A8400505F04 /* ShoppingCartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1068515C16BB0A8400505F04 /* ShoppingCartViewController.m */; };
-		1068516016BB0B5000505F04 /* LocationMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1068515F16BB0B5000505F04 /* LocationMapViewController.m */; };
+		1068514416BB073600505F04 /* SIAccountCreationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1068514316BB073600505F04 /* SIAccountCreationViewController.m */; };
+		1068514916BB085100505F04 /* SICreditCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1068514816BB085100505F04 /* SICreditCardViewController.m */; };
+		1068514C16BB08BC00505F04 /* SIHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1068514B16BB08BC00505F04 /* SIHomeViewController.m */; };
+		1068514F16BB092200505F04 /* SIProductTypeSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1068514E16BB092200505F04 /* SIProductTypeSelectionViewController.m */; };
+		1068515516BB099F00505F04 /* SIProductDescriptionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1068515416BB099F00505F04 /* SIProductDescriptionViewController.m */; };
+		1068515816BB09B400505F04 /* SIProductListingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1068515716BB09B400505F04 /* SIProductListingViewController.m */; };
+		1068515D16BB0A8400505F04 /* SIShoppingCartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1068515C16BB0A8400505F04 /* SIShoppingCartViewController.m */; };
+		1068516016BB0B5000505F04 /* SILocationMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1068515F16BB0B5000505F04 /* SILocationMapViewController.m */; };
 		106B9EBB16BD5F8C001B121B /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 106B9EBA16BD5F8C001B121B /* MapKit.framework */; };
 		106B9EBF16BD61B9001B121B /* ProductTypeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 106B9EBE16BD61B9001B121B /* ProductTypeView.m */; };
 		106B9EC716BD63AC001B121B /* ProductListingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 106B9EC616BD63AC001B121B /* ProductListingView.m */; };
 		106B9EC916BD666C001B121B /* ProductTypeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 106B9EC816BD666C001B121B /* ProductTypeView.xib */; };
 		106B9ECE16BD8685001B121B /* add-small.png in Resources */ = {isa = PBXBuildFile; fileRef = 106B9ECC16BD8685001B121B /* add-small.png */; };
 		106B9ECF16BD8685001B121B /* remove-small.png in Resources */ = {isa = PBXBuildFile; fileRef = 106B9ECD16BD8685001B121B /* remove-small.png */; };
-		10B9535E16BC176C007A23D2 /* StreatitHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B9535D16BC176C007A23D2 /* StreatitHTTPClient.m */; };
+		10B9535E16BC176C007A23D2 /* SIHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B9535D16BC176C007A23D2 /* SIHTTPClient.m */; };
 		10B9536516BC275A007A23D2 /* StreatitModel1.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 10B9536316BC275A007A23D2 /* StreatitModel1.xcdatamodeld */; };
-		10B9536B16BC2BEA007A23D2 /* StreatitDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B9536A16BC2BEA007A23D2 /* StreatitDataManager.m */; };
-		10F1496216BA9EFF00309C93 /* EntryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10F1495F16BA9EFF00309C93 /* EntryViewController.m */; };
+		10B9536B16BC2BEA007A23D2 /* SIDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B9536A16BC2BEA007A23D2 /* SIDataManager.m */; };
+		10F1496216BA9EFF00309C93 /* SIEntryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10F1495F16BA9EFF00309C93 /* SIEntryViewController.m */; };
 		10F1496316BA9EFF00309C93 /* RestTestAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 10F1496116BA9EFF00309C93 /* RestTestAppDelegate.m */; };
 		10F1496C16BAD2A400309C93 /* libCardIO.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 10F1496B16BAD2A400309C93 /* libCardIO.a */; };
 		10F1497516BAD50900309C93 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10F1496D16BAD50900309C93 /* AudioToolbox.framework */; };
@@ -53,7 +53,7 @@
 		10F1497A16BAD50900309C93 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10F1497216BAD50900309C93 /* OpenGLES.framework */; };
 		10F1497B16BAD50900309C93 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10F1497316BAD50900309C93 /* QuartzCore.framework */; };
 		10F1497C16BAD50900309C93 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10F1497416BAD50900309C93 /* Security.framework */; };
-		10F1498016BAD95C00309C93 /* PaymentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10F1497E16BAD95C00309C93 /* PaymentViewController.m */; };
+		10F1498016BAD95C00309C93 /* SIPaymentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10F1497E16BAD95C00309C93 /* SIPaymentViewController.m */; };
 		2A204C42306F4F9B9EDC9A32 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 63E089D5A3004C2D93373A4D /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -93,23 +93,23 @@
 		103491C916BC78EB00075C20 /* Product.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Product.m; path = CoreData/Product.m; sourceTree = "<group>"; };
 		103491CB16BC790500075C20 /* Shop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Shop.h; path = CoreData/Shop.h; sourceTree = "<group>"; };
 		103491CC16BC790500075C20 /* Shop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Shop.m; path = CoreData/Shop.m; sourceTree = "<group>"; };
-		1068514216BB073600505F04 /* AccountCreationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AccountCreationViewController.h; path = Classes/AccountCreationViewController.h; sourceTree = "<group>"; };
-		1068514316BB073600505F04 /* AccountCreationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AccountCreationViewController.m; path = Classes/AccountCreationViewController.m; sourceTree = "<group>"; };
+		1068514216BB073600505F04 /* SIAccountCreationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SIAccountCreationViewController.h; path = Classes/SIAccountCreationViewController.h; sourceTree = "<group>"; };
+		1068514316BB073600505F04 /* SIAccountCreationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SIAccountCreationViewController.m; path = Classes/SIAccountCreationViewController.m; sourceTree = "<group>"; };
 		1068514616BB07CA00505F04 /* apps-streatit-wireframe.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = "apps-streatit-wireframe.pdf"; path = "RestTestApp/Documents/apps-streatit-wireframe.pdf"; sourceTree = "<group>"; };
-		1068514716BB085100505F04 /* CreditCardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CreditCardViewController.h; path = Classes/CreditCardViewController.h; sourceTree = "<group>"; };
-		1068514816BB085100505F04 /* CreditCardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CreditCardViewController.m; path = Classes/CreditCardViewController.m; sourceTree = "<group>"; };
-		1068514A16BB08BC00505F04 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HomeViewController.h; path = Classes/HomeViewController.h; sourceTree = "<group>"; };
-		1068514B16BB08BC00505F04 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HomeViewController.m; path = Classes/HomeViewController.m; sourceTree = "<group>"; };
-		1068514D16BB092200505F04 /* ProductTypeSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProductTypeSelectionViewController.h; path = Classes/ProductTypeSelectionViewController.h; sourceTree = "<group>"; };
-		1068514E16BB092200505F04 /* ProductTypeSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProductTypeSelectionViewController.m; path = Classes/ProductTypeSelectionViewController.m; sourceTree = "<group>"; };
-		1068515316BB099F00505F04 /* ProductDescriptionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProductDescriptionViewController.h; path = Classes/ProductDescriptionViewController.h; sourceTree = "<group>"; };
-		1068515416BB099F00505F04 /* ProductDescriptionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProductDescriptionViewController.m; path = Classes/ProductDescriptionViewController.m; sourceTree = "<group>"; };
-		1068515616BB09B300505F04 /* ProductListingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProductListingViewController.h; path = Classes/ProductListingViewController.h; sourceTree = "<group>"; };
-		1068515716BB09B400505F04 /* ProductListingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProductListingViewController.m; path = Classes/ProductListingViewController.m; sourceTree = "<group>"; };
-		1068515B16BB0A8400505F04 /* ShoppingCartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShoppingCartViewController.h; path = Classes/ShoppingCartViewController.h; sourceTree = "<group>"; };
-		1068515C16BB0A8400505F04 /* ShoppingCartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShoppingCartViewController.m; path = Classes/ShoppingCartViewController.m; sourceTree = "<group>"; };
-		1068515E16BB0B5000505F04 /* LocationMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LocationMapViewController.h; path = Classes/LocationMapViewController.h; sourceTree = "<group>"; };
-		1068515F16BB0B5000505F04 /* LocationMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LocationMapViewController.m; path = Classes/LocationMapViewController.m; sourceTree = "<group>"; };
+		1068514716BB085100505F04 /* SICreditCardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SICreditCardViewController.h; path = Classes/SICreditCardViewController.h; sourceTree = "<group>"; };
+		1068514816BB085100505F04 /* SICreditCardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SICreditCardViewController.m; path = Classes/SICreditCardViewController.m; sourceTree = "<group>"; };
+		1068514A16BB08BC00505F04 /* SIHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SIHomeViewController.h; path = Classes/SIHomeViewController.h; sourceTree = "<group>"; };
+		1068514B16BB08BC00505F04 /* SIHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SIHomeViewController.m; path = Classes/SIHomeViewController.m; sourceTree = "<group>"; };
+		1068514D16BB092200505F04 /* SIProductTypeSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SIProductTypeSelectionViewController.h; path = Classes/SIProductTypeSelectionViewController.h; sourceTree = "<group>"; };
+		1068514E16BB092200505F04 /* SIProductTypeSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SIProductTypeSelectionViewController.m; path = Classes/SIProductTypeSelectionViewController.m; sourceTree = "<group>"; };
+		1068515316BB099F00505F04 /* SIProductDescriptionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SIProductDescriptionViewController.h; path = Classes/SIProductDescriptionViewController.h; sourceTree = "<group>"; };
+		1068515416BB099F00505F04 /* SIProductDescriptionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SIProductDescriptionViewController.m; path = Classes/SIProductDescriptionViewController.m; sourceTree = "<group>"; };
+		1068515616BB09B300505F04 /* SIProductListingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SIProductListingViewController.h; path = Classes/SIProductListingViewController.h; sourceTree = "<group>"; };
+		1068515716BB09B400505F04 /* SIProductListingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SIProductListingViewController.m; path = Classes/SIProductListingViewController.m; sourceTree = "<group>"; };
+		1068515B16BB0A8400505F04 /* SIShoppingCartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SIShoppingCartViewController.h; path = Classes/SIShoppingCartViewController.h; sourceTree = "<group>"; };
+		1068515C16BB0A8400505F04 /* SIShoppingCartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SIShoppingCartViewController.m; path = Classes/SIShoppingCartViewController.m; sourceTree = "<group>"; };
+		1068515E16BB0B5000505F04 /* SILocationMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SILocationMapViewController.h; path = Classes/SILocationMapViewController.h; sourceTree = "<group>"; };
+		1068515F16BB0B5000505F04 /* SILocationMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SILocationMapViewController.m; path = Classes/SILocationMapViewController.m; sourceTree = "<group>"; };
 		106B9EBA16BD5F8C001B121B /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		106B9EBD16BD61B9001B121B /* ProductTypeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProductTypeView.h; path = Classes/ProductTypeView.h; sourceTree = "<group>"; };
 		106B9EBE16BD61B9001B121B /* ProductTypeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProductTypeView.m; path = Classes/ProductTypeView.m; sourceTree = "<group>"; };
@@ -118,13 +118,13 @@
 		106B9EC816BD666C001B121B /* ProductTypeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ProductTypeView.xib; path = Classes/ProductTypeView.xib; sourceTree = "<group>"; };
 		106B9ECC16BD8685001B121B /* add-small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "add-small.png"; path = "RestTestApp/Resources/add-small.png"; sourceTree = "<group>"; };
 		106B9ECD16BD8685001B121B /* remove-small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "remove-small.png"; path = "RestTestApp/Resources/remove-small.png"; sourceTree = "<group>"; };
-		10B9535C16BC176C007A23D2 /* StreatitHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StreatitHTTPClient.h; path = Classes/StreatitHTTPClient.h; sourceTree = "<group>"; };
-		10B9535D16BC176C007A23D2 /* StreatitHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StreatitHTTPClient.m; path = Classes/StreatitHTTPClient.m; sourceTree = "<group>"; };
+		10B9535C16BC176C007A23D2 /* SIHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SIHTTPClient.h; path = Classes/SIHTTPClient.h; sourceTree = "<group>"; };
+		10B9535D16BC176C007A23D2 /* SIHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SIHTTPClient.m; path = Classes/SIHTTPClient.m; sourceTree = "<group>"; };
 		10B9536416BC275A007A23D2 /* StreatitModel1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = StreatitModel1.xcdatamodel; sourceTree = "<group>"; };
-		10B9536916BC2BEA007A23D2 /* StreatitDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StreatitDataManager.h; path = Classes/StreatitDataManager.h; sourceTree = "<group>"; };
-		10B9536A16BC2BEA007A23D2 /* StreatitDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StreatitDataManager.m; path = Classes/StreatitDataManager.m; sourceTree = "<group>"; };
-		10F1495E16BA9EFF00309C93 /* EntryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EntryViewController.h; path = Classes/EntryViewController.h; sourceTree = "<group>"; };
-		10F1495F16BA9EFF00309C93 /* EntryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EntryViewController.m; path = Classes/EntryViewController.m; sourceTree = "<group>"; };
+		10B9536916BC2BEA007A23D2 /* SIDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SIDataManager.h; path = Classes/SIDataManager.h; sourceTree = "<group>"; };
+		10B9536A16BC2BEA007A23D2 /* SIDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SIDataManager.m; path = Classes/SIDataManager.m; sourceTree = "<group>"; };
+		10F1495E16BA9EFF00309C93 /* SIEntryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SIEntryViewController.h; path = Classes/SIEntryViewController.h; sourceTree = "<group>"; };
+		10F1495F16BA9EFF00309C93 /* SIEntryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SIEntryViewController.m; path = Classes/SIEntryViewController.m; sourceTree = "<group>"; };
 		10F1496016BA9EFF00309C93 /* RestTestAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RestTestAppDelegate.h; path = Classes/RestTestAppDelegate.h; sourceTree = "<group>"; };
 		10F1496116BA9EFF00309C93 /* RestTestAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RestTestAppDelegate.m; path = Classes/RestTestAppDelegate.m; sourceTree = "<group>"; };
 		10F1496716BAD2A400309C93 /* CardIO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CardIO.h; path = RestTestApp/CardIOSDK/CardIO/CardIO.h; sourceTree = "<group>"; };
@@ -140,8 +140,8 @@
 		10F1497216BAD50900309C93 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		10F1497316BAD50900309C93 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		10F1497416BAD50900309C93 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		10F1497D16BAD95C00309C93 /* PaymentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PaymentViewController.h; path = Classes/PaymentViewController.h; sourceTree = "<group>"; };
-		10F1497E16BAD95C00309C93 /* PaymentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PaymentViewController.m; path = Classes/PaymentViewController.m; sourceTree = "<group>"; };
+		10F1497D16BAD95C00309C93 /* SIPaymentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SIPaymentViewController.h; path = Classes/SIPaymentViewController.h; sourceTree = "<group>"; };
+		10F1497E16BAD95C00309C93 /* SIPaymentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SIPaymentViewController.m; path = Classes/SIPaymentViewController.m; sourceTree = "<group>"; };
 		63E089D5A3004C2D93373A4D /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCC5E4D26B4F4E8E9E54AAEA /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
@@ -331,10 +331,10 @@
 			children = (
 				10F1496016BA9EFF00309C93 /* RestTestAppDelegate.h */,
 				10F1496116BA9EFF00309C93 /* RestTestAppDelegate.m */,
-				10B9535C16BC176C007A23D2 /* StreatitHTTPClient.h */,
-				10B9535D16BC176C007A23D2 /* StreatitHTTPClient.m */,
-				10B9536916BC2BEA007A23D2 /* StreatitDataManager.h */,
-				10B9536A16BC2BEA007A23D2 /* StreatitDataManager.m */,
+				10B9535C16BC176C007A23D2 /* SIHTTPClient.h */,
+				10B9535D16BC176C007A23D2 /* SIHTTPClient.m */,
+				10B9536916BC2BEA007A23D2 /* SIDataManager.h */,
+				10B9536A16BC2BEA007A23D2 /* SIDataManager.m */,
 			);
 			name = "Delegate And Managers";
 			sourceTree = "<group>";
@@ -342,26 +342,26 @@
 		10B9535B16BC1711007A23D2 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				10F1495E16BA9EFF00309C93 /* EntryViewController.h */,
-				10F1495F16BA9EFF00309C93 /* EntryViewController.m */,
-				1068514216BB073600505F04 /* AccountCreationViewController.h */,
-				1068514316BB073600505F04 /* AccountCreationViewController.m */,
-				1068514A16BB08BC00505F04 /* HomeViewController.h */,
-				1068514B16BB08BC00505F04 /* HomeViewController.m */,
-				1068514716BB085100505F04 /* CreditCardViewController.h */,
-				1068514816BB085100505F04 /* CreditCardViewController.m */,
-				1068515E16BB0B5000505F04 /* LocationMapViewController.h */,
-				1068515F16BB0B5000505F04 /* LocationMapViewController.m */,
-				1068514D16BB092200505F04 /* ProductTypeSelectionViewController.h */,
-				1068514E16BB092200505F04 /* ProductTypeSelectionViewController.m */,
-				1068515616BB09B300505F04 /* ProductListingViewController.h */,
-				1068515716BB09B400505F04 /* ProductListingViewController.m */,
-				1068515316BB099F00505F04 /* ProductDescriptionViewController.h */,
-				1068515416BB099F00505F04 /* ProductDescriptionViewController.m */,
-				1068515B16BB0A8400505F04 /* ShoppingCartViewController.h */,
-				1068515C16BB0A8400505F04 /* ShoppingCartViewController.m */,
-				10F1497D16BAD95C00309C93 /* PaymentViewController.h */,
-				10F1497E16BAD95C00309C93 /* PaymentViewController.m */,
+				10F1495E16BA9EFF00309C93 /* SIEntryViewController.h */,
+				10F1495F16BA9EFF00309C93 /* SIEntryViewController.m */,
+				1068514216BB073600505F04 /* SIAccountCreationViewController.h */,
+				1068514316BB073600505F04 /* SIAccountCreationViewController.m */,
+				1068514A16BB08BC00505F04 /* SIHomeViewController.h */,
+				1068514B16BB08BC00505F04 /* SIHomeViewController.m */,
+				1068514716BB085100505F04 /* SICreditCardViewController.h */,
+				1068514816BB085100505F04 /* SICreditCardViewController.m */,
+				1068515E16BB0B5000505F04 /* SILocationMapViewController.h */,
+				1068515F16BB0B5000505F04 /* SILocationMapViewController.m */,
+				1068514D16BB092200505F04 /* SIProductTypeSelectionViewController.h */,
+				1068514E16BB092200505F04 /* SIProductTypeSelectionViewController.m */,
+				1068515616BB09B300505F04 /* SIProductListingViewController.h */,
+				1068515716BB09B400505F04 /* SIProductListingViewController.m */,
+				1068515316BB099F00505F04 /* SIProductDescriptionViewController.h */,
+				1068515416BB099F00505F04 /* SIProductDescriptionViewController.m */,
+				1068515B16BB0A8400505F04 /* SIShoppingCartViewController.h */,
+				1068515C16BB0A8400505F04 /* SIShoppingCartViewController.m */,
+				10F1497D16BAD95C00309C93 /* SIPaymentViewController.h */,
+				10F1497E16BAD95C00309C93 /* SIPaymentViewController.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -521,20 +521,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				10273A3A16BA9493008E42CA /* main.m in Sources */,
-				10F1496216BA9EFF00309C93 /* EntryViewController.m in Sources */,
+				10F1496216BA9EFF00309C93 /* SIEntryViewController.m in Sources */,
 				10F1496316BA9EFF00309C93 /* RestTestAppDelegate.m in Sources */,
-				10F1498016BAD95C00309C93 /* PaymentViewController.m in Sources */,
-				1068514416BB073600505F04 /* AccountCreationViewController.m in Sources */,
-				1068514916BB085100505F04 /* CreditCardViewController.m in Sources */,
-				1068514C16BB08BC00505F04 /* HomeViewController.m in Sources */,
-				1068514F16BB092200505F04 /* ProductTypeSelectionViewController.m in Sources */,
-				1068515516BB099F00505F04 /* ProductDescriptionViewController.m in Sources */,
-				1068515816BB09B400505F04 /* ProductListingViewController.m in Sources */,
-				1068515D16BB0A8400505F04 /* ShoppingCartViewController.m in Sources */,
-				1068516016BB0B5000505F04 /* LocationMapViewController.m in Sources */,
-				10B9535E16BC176C007A23D2 /* StreatitHTTPClient.m in Sources */,
+				10F1498016BAD95C00309C93 /* SIPaymentViewController.m in Sources */,
+				1068514416BB073600505F04 /* SIAccountCreationViewController.m in Sources */,
+				1068514916BB085100505F04 /* SICreditCardViewController.m in Sources */,
+				1068514C16BB08BC00505F04 /* SIHomeViewController.m in Sources */,
+				1068514F16BB092200505F04 /* SIProductTypeSelectionViewController.m in Sources */,
+				1068515516BB099F00505F04 /* SIProductDescriptionViewController.m in Sources */,
+				1068515816BB09B400505F04 /* SIProductListingViewController.m in Sources */,
+				1068515D16BB0A8400505F04 /* SIShoppingCartViewController.m in Sources */,
+				1068516016BB0B5000505F04 /* SILocationMapViewController.m in Sources */,
+				10B9535E16BC176C007A23D2 /* SIHTTPClient.m in Sources */,
 				10B9536516BC275A007A23D2 /* StreatitModel1.xcdatamodeld in Sources */,
-				10B9536B16BC2BEA007A23D2 /* StreatitDataManager.m in Sources */,
+				10B9536B16BC2BEA007A23D2 /* SIDataManager.m in Sources */,
 				103491C716BC78BC00075C20 /* ProductType.m in Sources */,
 				103491CA16BC78EB00075C20 /* Product.m in Sources */,
 				103491CD16BC790500075C20 /* Shop.m in Sources */,

@@ -1,18 +1,18 @@
 //
-//  ProductTypeSelectionViewController.m
+//  CreditCardViewController.m
 //  RestTestApp
 //
 //  Created by Jonathan Thorpe on 1/31/13.
 //  Copyright (c) 2013 Jonathan Thorpe. All rights reserved.
 //
 
-#import "ProductTypeSelectionViewController.h"
+#import "SICreditCardViewController.h"
 
-@interface ProductTypeSelectionViewController ()
+@interface SICreditCardViewController ()
 
 @end
 
-@implementation ProductTypeSelectionViewController
+@implementation SICreditCardViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

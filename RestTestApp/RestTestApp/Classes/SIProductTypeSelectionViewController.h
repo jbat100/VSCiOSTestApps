@@ -1,5 +1,5 @@
 //
-//  ProductListingViewController.h
+//  ProductTypeSelectionViewController.h
 //  RestTestApp
 //
 //  Created by Jonathan Thorpe on 1/31/13.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ProductListingViewController : UIViewController
+@interface SIProductTypeSelectionViewController : UIViewController
 
 @end

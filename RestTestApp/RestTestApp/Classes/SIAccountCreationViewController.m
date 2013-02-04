@@ -1,18 +1,18 @@
 //
-//  ProductDescriptionViewController.m
+//  AccountCreationViewController.m
 //  RestTestApp
 //
 //  Created by Jonathan Thorpe on 1/31/13.
 //  Copyright (c) 2013 Jonathan Thorpe. All rights reserved.
 //
 
-#import "ProductDescriptionViewController.h"
+#import "SIAccountCreationViewController.h"
 
-@interface ProductDescriptionViewController ()
+@interface SIAccountCreationViewController ()
 
 @end
 
-@implementation ProductDescriptionViewController
+@implementation SIAccountCreationViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -35,4 +35,12 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)viewDidUnload {
+    [self setTitlteLabel:nil];
+    [self setSurnameTextField:nil];
+    [self setFirstNameTextField:nil];
+    [self setEmailTextField:nil];
+    [self setPasswordTextField:nil];
+    [super viewDidUnload];
+}
 @end

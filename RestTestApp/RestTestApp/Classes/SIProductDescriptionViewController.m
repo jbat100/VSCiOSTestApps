@@ -1,18 +1,18 @@
 //
-//  LocationMapViewController.m
+//  ProductDescriptionViewController.m
 //  RestTestApp
 //
 //  Created by Jonathan Thorpe on 1/31/13.
 //  Copyright (c) 2013 Jonathan Thorpe. All rights reserved.
 //
 
-#import "LocationMapViewController.h"
+#import "SIProductDescriptionViewController.h"
 
-@interface LocationMapViewController ()
+@interface SIProductDescriptionViewController ()
 
 @end
 
-@implementation LocationMapViewController
+@implementation SIProductDescriptionViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
