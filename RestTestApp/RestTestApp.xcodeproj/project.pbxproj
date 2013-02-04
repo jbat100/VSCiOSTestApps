@@ -40,7 +40,7 @@
 		106B9ECE16BD8685001B121B /* add-small.png in Resources */ = {isa = PBXBuildFile; fileRef = 106B9ECC16BD8685001B121B /* add-small.png */; };
 		106B9ECF16BD8685001B121B /* remove-small.png in Resources */ = {isa = PBXBuildFile; fileRef = 106B9ECD16BD8685001B121B /* remove-small.png */; };
 		10B9535E16BC176C007A23D2 /* SIHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B9535D16BC176C007A23D2 /* SIHTTPClient.m */; };
-		10B9536516BC275A007A23D2 /* StreatitModel1.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 10B9536316BC275A007A23D2 /* StreatitModel1.xcdatamodeld */; };
+		10B9536516BC275A007A23D2 /* SIModel1.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 10B9536316BC275A007A23D2 /* SIModel1.xcdatamodeld */; };
 		10B9536B16BC2BEA007A23D2 /* SIDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B9536A16BC2BEA007A23D2 /* SIDataManager.m */; };
 		10F1496216BA9EFF00309C93 /* SIEntryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10F1495F16BA9EFF00309C93 /* SIEntryViewController.m */; };
 		10F1496316BA9EFF00309C93 /* RestTestAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 10F1496116BA9EFF00309C93 /* RestTestAppDelegate.m */; };
@@ -120,7 +120,7 @@
 		106B9ECD16BD8685001B121B /* remove-small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "remove-small.png"; path = "RestTestApp/Resources/remove-small.png"; sourceTree = "<group>"; };
 		10B9535C16BC176C007A23D2 /* SIHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SIHTTPClient.h; path = Classes/SIHTTPClient.h; sourceTree = "<group>"; };
 		10B9535D16BC176C007A23D2 /* SIHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SIHTTPClient.m; path = Classes/SIHTTPClient.m; sourceTree = "<group>"; };
-		10B9536416BC275A007A23D2 /* StreatitModel1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = StreatitModel1.xcdatamodel; sourceTree = "<group>"; };
+		10B9536416BC275A007A23D2 /* SIModel1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SIModel1.xcdatamodel; sourceTree = "<group>"; };
 		10B9536916BC2BEA007A23D2 /* SIDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SIDataManager.h; path = Classes/SIDataManager.h; sourceTree = "<group>"; };
 		10B9536A16BC2BEA007A23D2 /* SIDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SIDataManager.m; path = Classes/SIDataManager.m; sourceTree = "<group>"; };
 		10F1495E16BA9EFF00309C93 /* SIEntryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SIEntryViewController.h; path = Classes/SIEntryViewController.h; sourceTree = "<group>"; };
@@ -369,7 +369,7 @@
 		10B9536216BC2720007A23D2 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				10B9536316BC275A007A23D2 /* StreatitModel1.xcdatamodeld */,
+				10B9536316BC275A007A23D2 /* SIModel1.xcdatamodeld */,
 				103491CB16BC790500075C20 /* Shop.h */,
 				103491CC16BC790500075C20 /* Shop.m */,
 				103491C516BC78BC00075C20 /* ProductType.h */,
@@ -533,7 +533,7 @@
 				1068515D16BB0A8400505F04 /* SIShoppingCartViewController.m in Sources */,
 				1068516016BB0B5000505F04 /* SILocationMapViewController.m in Sources */,
 				10B9535E16BC176C007A23D2 /* SIHTTPClient.m in Sources */,
-				10B9536516BC275A007A23D2 /* StreatitModel1.xcdatamodeld in Sources */,
+				10B9536516BC275A007A23D2 /* SIModel1.xcdatamodeld in Sources */,
 				10B9536B16BC2BEA007A23D2 /* SIDataManager.m in Sources */,
 				103491C716BC78BC00075C20 /* ProductType.m in Sources */,
 				103491CA16BC78EB00075C20 /* Product.m in Sources */,
@@ -765,14 +765,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		10B9536316BC275A007A23D2 /* StreatitModel1.xcdatamodeld */ = {
+		10B9536316BC275A007A23D2 /* SIModel1.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				10B9536416BC275A007A23D2 /* StreatitModel1.xcdatamodel */,
+				10B9536416BC275A007A23D2 /* SIModel1.xcdatamodel */,
 			);
-			currentVersion = 10B9536416BC275A007A23D2 /* StreatitModel1.xcdatamodel */;
-			name = StreatitModel1.xcdatamodeld;
-			path = CoreData/StreatitModel1.xcdatamodeld;
+			currentVersion = 10B9536416BC275A007A23D2 /* SIModel1.xcdatamodel */;
+			name = SIModel1.xcdatamodeld;
+			path = CoreData/SIModel1.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

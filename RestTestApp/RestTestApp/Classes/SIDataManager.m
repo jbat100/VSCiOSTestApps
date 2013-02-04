@@ -1,5 +1,5 @@
 //
-//  StreatitDataManager.m
+//  SIDataManager.m
 //  RestTestApp
 //
 //  Created by Jonathan Thorpe on 2/1/13.
@@ -9,26 +9,54 @@
 #import "SIDataManager.h"
 #import "DDLog.h"
 
+#import <RestKit/RestKit.h>
+
 #import <CoreData/CoreData.h>
+
+NSString * const SIDataManagerErrorDomain = @"SIDataManagerErrorDomain";
 
 NSString* const SIShopUpdateStartedNotification = @"SIShopUpdateStartedNotification";
 NSString* const SIShopUpdateEndedNotification = @"SIShopUpdateEndedNotification";
-
 NSString* const SIProductUpdateStartedNotification = @"SIProductUpdateStartedNotification";
 NSString* const SIProductUpdateEndedNotification = @"SIProductUpdateEndedNotification";
 
+NSString* const SIErrorKey = @"SIErrorKey";
+NSString* const SISuccesKey = @"SISuccesKey";
+
 @interface SIDataManager ()
 
-+(NSString*) applicationDocumentsDirectoryString;
++(NSString*) applicationDocumentsDirectoryURLString;
 +(NSURL*) applicationDocumentsDirectoryURL;
 
++(NSString*) coreDataStoreName;
++(NSString*) coreDataStoreURLString;
++(NSURL*) coreDataStoreURL;
+
+@property (nonatomic, assign, readwrite) BOOL updatingShops;
+@property (nonatomic, assign, readwrite) BOOL updatingProducts;
+
+@property (nonatomic, strong) RKManagedObjectStore* restManagedObjectStore;
+
 @end
+
+#pragma mark - Implementation
 
 @implementation SIDataManager
 
 @synthesize managedObjectModel = _managedObjectModel;
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
 @synthesize managedObjectContext = _managedObjectContext;
+
++(void) initialize
+{
+    NSError *error = nil;
+    BOOL success = RKEnsureDirectoryExistsAtPath(RKApplicationDataDirectory(), &error);
+    if (!success)
+    {
+        DDLogError(@"%@ failed to create application data directory at path '%@': %@", self, RKApplicationDataDirectory(), error);
+        assert(NO);
+    }
+}
 
 +(SIDataManager*) sharedManager
 {
@@ -51,14 +79,42 @@ NSString* const SIProductUpdateEndedNotification = @"SIProductUpdateEndedNotific
 
 #pragma mark - Directories
 
-+(NSString*) applicationDocumentsDirectoryString
+
++(NSString*) applicationDocumentsDirectoryURLString
 {
     return [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
 }
 
 +(NSURL*) applicationDocumentsDirectoryURL
 {
-    return [NSURL fileURLWithPath:[[self class] applicationDocumentsDirectoryString]];
+    return [NSURL fileURLWithPath:[[self class] applicationDocumentsDirectoryURLString]];
+}
+
++(NSString*) coreDataStoreName
+{
+    return @"StreatModel1.sqlite";
+}
+
++(NSString*) coreDataStoreURLString
+{
+    return [RKApplicationDataDirectory() stringByAppendingPathComponent:[self coreDataStoreName]];
+}
+
++(NSURL*) coreDataStoreURL
+{
+    return [NSURL fileURLWithPath:[self coreDataStoreURLString]];
+}
+
+#pragma mark - Update API
+
+-(BOOL) updateShopsError:(NSError**)pError
+{
+    
+}
+
+-(BOOL) updateProductsError:(NSError**)pError
+{
+    
 }
 
 #pragma mark - CoreData Setup
