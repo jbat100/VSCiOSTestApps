@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="11G63b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Ciw-KR-3bM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Ciw-KR-3bM">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
@@ -550,6 +550,63 @@
     <classes>
         <class className="NSLayoutConstraint" superclassName="NSObject">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="SIAccountCreationViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SIAccountCreationViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="emailTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="firstNameTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="passwordTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="surnameTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="titlteLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="SICreditCardViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SICreditCardViewController.h"/>
+        </class>
+        <class className="SIEntryViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SIEntryViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="createAccountButtonTouched:"/>
+                <relationship kind="outlet" name="createAccountButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="loginTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="loginTopContraint" candidateClass="NSLayoutConstraint"/>
+                <relationship kind="outlet" name="passwordTextField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="SIHomeViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SIHomeViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="disconnect:"/>
+                <relationship kind="action" name="showCreditCards:"/>
+                <relationship kind="action" name="showMap:"/>
+                <relationship kind="action" name="showOrder:"/>
+                <relationship kind="outlet" name="creditCardButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="disconnectButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="mapButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="orderButton" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+        <class className="SILocationMapViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SILocationMapViewController.h"/>
+        </class>
+        <class className="SIPaymentViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SIPaymentViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="scanCard:"/>
+            </relationships>
+        </class>
+        <class className="SIProductDescriptionViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SIProductDescriptionViewController.h"/>
+        </class>
+        <class className="SIProductListingViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SIProductListingViewController.h"/>
+        </class>
+        <class className="SIProductTypeSelectionViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SIProductTypeSelectionViewController.h"/>
+        </class>
+        <class className="SIShoppingCartViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SIShoppingCartViewController.h"/>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
