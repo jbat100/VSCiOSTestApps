@@ -2,9 +2,11 @@
 <model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="2057" systemVersion="12C60" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="SICreditCard" representedClassName="SICreditCard" syncable="YES">
         <attribute name="encodedInfo" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="lastDigits" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="serverCode" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SIUser" inverseName="creditCards" inverseEntity="SIUser" syncable="YES"/>
     </entity>
-    <entity name="SIProduct" representedClassName="Product" syncable="YES">
+    <entity name="SIProduct" representedClassName="SIProduct" syncable="YES">
         <attribute name="briefDescription" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="detailedDescription" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="identifier" optional="YES" attributeType="String" syncable="YES"/>
@@ -13,12 +15,12 @@
         <attribute name="price" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <relationship name="productType" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="SIProductType" inverseName="products" inverseEntity="SIProductType" syncable="YES"/>
     </entity>
-    <entity name="SIProductType" representedClassName="ProductType" syncable="YES">
+    <entity name="SIProductType" representedClassName="SIProductType" syncable="YES">
         <attribute name="imageURLString" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="products" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SIProduct" inverseName="productType" inverseEntity="SIProduct" syncable="YES"/>
     </entity>
-    <entity name="SIShop" representedClassName="Shop" syncable="YES">
+    <entity name="SIShop" representedClassName="SIShop" syncable="YES">
         <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="identifier" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="latitude" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
@@ -30,7 +32,7 @@
         <attribute name="encodedPassword" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="serverIdentifier" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="serverCode" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="creditCards" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="SICreditCard" inverseName="user" inverseEntity="SICreditCard" syncable="YES"/>
     </entity>
     <elements>
@@ -38,6 +40,6 @@
         <element name="SIProductType" positionX="-461" positionY="-142" width="128" height="88"/>
         <element name="SIShop" positionX="-380" positionY="-315" width="128" height="118"/>
         <element name="SIUser" positionX="-432" positionY="-520" width="128" height="133"/>
-        <element name="SICreditCard" positionX="-137" positionY="-504" width="128" height="73"/>
+        <element name="SICreditCard" positionX="-137" positionY="-504" width="128" height="103"/>
     </elements>
 </model>
