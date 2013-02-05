@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ProductTypeView : UIView
+@interface SIProductTypeView : UIView
 
 @end

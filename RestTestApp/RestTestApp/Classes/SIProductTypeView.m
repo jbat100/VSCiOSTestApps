@@ -6,9 +6,9 @@
 //  Copyright (c) 2013 Jonathan Thorpe. All rights reserved.
 //
 
-#import "ProductTypeView.h"
+#import "SIProductTypeView.h"
 
-@implementation ProductTypeView
+@implementation SIProductTypeView
 
 - (id)initWithFrame:(CGRect)frame
 {

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		101416F216C1B34A006CC6F0 /* SIProductListingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 101416F116C1B34A006CC6F0 /* SIProductListingCell.m */; };
 		10273A2E16BA9493008E42CA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10273A2D16BA9492008E42CA /* UIKit.framework */; };
 		10273A3016BA9493008E42CA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10273A2F16BA9493008E42CA /* Foundation.framework */; };
 		10273A3216BA9493008E42CA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10273A3116BA9493008E42CA /* CoreGraphics.framework */; };
@@ -22,9 +23,6 @@
 		10273A5716BA9494008E42CA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10273A2F16BA9493008E42CA /* Foundation.framework */; };
 		10273A5F16BA9494008E42CA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 10273A5D16BA9494008E42CA /* InfoPlist.strings */; };
 		10273A6216BA9494008E42CA /* RestTestAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 10273A6116BA9494008E42CA /* RestTestAppTests.m */; };
-		103491C716BC78BC00075C20 /* ProductType.m in Sources */ = {isa = PBXBuildFile; fileRef = 103491C616BC78BC00075C20 /* ProductType.m */; };
-		103491CA16BC78EB00075C20 /* Product.m in Sources */ = {isa = PBXBuildFile; fileRef = 103491C916BC78EB00075C20 /* Product.m */; };
-		103491CD16BC790500075C20 /* Shop.m in Sources */ = {isa = PBXBuildFile; fileRef = 103491CC16BC790500075C20 /* Shop.m */; };
 		1068514416BB073600505F04 /* SIAccountCreationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1068514316BB073600505F04 /* SIAccountCreationViewController.m */; };
 		1068514916BB085100505F04 /* SICreditCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1068514816BB085100505F04 /* SICreditCardViewController.m */; };
 		1068514C16BB08BC00505F04 /* SIHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1068514B16BB08BC00505F04 /* SIHomeViewController.m */; };
@@ -34,9 +32,8 @@
 		1068515D16BB0A8400505F04 /* SIShoppingCartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1068515C16BB0A8400505F04 /* SIShoppingCartViewController.m */; };
 		1068516016BB0B5000505F04 /* SILocationMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1068515F16BB0B5000505F04 /* SILocationMapViewController.m */; };
 		106B9EBB16BD5F8C001B121B /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 106B9EBA16BD5F8C001B121B /* MapKit.framework */; };
-		106B9EBF16BD61B9001B121B /* ProductTypeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 106B9EBE16BD61B9001B121B /* ProductTypeView.m */; };
-		106B9EC716BD63AC001B121B /* ProductListingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 106B9EC616BD63AC001B121B /* ProductListingView.m */; };
-		106B9EC916BD666C001B121B /* ProductTypeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 106B9EC816BD666C001B121B /* ProductTypeView.xib */; };
+		106B9EBF16BD61B9001B121B /* SIProductTypeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 106B9EBE16BD61B9001B121B /* SIProductTypeView.m */; };
+		106B9EC916BD666C001B121B /* SIProductTypeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 106B9EC816BD666C001B121B /* SIProductTypeView.xib */; };
 		106B9ECE16BD8685001B121B /* add-small.png in Resources */ = {isa = PBXBuildFile; fileRef = 106B9ECC16BD8685001B121B /* add-small.png */; };
 		106B9ECF16BD8685001B121B /* remove-small.png in Resources */ = {isa = PBXBuildFile; fileRef = 106B9ECD16BD8685001B121B /* remove-small.png */; };
 		10B9535E16BC176C007A23D2 /* SIHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B9535D16BC176C007A23D2 /* SIHTTPClient.m */; };
@@ -68,6 +65,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		101416F016C1B34A006CC6F0 /* SIProductListingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SIProductListingCell.h; path = Classes/SIProductListingCell.h; sourceTree = "<group>"; };
+		101416F116C1B34A006CC6F0 /* SIProductListingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SIProductListingCell.m; path = Classes/SIProductListingCell.m; sourceTree = "<group>"; };
 		10273A2A16BA9492008E42CA /* RestTestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RestTestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		10273A2D16BA9492008E42CA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		10273A2F16BA9493008E42CA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -87,12 +86,6 @@
 		10273A5E16BA9494008E42CA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		10273A6016BA9494008E42CA /* RestTestAppTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RestTestAppTests.h; sourceTree = "<group>"; };
 		10273A6116BA9494008E42CA /* RestTestAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RestTestAppTests.m; sourceTree = "<group>"; };
-		103491C516BC78BC00075C20 /* ProductType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProductType.h; path = CoreData/ProductType.h; sourceTree = "<group>"; };
-		103491C616BC78BC00075C20 /* ProductType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProductType.m; path = CoreData/ProductType.m; sourceTree = "<group>"; };
-		103491C816BC78EB00075C20 /* Product.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Product.h; path = CoreData/Product.h; sourceTree = "<group>"; };
-		103491C916BC78EB00075C20 /* Product.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Product.m; path = CoreData/Product.m; sourceTree = "<group>"; };
-		103491CB16BC790500075C20 /* Shop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Shop.h; path = CoreData/Shop.h; sourceTree = "<group>"; };
-		103491CC16BC790500075C20 /* Shop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Shop.m; path = CoreData/Shop.m; sourceTree = "<group>"; };
 		1068514216BB073600505F04 /* SIAccountCreationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SIAccountCreationViewController.h; path = Classes/SIAccountCreationViewController.h; sourceTree = "<group>"; };
 		1068514316BB073600505F04 /* SIAccountCreationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SIAccountCreationViewController.m; path = Classes/SIAccountCreationViewController.m; sourceTree = "<group>"; };
 		1068514616BB07CA00505F04 /* apps-streatit-wireframe.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = "apps-streatit-wireframe.pdf"; path = "RestTestApp/Documents/apps-streatit-wireframe.pdf"; sourceTree = "<group>"; };
@@ -111,11 +104,9 @@
 		1068515E16BB0B5000505F04 /* SILocationMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SILocationMapViewController.h; path = Classes/SILocationMapViewController.h; sourceTree = "<group>"; };
 		1068515F16BB0B5000505F04 /* SILocationMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SILocationMapViewController.m; path = Classes/SILocationMapViewController.m; sourceTree = "<group>"; };
 		106B9EBA16BD5F8C001B121B /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		106B9EBD16BD61B9001B121B /* ProductTypeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProductTypeView.h; path = Classes/ProductTypeView.h; sourceTree = "<group>"; };
-		106B9EBE16BD61B9001B121B /* ProductTypeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProductTypeView.m; path = Classes/ProductTypeView.m; sourceTree = "<group>"; };
-		106B9EC516BD63AC001B121B /* ProductListingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProductListingView.h; path = Classes/ProductListingView.h; sourceTree = "<group>"; };
-		106B9EC616BD63AC001B121B /* ProductListingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProductListingView.m; path = Classes/ProductListingView.m; sourceTree = "<group>"; };
-		106B9EC816BD666C001B121B /* ProductTypeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ProductTypeView.xib; path = Classes/ProductTypeView.xib; sourceTree = "<group>"; };
+		106B9EBD16BD61B9001B121B /* SIProductTypeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SIProductTypeView.h; path = Classes/SIProductTypeView.h; sourceTree = "<group>"; };
+		106B9EBE16BD61B9001B121B /* SIProductTypeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SIProductTypeView.m; path = Classes/SIProductTypeView.m; sourceTree = "<group>"; };
+		106B9EC816BD666C001B121B /* SIProductTypeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SIProductTypeView.xib; path = Classes/SIProductTypeView.xib; sourceTree = "<group>"; };
 		106B9ECC16BD8685001B121B /* add-small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "add-small.png"; path = "RestTestApp/Resources/add-small.png"; sourceTree = "<group>"; };
 		106B9ECD16BD8685001B121B /* remove-small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "remove-small.png"; path = "RestTestApp/Resources/remove-small.png"; sourceTree = "<group>"; };
 		10B9535C16BC176C007A23D2 /* SIHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SIHTTPClient.h; path = Classes/SIHTTPClient.h; sourceTree = "<group>"; };
@@ -300,11 +291,11 @@
 		106B9EBC16BD6171001B121B /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				106B9EBD16BD61B9001B121B /* ProductTypeView.h */,
-				106B9EBE16BD61B9001B121B /* ProductTypeView.m */,
-				106B9EC516BD63AC001B121B /* ProductListingView.h */,
-				106B9EC616BD63AC001B121B /* ProductListingView.m */,
-				106B9EC816BD666C001B121B /* ProductTypeView.xib */,
+				106B9EBD16BD61B9001B121B /* SIProductTypeView.h */,
+				106B9EBE16BD61B9001B121B /* SIProductTypeView.m */,
+				106B9EC816BD666C001B121B /* SIProductTypeView.xib */,
+				101416F016C1B34A006CC6F0 /* SIProductListingCell.h */,
+				101416F116C1B34A006CC6F0 /* SIProductListingCell.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -370,12 +361,6 @@
 			isa = PBXGroup;
 			children = (
 				10B9536316BC275A007A23D2 /* SIModel1.xcdatamodeld */,
-				103491CB16BC790500075C20 /* Shop.h */,
-				103491CC16BC790500075C20 /* Shop.m */,
-				103491C516BC78BC00075C20 /* ProductType.h */,
-				103491C616BC78BC00075C20 /* ProductType.m */,
-				103491C816BC78EB00075C20 /* Product.h */,
-				103491C916BC78EB00075C20 /* Product.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -469,7 +454,7 @@
 				10273A4416BA9493008E42CA /* Default-568h@2x.png in Resources */,
 				10273A4716BA9493008E42CA /* MainStoryboard_iPhone.storyboard in Resources */,
 				10273A4A16BA9493008E42CA /* MainStoryboard_iPad.storyboard in Resources */,
-				106B9EC916BD666C001B121B /* ProductTypeView.xib in Resources */,
+				106B9EC916BD666C001B121B /* SIProductTypeView.xib in Resources */,
 				106B9ECE16BD8685001B121B /* add-small.png in Resources */,
 				106B9ECF16BD8685001B121B /* remove-small.png in Resources */,
 			);
@@ -535,11 +520,8 @@
 				10B9535E16BC176C007A23D2 /* SIHTTPClient.m in Sources */,
 				10B9536516BC275A007A23D2 /* SIModel1.xcdatamodeld in Sources */,
 				10B9536B16BC2BEA007A23D2 /* SIDataManager.m in Sources */,
-				103491C716BC78BC00075C20 /* ProductType.m in Sources */,
-				103491CA16BC78EB00075C20 /* Product.m in Sources */,
-				103491CD16BC790500075C20 /* Shop.m in Sources */,
-				106B9EBF16BD61B9001B121B /* ProductTypeView.m in Sources */,
-				106B9EC716BD63AC001B121B /* ProductListingView.m in Sources */,
+				106B9EBF16BD61B9001B121B /* SIProductTypeView.m in Sources */,
+				101416F216C1B34A006CC6F0 /* SIProductListingCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

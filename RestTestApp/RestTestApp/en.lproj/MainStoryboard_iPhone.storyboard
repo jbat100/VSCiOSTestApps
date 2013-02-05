@@ -171,7 +171,7 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="180" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="h90-98-fCf">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="ProductDescriptionCell" rowHeight="180" id="RgL-tT-ZPH">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="ProductDescriptionCell" rowHeight="180" id="RgL-tT-ZPH" customClass="SIProductListingCell">
                                         <rect key="frame" x="0.0" y="22" width="320" height="180"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -180,9 +180,6 @@
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Some Sandwidch bla bla bla" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" minimumScaleFactor="0.59999999999999998" adjustsLetterSpacingToFitWidth="YES" preferredMaxLayoutWidth="133" translatesAutoresizingMaskIntoConstraints="NO" id="INn-X2-gLk">
                                                     <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="59" id="Qhe-YE-EAB"/>
-                                                    </constraints>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="17"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
@@ -229,26 +226,46 @@
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                 </button>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HTQ-ni-Lbl">
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="UFE-fi-rop"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <constraints>
-                                            <constraint firstItem="iDl-Ip-vIh" firstAttribute="trailing" secondItem="Fc0-SZ-noP" secondAttribute="trailing" type="default" id="22s-VF-wpV"/>
+                                            <constraint firstItem="Fc0-SZ-noP" firstAttribute="trailing" secondItem="HTQ-ni-Lbl" secondAttribute="trailing" type="default" id="2Ow-ap-gs1"/>
+                                            <constraint firstItem="HTQ-ni-Lbl" firstAttribute="top" secondItem="iDl-Ip-vIh" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="7hx-Pp-mSq"/>
+                                            <constraint firstItem="Gyt-De-ubh" firstAttribute="top" secondItem="6Ed-Qq-Wfu" secondAttribute="top" type="default" id="ATY-va-uAf"/>
                                             <constraint firstItem="Fc0-SZ-noP" firstAttribute="top" secondItem="INn-X2-gLk" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="DZM-xX-t97"/>
                                             <constraint firstAttribute="bottom" secondItem="Fc0-SZ-noP" secondAttribute="bottom" constant="10" type="user" id="IMA-YM-fTq"/>
                                             <constraint firstItem="INn-X2-gLk" firstAttribute="top" secondItem="RgL-tT-ZPH" secondAttribute="top" constant="10" type="user" id="J4k-qd-FkS"/>
                                             <constraint firstItem="Fc0-SZ-noP" firstAttribute="top" secondItem="6Ed-Qq-Wfu" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="KSW-0P-DpV"/>
                                             <constraint firstItem="6Ed-Qq-Wfu" firstAttribute="top" secondItem="INn-X2-gLk" secondAttribute="top" type="default" id="Me7-Uc-VWF"/>
+                                            <constraint firstItem="HTQ-ni-Lbl" firstAttribute="top" secondItem="Gyt-De-ubh" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="PUz-uM-fJh"/>
                                             <constraint firstItem="Gyt-De-ubh" firstAttribute="leading" secondItem="6Ed-Qq-Wfu" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="PoM-E8-ksD"/>
                                             <constraint firstItem="iDl-Ip-vIh" firstAttribute="leading" secondItem="Gyt-De-ubh" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="SqX-eL-Vua"/>
                                             <constraint firstItem="Fc0-SZ-noP" firstAttribute="leading" secondItem="INn-X2-gLk" secondAttribute="leading" type="user" id="YCP-4D-bZu"/>
-                                            <constraint firstItem="iDl-Ip-vIh" firstAttribute="bottom" secondItem="Gyt-De-ubh" secondAttribute="bottom" type="default" id="aLM-7G-YMf"/>
-                                            <constraint firstItem="Gyt-De-ubh" firstAttribute="top" secondItem="RgL-tT-ZPH" secondAttribute="top" constant="25" id="eQx-r8-ni5"/>
+                                            <constraint firstItem="HTQ-ni-Lbl" firstAttribute="leading" secondItem="6Ed-Qq-Wfu" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="dxW-9c-iii"/>
                                             <constraint firstItem="INn-X2-gLk" firstAttribute="leading" secondItem="RgL-tT-ZPH" secondAttribute="leading" constant="10" type="user" id="ivT-dc-c8a"/>
+                                            <constraint firstItem="iDl-Ip-vIh" firstAttribute="trailing" secondItem="HTQ-ni-Lbl" secondAttribute="trailing" type="default" id="tfx-dL-ZVa"/>
+                                            <constraint firstItem="Fc0-SZ-noP" firstAttribute="top" secondItem="HTQ-ni-Lbl" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="w73-Ua-pvi"/>
                                             <constraint firstAttribute="trailing" secondItem="Fc0-SZ-noP" secondAttribute="trailing" constant="10" type="user" id="xlQ-4d-7oh"/>
                                             <constraint firstItem="iDl-Ip-vIh" firstAttribute="top" secondItem="Gyt-De-ubh" secondAttribute="top" type="default" id="yFO-rc-2Lb"/>
                                             <constraint firstItem="6Ed-Qq-Wfu" firstAttribute="leading" secondItem="INn-X2-gLk" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="zKB-te-4VW"/>
                                         </constraints>
+                                        <connections>
+                                            <outlet property="addButton" destination="iDl-Ip-vIh" id="n1d-aU-wuM"/>
+                                            <outlet property="productDescriptionLabel" destination="Fc0-SZ-noP" id="fgI-xi-tU7"/>
+                                            <outlet property="productNameLabel" destination="INn-X2-gLk" id="6sm-MY-gv8"/>
+                                            <outlet property="productPriceLabel" destination="6Ed-Qq-Wfu" id="oJY-62-KLu"/>
+                                            <outlet property="purchaseCountLabel" destination="HTQ-ni-Lbl" id="Puy-B2-g2A"/>
+                                            <outlet property="removeButton" destination="Gyt-De-ubh" id="J6c-7V-EIz"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -598,6 +615,17 @@
         </class>
         <class className="SIProductDescriptionViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SIProductDescriptionViewController.h"/>
+        </class>
+        <class className="SIProductListingCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SIProductListingCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="addButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="productDescriptionLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="productNameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="productPriceLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="purchaseCountLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="removeButton" candidateClass="UIButton"/>
+            </relationships>
         </class>
         <class className="SIProductListingViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SIProductListingViewController.h"/>
