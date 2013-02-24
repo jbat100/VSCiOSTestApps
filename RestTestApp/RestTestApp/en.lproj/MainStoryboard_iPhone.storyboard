@@ -36,7 +36,20 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="createAccountButtonTouched:" destination="9jN-k6-ach" eventType="touchUpInside" id="K4W-qX-lNq"/>
+                                    <action selector="createAccount:" destination="9jN-k6-ach" eventType="touchUpInside" id="gVl-W7-ilU"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vWA-1D-Vs3">
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Database Tests">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="databaseTest:" destination="9jN-k6-ach" eventType="touchUpInside" id="u6h-XA-ytQ"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -46,27 +59,151 @@
                             <constraint firstItem="FPp-N9-uVU" firstAttribute="leading" secondItem="upl-SC-ShC" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="8Gh-ZK-U6c"/>
                             <constraint firstAttribute="bottom" secondItem="FPp-N9-uVU" secondAttribute="bottom" constant="75" id="9xv-lf-7Zb"/>
                             <constraint firstItem="DKN-QI-Aoy" firstAttribute="leading" secondItem="upl-SC-ShC" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="I1a-vc-kzJ"/>
+                            <constraint firstAttribute="trailing" secondItem="vWA-1D-Vs3" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="Rnx-kD-qlp"/>
+                            <constraint firstItem="DKN-QI-Aoy" firstAttribute="top" secondItem="upl-SC-ShC" secondAttribute="top" constant="154" type="user" id="dWy-D2-Sdj"/>
                             <constraint firstItem="xuW-U1-fxl" firstAttribute="top" secondItem="DKN-QI-Aoy" secondAttribute="bottom" constant="8" symbolic="YES" type="user" id="fJq-dt-C8K"/>
+                            <constraint firstItem="vWA-1D-Vs3" firstAttribute="leading" secondItem="upl-SC-ShC" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="iDG-1L-dtm"/>
+                            <constraint firstItem="FPp-N9-uVU" firstAttribute="top" secondItem="vWA-1D-Vs3" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="jzz-bx-12a"/>
                             <constraint firstAttribute="trailing" secondItem="FPp-N9-uVU" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="laJ-Xy-hh9"/>
                             <constraint firstAttribute="trailing" secondItem="xuW-U1-fxl" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="nzl-Dv-Scx"/>
                             <constraint firstItem="xuW-U1-fxl" firstAttribute="leading" secondItem="upl-SC-ShC" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="rhE-R2-x1B"/>
-                            <constraint firstItem="DKN-QI-Aoy" firstAttribute="top" secondItem="upl-SC-ShC" secondAttribute="top" constant="192" type="user" id="wLr-QQ-6gU"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="X2H-ev-M0e"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="createAccountButton" destination="FPp-N9-uVU" id="qVo-Sk-45r"/>
+                        <outlet property="databaseTestButton" destination="vWA-1D-Vs3" id="zSg-Wq-LAW"/>
                         <outlet property="loginTextField" destination="DKN-QI-Aoy" id="zzw-aZ-oRl"/>
-                        <outlet property="loginTopContraint" destination="wLr-QQ-6gU" id="3Yp-be-dph"/>
+                        <outlet property="loginTopContraint" destination="dWy-D2-Sdj" id="NdY-lL-fU1"/>
                         <outlet property="passwordTextField" destination="xuW-U1-fxl" id="yBs-vc-drv"/>
                         <segue destination="m1G-AQ-ltc" kind="push" identifier="CreateAccount" id="IBR-Ze-jhi"/>
                         <segue destination="Kgs-qz-25R" kind="push" identifier="Home" id="WqQ-Cc-I9c"/>
+                        <segue destination="RuK-QU-CP4" kind="push" identifier="DatabaseTest" id="0V5-La-wrn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QX0-DF-pzb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="340" y="-269"/>
+        </scene>
+        <!--Database Test View Controller-->
+        <scene sceneID="X9h-QK-w30">
+            <objects>
+                <viewController id="RuK-QU-CP4" customClass="SIDatabaseTestViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="2kk-LI-nO5">
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qu9-1Q-W08">
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Update Shops">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="updateShops:" destination="RuK-QU-CP4" eventType="touchUpInside" id="zc8-9g-mNv"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bhv-fU-7Z9">
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Update Products">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="updateProducts:" destination="RuK-QU-CP4" eventType="touchUpInside" id="nva-bv-uvs"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qNB-ik-POn">
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Update Categories">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="updateCategories:" destination="RuK-QU-CP4" eventType="touchUpInside" id="yiI-ic-jbp"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Cs-kt-2vn">
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Fetch Shops">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="fetchShops:" destination="RuK-QU-CP4" eventType="touchUpInside" id="aXv-aG-jH5"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WYX-kF-7yt">
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Fetch Products">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="fetchProducts:" destination="RuK-QU-CP4" eventType="touchUpInside" id="B8x-GG-S3z"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JjI-7N-dsl">
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Fetch Categories">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="fetchCategories:" destination="RuK-QU-CP4" eventType="touchUpInside" id="mCZ-7R-c7B"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="8Cs-kt-2vn" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="0KR-7S-hvW"/>
+                            <constraint firstAttribute="trailing" secondItem="Qu9-1Q-W08" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="1u9-h2-hQQ"/>
+                            <constraint firstAttribute="trailing" secondItem="qNB-ik-POn" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="2xK-dK-Dmy"/>
+                            <constraint firstItem="qNB-ik-POn" firstAttribute="leading" secondItem="2kk-LI-nO5" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="3PW-mu-pym"/>
+                            <constraint firstItem="JjI-7N-dsl" firstAttribute="top" secondItem="8Cs-kt-2vn" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="8FE-nF-x8N"/>
+                            <constraint firstAttribute="trailing" secondItem="WYX-kF-7yt" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="9J1-LJ-qc4"/>
+                            <constraint firstItem="8Cs-kt-2vn" firstAttribute="leading" secondItem="2kk-LI-nO5" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="EVs-77-ofH"/>
+                            <constraint firstItem="bhv-fU-7Z9" firstAttribute="top" secondItem="qNB-ik-POn" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="Gpn-us-7al"/>
+                            <constraint firstItem="WYX-kF-7yt" firstAttribute="top" secondItem="JjI-7N-dsl" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="OjN-H3-lwn"/>
+                            <constraint firstItem="WYX-kF-7yt" firstAttribute="leading" secondItem="2kk-LI-nO5" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="RGp-qg-pAf"/>
+                            <constraint firstItem="qNB-ik-POn" firstAttribute="top" secondItem="Qu9-1Q-W08" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="d3p-PV-uM2"/>
+                            <constraint firstAttribute="bottom" secondItem="WYX-kF-7yt" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="lbw-aU-kae"/>
+                            <constraint firstAttribute="trailing" secondItem="bhv-fU-7Z9" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="nX6-Hu-YsB"/>
+                            <constraint firstItem="Qu9-1Q-W08" firstAttribute="top" secondItem="2kk-LI-nO5" secondAttribute="top" constant="20" symbolic="YES" type="default" id="oMe-I5-sOd"/>
+                            <constraint firstAttribute="trailing" secondItem="JjI-7N-dsl" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="v3b-87-mmv"/>
+                            <constraint firstItem="Qu9-1Q-W08" firstAttribute="leading" secondItem="2kk-LI-nO5" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="w1x-31-n4d"/>
+                            <constraint firstItem="bhv-fU-7Z9" firstAttribute="leading" secondItem="2kk-LI-nO5" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="ypA-7I-UMP"/>
+                            <constraint firstItem="JjI-7N-dsl" firstAttribute="leading" secondItem="2kk-LI-nO5" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="yst-P7-9zd"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="qWL-wE-rXB"/>
+                    <connections>
+                        <outlet property="fetchCategories" destination="JjI-7N-dsl" id="q3d-4P-1mS"/>
+                        <outlet property="fetchShops" destination="8Cs-kt-2vn" id="qFO-pX-ZPx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="b7R-4B-miF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="880" y="168"/>
         </scene>
         <!--Home View Controller - Menu Principal-->
         <scene sceneID="eTv-Gz-Tpu">
@@ -502,7 +639,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LoE-YQ-xrB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="880" y="-1021"/>
+            <point key="canvasLocation" x="880" y="-829"/>
         </scene>
         <!--Credit Card View Controller - Cartes de Paiement-->
         <scene sceneID="IGx-V9-t5H">
@@ -581,11 +718,26 @@
         <class className="SICreditCardViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SICreditCardViewController.h"/>
         </class>
+        <class className="SIDatabaseTestViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SIDatabaseTestViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="fetchCategories:"/>
+                <relationship kind="action" name="fetchProducts:"/>
+                <relationship kind="action" name="fetchShops:"/>
+                <relationship kind="action" name="updateCategories:"/>
+                <relationship kind="action" name="updateProducts:"/>
+                <relationship kind="action" name="updateShops:"/>
+                <relationship kind="outlet" name="fetchCategories" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="fetchShops" candidateClass="UIButton"/>
+            </relationships>
+        </class>
         <class className="SIEntryViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SIEntryViewController.h"/>
             <relationships>
-                <relationship kind="action" name="createAccountButtonTouched:"/>
+                <relationship kind="action" name="createAccount:"/>
+                <relationship kind="action" name="databaseTest:"/>
                 <relationship kind="outlet" name="createAccountButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="databaseTestButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="loginTextField" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="loginTopContraint" candidateClass="NSLayoutConstraint"/>
                 <relationship kind="outlet" name="passwordTextField" candidateClass="UITextField"/>

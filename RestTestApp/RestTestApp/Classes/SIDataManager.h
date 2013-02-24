@@ -11,6 +11,8 @@
 #import <CoreData/CoreData.h>
 #import <RestKit/RestKit.h>
 
+@class SICategory;
+
 /**
  Error domains and codes.
  */
@@ -21,32 +23,26 @@ extern NSString * const SIDataManagerErrorDomain;
  Notification names
  */
 
-extern NSString* const SIShopUpdateStartedNotification;
-
-/**
- SIShopUpdateEndedNotification userInfo dictionary will contain an NSNumber for SIErrorKey and optionnaly a NSError object for SIErrorKey.
- */
-
-extern NSString* const SIShopUpdateEndedNotification;
-
-extern NSString* const SIProductUpdateStartedNotification;
-
-/**
- SIProductUpdateEndedNotification userInfo dictionary will contain an NSNumber for SIErrorKey and optionnaly a NSError object for SIErrorKey.
- */
-
-extern NSString* const SIProductUpdateEndedNotification;
+extern NSString* const SIDatabaseUpdateStartedNotification;
+extern NSString* const SIDatabaseUpdateEndedNotification;
 
 /**
     Notification userInfo dictionary keys
  */
 
 extern NSString* const SIErrorKey;
-extern NSString* const SISuccesKey;
+extern NSString* const SISuccessKey;
+extern NSString* const SIUpdateTypeKey;
 
 /**
- Note on notification userInfo (see NSNotification )
+ Notification userInfo dictionary values
  */
+
+extern NSString* const SIUpdateTypeShops;
+extern NSString* const SIUpdateTypeCategories;
+extern NSString* const SIUpdateTypeProducts;
+
+
 
 @interface SIDataManager : NSObject
 
@@ -61,24 +57,28 @@ extern NSString* const SISuccesKey;
 
 @property (nonatomic, strong, readonly) RKObjectManager *restKitObjectManager;
 @property (nonatomic, strong, readonly) RKManagedObjectStore* restKitManagedObjectStore;
-@property (nonatomic, strong, readonly) NSManagedObjectModel* managedObjectModel;
-//@property (nonatomic, strong, readonly) NSPersistentStoreCoordinator* persistentStoreCoordinator;
-//@property (nonatomic, strong, readonly) NSManagedObjectContext* managedObjectContext;
 
 @property (nonatomic, assign, readonly) BOOL updatingShops;
+@property (nonatomic, assign, readonly) BOOL updatingCategories;
 @property (nonatomic, assign, readonly) BOOL updatingProducts;
 
 /**
- Update shop entries in CoreData database, if for some reason the update cannot be performed then the method will return NO and the error parameter will be filled. This method is asynchronous if it returns YES, it broadcasts a SIShopUpdateStartedNotification immediately and completion of the update is marked with a SIShopUpdateEndedNotification.
+ Update SIShop entries in CoreData database, if for some reason the update cannot be performed then the method will return NO and the error parameter will be filled. This method is asynchronous if it returns YES, it broadcasts a SIShopUpdateStartedNotification immediately and completion of the update is marked with a SIShopUpdateEndedNotification.
  */
 
 -(BOOL) updateShopsError:(NSError**)pError;
 
 /**
- Update Product and ProductType entries in CoreData database, if for some reason the update cannot be performed then the method will return NO and the error parameter will be filled. This method is asynchronous if it returns YES, it broadcasts a SIProductUpdateStartedNotification immediately and completion of the update is marked with a SIProductUpdateEndedNotification.
+ Update SIProduct entries in CoreData database, if for some reason the update cannot be performed then the method will return NO and the error parameter will be filled. This method is asynchronous if it returns YES, it broadcasts a SIProductUpdateStartedNotification immediately and completion of the update is marked with a SIProductUpdateEndedNotification.
  */
 
 -(BOOL) updateProductsError:(NSError**)pError;
+
+/**
+ Update SICategory entries in CoreData database, if for some reason the update cannot be performed then the method will return NO and the error parameter will be filled. This method is asynchronous if it returns YES, it broadcasts a SIProductUpdateStartedNotification immediately and completion of the update is marked with a SIProductUpdateEndedNotification.
+ */
+
+-(BOOL) updateCategoriesError:(NSError**)pError;
 
 /**
  Fetch an array containing all Shop instances
@@ -90,12 +90,18 @@ extern NSString* const SISuccesKey;
  Fetch an array containing all the ProductType instances (which will all have their corresponding products in the @products property)
  */
  
--(NSArray*) fetchAllProductTypes;
+-(NSArray*) fetchAllCategories;
 
 /**
- Fetch an array containing all the products, of any ProductType
+ Fetch an array containing all the products (all Categories)
  */
 
 -(NSArray*) fetchAllProducts;
+
+/**
+ Fetch an array containing all the products for a given category
+ */
+
+-(NSArray*) fetchAllProductsForCategory:(SICategory*)category;
 
 @end

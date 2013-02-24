@@ -13,7 +13,9 @@
 @property (strong, nonatomic) IBOutlet UITextField *loginTextField;
 @property (strong, nonatomic) IBOutlet UITextField *passwordTextField;
 @property (strong, nonatomic) IBOutlet UIButton *createAccountButton;
+@property (strong, nonatomic) IBOutlet UIButton *databaseTestButton;
 
--(IBAction)createAccountButtonTouched:(id)sender;
+-(IBAction)createAccount:(id)sender;
+-(IBAction)databaseTest:(id)sender;
 
 @end

@@ -2,22 +2,22 @@
 //  SIProduct.m
 //  RestTestApp
 //
-//  Created by Jonathan Thorpe on 2/5/13.
+//  Created by Jonathan Thorpe on 2/25/13.
 //  Copyright (c) 2013 Jonathan Thorpe. All rights reserved.
 //
 
 #import "SIProduct.h"
-#import "SIProductType.h"
+#import "SICategory.h"
 
 
 @implementation SIProduct
 
-@dynamic briefDescription;
-@dynamic detailedDescription;
-@dynamic identifier;
+@dynamic productDescription;
 @dynamic imageURLString;
 @dynamic name;
 @dynamic price;
-@dynamic productType;
+@dynamic productID;
+@dynamic categoryID;
+@dynamic category;
 
 @end

@@ -2,7 +2,7 @@
 //  SICreditCard.m
 //  RestTestApp
 //
-//  Created by Jonathan Thorpe on 2/5/13.
+//  Created by Jonathan Thorpe on 2/25/13.
 //  Copyright (c) 2013 Jonathan Thorpe. All rights reserved.
 //
 
@@ -13,6 +13,8 @@
 @implementation SICreditCard
 
 @dynamic encodedInfo;
+@dynamic lastDigits;
+@dynamic serverCode;
 @dynamic user;
 
 @end

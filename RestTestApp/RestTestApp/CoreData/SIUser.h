@@ -2,7 +2,7 @@
 //  SIUser.h
 //  RestTestApp
 //
-//  Created by Jonathan Thorpe on 2/5/13.
+//  Created by Jonathan Thorpe on 2/25/13.
 //  Copyright (c) 2013 Jonathan Thorpe. All rights reserved.
 //
 
@@ -13,11 +13,11 @@
 
 @interface SIUser : NSManagedObject
 
-@property (nonatomic, retain) NSString * firstName;
-@property (nonatomic, retain) NSString * lastName;
 @property (nonatomic, retain) NSString * email;
 @property (nonatomic, retain) NSData * encodedPassword;
-@property (nonatomic, retain) NSString * serverIdentifier;
+@property (nonatomic, retain) NSString * firstName;
+@property (nonatomic, retain) NSString * lastName;
+@property (nonatomic, retain) NSString * serverCode;
 @property (nonatomic, retain) NSSet *creditCards;
 @end
 

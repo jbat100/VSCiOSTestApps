@@ -1,8 +1,8 @@
 //
-//  SIProductType.h
+//  SICategory.h
 //  RestTestApp
 //
-//  Created by Jonathan Thorpe on 2/5/13.
+//  Created by Jonathan Thorpe on 2/25/13.
 //  Copyright (c) 2013 Jonathan Thorpe. All rights reserved.
 //
 
@@ -11,14 +11,16 @@
 
 @class SIProduct;
 
-@interface SIProductType : NSManagedObject
+@interface SICategory : NSManagedObject
 
 @property (nonatomic, retain) NSString * imageURLString;
 @property (nonatomic, retain) NSString * name;
+@property (nonatomic, retain) NSString * categoryDescription;
+@property (nonatomic, retain) NSString * categoryID;
 @property (nonatomic, retain) NSSet *products;
 @end
 
-@interface SIProductType (CoreDataGeneratedAccessors)
+@interface SICategory (CoreDataGeneratedAccessors)
 
 - (void)addProductsObject:(SIProduct *)value;
 - (void)removeProductsObject:(SIProduct *)value;

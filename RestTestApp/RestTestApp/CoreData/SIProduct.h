@@ -2,23 +2,23 @@
 //  SIProduct.h
 //  RestTestApp
 //
-//  Created by Jonathan Thorpe on 2/5/13.
+//  Created by Jonathan Thorpe on 2/25/13.
 //  Copyright (c) 2013 Jonathan Thorpe. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class SIProductType;
+@class SICategory;
 
 @interface SIProduct : NSManagedObject
 
-@property (nonatomic, retain) NSString * briefDescription;
-@property (nonatomic, retain) NSString * detailedDescription;
-@property (nonatomic, retain) NSString * identifier;
+@property (nonatomic, retain) NSString * productDescription;
 @property (nonatomic, retain) NSString * imageURLString;
 @property (nonatomic, retain) NSString * name;
-@property (nonatomic, retain) NSNumber * price;
-@property (nonatomic, retain) SIProductType *productType;
+@property (nonatomic, retain) NSDecimalNumber * price;
+@property (nonatomic, retain) NSString * productID;
+@property (nonatomic, retain) NSString * categoryID;
+@property (nonatomic, retain) SICategory *category;
 
 @end

@@ -149,13 +149,18 @@
 
 #pragma mark - UI Actions
 
+-(IBAction)databaseTest:(id)sender
+{
+    [self performSegueWithIdentifier:@"DatabaseTest" sender:self];
+}
+
 -(void) loginButtonTouched:(id)sender
 {
     if([self.loginTextField isEditing]) [self.loginTextField endEditing:YES];
     if([self.passwordTextField isEditing]) [self.passwordTextField endEditing:YES];
 }
 
--(IBAction)createAccountButtonTouched:(id)sender
+-(IBAction)createAccount:(id)sender
 {
     
 }

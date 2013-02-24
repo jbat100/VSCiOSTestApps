@@ -2,7 +2,7 @@
 //  SIUser.m
 //  RestTestApp
 //
-//  Created by Jonathan Thorpe on 2/5/13.
+//  Created by Jonathan Thorpe on 2/25/13.
 //  Copyright (c) 2013 Jonathan Thorpe. All rights reserved.
 //
 
@@ -12,11 +12,11 @@
 
 @implementation SIUser
 
-@dynamic firstName;
-@dynamic lastName;
 @dynamic email;
 @dynamic encodedPassword;
-@dynamic serverIdentifier;
+@dynamic firstName;
+@dynamic lastName;
+@dynamic serverCode;
 @dynamic creditCards;
 
 @end
