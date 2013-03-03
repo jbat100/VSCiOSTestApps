@@ -2,7 +2,7 @@
 //  SICategory.h
 //  RestTestApp
 //
-//  Created by Jonathan Thorpe on 2/25/13.
+//  Created by Jonathan Thorpe on 3/3/13.
 //  Copyright (c) 2013 Jonathan Thorpe. All rights reserved.
 //
 
@@ -13,10 +13,12 @@
 
 @interface SICategory : NSManagedObject
 
-@property (nonatomic, retain) NSString * imageURLString;
-@property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSString * categoryDescription;
 @property (nonatomic, retain) NSString * categoryID;
+@property (nonatomic, retain) NSString * imageURLString;
+@property (nonatomic, retain) NSString * name;
+@property (nonatomic, retain) NSDate * creationDate;
+@property (nonatomic, retain) NSDate * updateDate;
 @property (nonatomic, retain) NSSet *products;
 @end
 

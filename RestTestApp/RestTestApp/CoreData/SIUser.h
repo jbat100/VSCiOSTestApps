@@ -2,7 +2,7 @@
 //  SIUser.h
 //  RestTestApp
 //
-//  Created by Jonathan Thorpe on 2/25/13.
+//  Created by Jonathan Thorpe on 3/3/13.
 //  Copyright (c) 2013 Jonathan Thorpe. All rights reserved.
 //
 
@@ -18,6 +18,9 @@
 @property (nonatomic, retain) NSString * firstName;
 @property (nonatomic, retain) NSString * lastName;
 @property (nonatomic, retain) NSString * serverCode;
+@property (nonatomic, retain) NSString * userID;
+@property (nonatomic, retain) NSDate * updateDate;
+@property (nonatomic, retain) NSDate * creationDate;
 @property (nonatomic, retain) NSSet *creditCards;
 @end
 

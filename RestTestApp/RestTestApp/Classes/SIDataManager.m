@@ -11,6 +11,10 @@
 #import <RestKit/RestKit.h>
 #import <CoreData/CoreData.h>
 
+#import "SIShop.h"
+#import "SICategory.h"
+#import "SIProduct.h"
+
 /*
  
  Product json example http://streatit-dev.herokuapp.com/produits.json
@@ -38,20 +42,40 @@
  "updated_at":"2013-02-20T17:56:29Z"
  }
  
+ Shop json example  http://streatit-dev.herokuapp.com/magasins.json
+ 
+ {
+ "address":"Chez jonathan",
+ "created_at":"2013-03-03T13:47:29Z",
+ "horaires":"Tout le temps...",
+ "id":1,
+ "latitude":10.0,
+ "longitude":10.0,
+ "name":"Le magazin de jonathan",
+ "updated_at":"2013-03-03T13:47:29Z"
+ }
+ 
  */
 
 NSString * const SIDataManagerErrorDomain = @"SIDataManagerErrorDomain";
 
-NSString* const SIDatabaseUpdateStartedNotification = @"SIDatabaseUpdateStartedNotification";
-NSString* const SIDatabaseUpdateEndedNotification = @"SIDatabaseUpdateEndedNotification";
+NSString* const SIDatabaseUpdateStartedNotification     = @"SIDatabaseUpdateStartedNotification";
+NSString* const SIDatabaseUpdateEndedNotification       = @"SIDatabaseUpdateEndedNotification";
 
-NSString* const SIErrorKey = @"SIErrorKey";
-NSString* const SISuccessKey = @"SISuccessKey";
+NSString* const SIErrorKey      = @"SIErrorKey";
+NSString* const SIOutcomeKey    = @"SIOutcomeKey";
 NSString* const SIUpdateTypeKey = @"SIUpdateTypeKey";
 
-NSString* const SIUpdateTypeShops = @"SIUpdateTypeShops";
-NSString* const SIUpdateTypeCategories = @"SIUpdateTypeCategories";
-NSString* const SIUpdateTypeProducts = @"SIUpdateTypeProducts";
+NSString* const SIUpdateTypeShops       = @"SIUpdateTypeShops";
+NSString* const SIUpdateTypeCategories  = @"SIUpdateTypeCategories";
+NSString* const SIUpdateTypeProducts    = @"SIUpdateTypeProducts";
+NSString* const SIOutcomeError          = @"SIOutcomeError";
+NSString* const SIOutcomeSuccess        = @"SIOutcomeSuccess";
+
+const NSInteger SIDataManagerUpdateOngoingErrorCode     = 1;
+const NSInteger SIDataManagerNetworkErrorCode           = 2;
+const NSInteger SIDataManagerBadSetupErrorCode          = 3;
+
 
 /*
  *  Private SIDataManager Interface
@@ -178,14 +202,13 @@ NSString* const SIUpdateTypeProducts = @"SIUpdateTypeProducts";
         // --- Create managedObjectModel --- 
         
         NSManagedObjectModel* managedObjectModel = [NSManagedObjectModel mergedModelFromBundles:nil];
-        assert(managedObjectModel);
         if (!managedObjectModel)
         {
             DDLogError(@"%@ could not initialize managedObjectModel", self);
             self.setupSucceeded = NO;
             return;
         }
-        
+        assert(managedObjectModel);
         
         // --- Create restKitManagedObjectStore --- 
         
@@ -207,14 +230,13 @@ NSString* const SIUpdateTypeProducts = @"SIUpdateTypeProducts";
                                                                             withConfiguration:nil
                                                                                       options:nil
                                                                                         error:&error];
-        assert(self.persistentStore);
         if (!self.persistentStore)
         {
-            DDLogError(@"%@ could not initialize persistentStore", self);
+            DDLogError(@"%@ could not initialize persistentStore ERROR %@", self, error);
             self.setupSucceeded = NO;
+            assert(NO);
             return;
         }
-        
         
         // --- Create managed object contexts (this will be used for threading) --- 
         
@@ -228,11 +250,11 @@ NSString* const SIUpdateTypeProducts = @"SIUpdateTypeProducts";
         // --- Create restKitObjectManager --- 
         
         self.restKitObjectManager = [RKObjectManager managerWithBaseURL:[[self class] dataWebServiceURL]];
-        assert(self.restKitObjectManager);
         if (!self.restKitObjectManager)
         {
             DDLogError(@"%@ could not initialize restKitObjectManager", self);
             self.setupSucceeded = NO;
+            assert(NO);
             return;
         }
         self.restKitObjectManager.managedObjectStore = self.restKitManagedObjectStore;
@@ -247,7 +269,9 @@ NSString* const SIUpdateTypeProducts = @"SIUpdateTypeProducts";
          @"id": @"categoryID",
          @"name": @"name",
          @"image" : @"imageURLString",
-         @"description" : @"categoryDescription"}];
+         @"description" : @"categoryDescription",
+         @"created_at" : @"creationDate",
+         @"updated_at" : @"updateDate"}];
         
         categoryMapping.identificationAttributes = @[@"categoryID"];
         
@@ -270,7 +294,9 @@ NSString* const SIUpdateTypeProducts = @"SIUpdateTypeProducts";
          @"name": @"name",
          @"image" : @"imageURLString",
          @"description" : @"productDescription",
-         @"prix" : @"price"}];
+         @"prix" : @"price",
+         @"created_at" : @"creationDate",
+         @"updated_at" : @"updateDate"}];
         
         productMapping.identificationAttributes = @[@"productID"];
         
@@ -280,6 +306,30 @@ NSString* const SIUpdateTypeProducts = @"SIUpdateTypeProducts";
                                                                                            statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
         
         [self.restKitObjectManager addResponseDescriptor:productDescriptor];
+        
+        // --- Shop Mapping ---
+        
+        RKEntityMapping *shopMapping = [RKEntityMapping mappingForEntityForName:@"SIShop"
+                                                           inManagedObjectStore:self.restKitManagedObjectStore];
+        
+        [shopMapping addAttributeMappingsFromDictionary:@{
+         @"id": @"shopID",
+         @"address" : @"address",
+         @"name": @"name",
+         @"latitude": @"latitude",
+         @"longitude": @"longitude",
+         @"horaires": @"openingTimes",
+         @"created_at" : @"creationDate",
+         @"updated_at" : @"updateDate"}];
+        
+        shopMapping.identificationAttributes = @[@"shopID"];
+        
+        RKResponseDescriptor *shopDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:shopMapping
+                                                                                          pathPattern:@"/magasins"
+                                                                                              keyPath:nil
+                                                                                          statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+        
+        [self.restKitObjectManager addResponseDescriptor:shopDescriptor];
         
         
         /*
@@ -324,6 +374,22 @@ NSString* const SIUpdateTypeProducts = @"SIUpdateTypeProducts";
 {
     [self checkSetup];
     
+    DDLogVerbose(@"Updating shops...");
+    [self.restKitObjectManager getObjectsAtPath:@"/magasins" parameters:nil success:^(RKObjectRequestOperation *op, RKMappingResult *result) {
+        
+        DDLogVerbose(@"Shop update success: %@", [result array]);
+        NSDictionary* userInfo = @{SIOutcomeKey : SIOutcomeSuccess, SIUpdateTypeKey : SIUpdateTypeShops};
+        [[NSNotificationCenter defaultCenter] postNotificationName:SIDatabaseUpdateEndedNotification object:self userInfo:userInfo];
+        
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        
+        DDLogError(@"Shop update failure: %@", error);
+        NSDictionary* errorUserInfo = @{NSUnderlyingErrorKey : error};
+        NSError* managerError = [NSError errorWithDomain:SIDataManagerErrorDomain code:SIDataManagerNetworkErrorCode userInfo:errorUserInfo];
+        NSDictionary* userInfo = @{SIOutcomeKey : SIOutcomeError, SIUpdateTypeKey : SIUpdateTypeShops, SIErrorKey : managerError};
+        [[NSNotificationCenter defaultCenter] postNotificationName:SIDatabaseUpdateEndedNotification object:self userInfo:userInfo];
+    }];
+    
     return NO;
 }
 
@@ -333,9 +399,18 @@ NSString* const SIUpdateTypeProducts = @"SIUpdateTypeProducts";
     
     DDLogVerbose(@"Updating products...");
     [self.restKitObjectManager getObjectsAtPath:@"/produits" parameters:nil success:^(RKObjectRequestOperation *op, RKMappingResult *result) {
-        DDLogVerbose(@"Success: %@", [result array]);
+        
+        DDLogVerbose(@"Product update success: %@", [result array]);
+        NSDictionary* userInfo = @{SIOutcomeKey : SIOutcomeSuccess, SIUpdateTypeKey : SIUpdateTypeProducts};
+        [[NSNotificationCenter defaultCenter] postNotificationName:SIDatabaseUpdateEndedNotification object:self userInfo:userInfo];
+        
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        
         DDLogVerbose(@"Failure: %@", error);
+        NSDictionary* errorUserInfo = @{NSUnderlyingErrorKey : error};
+        NSError* managerError = [NSError errorWithDomain:SIDataManagerErrorDomain code:SIDataManagerNetworkErrorCode userInfo:errorUserInfo];
+        NSDictionary* userInfo = @{SIOutcomeKey : SIOutcomeError, SIUpdateTypeKey : SIUpdateTypeProducts, SIErrorKey : managerError};
+        [[NSNotificationCenter defaultCenter] postNotificationName:SIDatabaseUpdateEndedNotification object:self userInfo:userInfo];
     }];
     
     return NO;
@@ -347,9 +422,18 @@ NSString* const SIUpdateTypeProducts = @"SIUpdateTypeProducts";
     
     DDLogVerbose(@"Updating categories...");
     [self.restKitObjectManager getObjectsAtPath:@"/categories" parameters:nil success:^(RKObjectRequestOperation *op, RKMappingResult *result) {
-        DDLogVerbose(@"Success: %@", [result array]);
+        
+        DDLogVerbose(@"Category update success: %@", [result array]);
+        NSDictionary* userInfo = @{SIOutcomeKey : SIOutcomeSuccess, SIUpdateTypeKey : SIUpdateTypeCategories};
+        [[NSNotificationCenter defaultCenter] postNotificationName:SIDatabaseUpdateEndedNotification object:self userInfo:userInfo];
+        
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-        DDLogVerbose(@"Failure: %@", error);
+        
+        DDLogVerbose(@"Category update failure: %@", error);
+        NSDictionary* errorUserInfo = @{NSUnderlyingErrorKey : error};
+        NSError* managerError = [NSError errorWithDomain:SIDataManagerErrorDomain code:SIDataManagerNetworkErrorCode userInfo:errorUserInfo];
+        NSDictionary* userInfo = @{SIOutcomeKey : SIOutcomeError, SIUpdateTypeKey : SIUpdateTypeCategories, SIErrorKey : managerError};
+        [[NSNotificationCenter defaultCenter] postNotificationName:SIDatabaseUpdateEndedNotification object:self userInfo:userInfo];
     }];
     
     return NO;
@@ -357,9 +441,17 @@ NSString* const SIUpdateTypeProducts = @"SIUpdateTypeProducts";
 
 #pragma mark - CoreData Fetches
 
+-(NSManagedObjectContext*) managedObjectContextForFetchRequests
+{
+    assert(self.restKitManagedObjectStore);
+    assert([self.restKitManagedObjectStore mainQueueManagedObjectContext]);
+    
+    return [self.restKitManagedObjectStore mainQueueManagedObjectContext];
+}
+
 -(NSArray*) fetchAllShops
 {
-    NSEntityDescription* entityDescription = [NSEntityDescription entityForName:@"Shop"
+    NSEntityDescription* entityDescription = [NSEntityDescription entityForName:@"SIShop"
                                                          inManagedObjectContext:[self managedObjectContextForFetchRequests]];
     
     NSFetchRequest *request = [[NSFetchRequest alloc] init];
@@ -370,7 +462,7 @@ NSString* const SIUpdateTypeProducts = @"SIUpdateTypeProducts";
     
     if (error)
     {
-        DDLogError(@"%@ fetchShops %@ : %@", self, error, [error userInfo]);
+        DDLogError(@"%@ fetchShops ERROR %@ : %@", self, error, [error userInfo]);
     }
     
     DDLogVerbose(@"%@ fetchShops (%lu results)", self, (unsigned long)[fetchResults count]);
@@ -380,42 +472,50 @@ NSString* const SIUpdateTypeProducts = @"SIUpdateTypeProducts";
 
 -(NSArray*) fetchAllCategories
 {
-    NSEntityDescription* entityDescription = [NSEntityDescription entityForName:@"ProductType"
+    NSEntityDescription* entityDescription = [NSEntityDescription entityForName:@"SICategory"
                                                          inManagedObjectContext:[self managedObjectContextForFetchRequests]];
     
     NSFetchRequest *request = [[NSFetchRequest alloc] init];
     [request setEntity:entityDescription];
+    
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"name"
+                                                                   ascending:YES selector:@selector(caseInsensitiveCompare:)];
+    [request setSortDescriptors:@[sortDescriptor]];
     
     NSError *error = nil;
     NSArray *fetchResults = [[self managedObjectContextForFetchRequests] executeFetchRequest:request error:&error];
     
     if (error)
     {
-        DDLogError(@"%@ fetchProductTypes %@ : %@", self, error, [error userInfo]);
+        DDLogError(@"%@ fetchAllCategories ERROR %@ : %@", self, error, [error userInfo]);
     }
     
-    DDLogVerbose(@"%@ fetchProductTypes (%lu results)", self, (unsigned long)[fetchResults count]);
+    DDLogVerbose(@"%@ fetchAllCategories (%lu results)", self, (unsigned long)[fetchResults count]);
     
     return fetchResults;
 }
 
 -(NSArray*) fetchAllProducts
 {
-    NSEntityDescription* entityDescription = [NSEntityDescription entityForName:@"Product"
+    NSEntityDescription* entityDescription = [NSEntityDescription entityForName:@"SIProduct"
                                                          inManagedObjectContext:[self managedObjectContextForFetchRequests]];
     
     NSFetchRequest *request = [[NSFetchRequest alloc] init];
     [request setEntity:entityDescription];
+    
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"name"
+                                                                   ascending:YES selector:@selector(caseInsensitiveCompare:)];
+    [request setSortDescriptors:@[sortDescriptor]];
     
     NSError *error = nil;
     NSArray *fetchResults = [[self managedObjectContextForFetchRequests] executeFetchRequest:request error:&error];
     
     if (error)
     {
-        DDLogError(@"%@ fetchProducts %@ : %@", self, error, [error userInfo]);
+        DDLogError(@"%@ fetchAllProducts ERROR %@ : %@", self, error, [error userInfo]);
     }
     
-    DDLogVerbose(@"%@ fetchProducts (%lu results)", self, (unsigned long)[fetchResults count]);
+    DDLogVerbose(@"%@ fetchAllProducts (%lu results)", self, (unsigned long)[fetchResults count]);
     
     return fetchResults;
 }
@@ -423,7 +523,30 @@ NSString* const SIUpdateTypeProducts = @"SIUpdateTypeProducts";
 
 -(NSArray*) fetchAllProductsForCategory:(SICategory*)category
 {
+    NSEntityDescription* entityDescription = [NSEntityDescription entityForName:@"SIProduct"
+                                                         inManagedObjectContext:[self managedObjectContextForFetchRequests]];
     
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    [request setEntity:entityDescription];
+    
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"name"
+                                                                   ascending:YES selector:@selector(caseInsensitiveCompare:)];
+    [request setSortDescriptors:@[sortDescriptor]];
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"categoryID == %@", [category categoryID]];
+    [request setPredicate:predicate];
+    
+    NSError *error = nil;
+    NSArray *fetchResults = [[self managedObjectContextForFetchRequests] executeFetchRequest:request error:&error];
+    
+    if (error)
+    {
+        DDLogError(@"%@ fetchAllProductsForCategory %@ ERROR %@ : %@", self, category, error, [error userInfo]);
+    }
+    
+    DDLogVerbose(@"%@ fetchAllProductsForCategory %@ (%lu results)", self, category, (unsigned long)[fetchResults count]);
+    
+    return fetchResults;
 }
 
 

@@ -2,7 +2,7 @@
 //  SICategory.m
 //  RestTestApp
 //
-//  Created by Jonathan Thorpe on 2/25/13.
+//  Created by Jonathan Thorpe on 3/3/13.
 //  Copyright (c) 2013 Jonathan Thorpe. All rights reserved.
 //
 
@@ -12,10 +12,12 @@
 
 @implementation SICategory
 
-@dynamic imageURLString;
-@dynamic name;
 @dynamic categoryDescription;
 @dynamic categoryID;
+@dynamic imageURLString;
+@dynamic name;
+@dynamic creationDate;
+@dynamic updateDate;
 @dynamic products;
 
 @end

@@ -60,17 +60,20 @@
 
 - (IBAction)fetchShops:(id)sender
 {
-    
+    NSArray* shops = [[SIDataManager sharedManager] fetchAllShops];
+    NSLog(@"FetchShops: %@", shops);
 }
 
 - (IBAction)fetchCategories:(id)sender
 {
-    
+    NSArray* categories = [[SIDataManager sharedManager] fetchAllCategories];
+    NSLog(@"FetchCategories: %@", categories);
 }
 
 - (IBAction)fetchProducts:(id)sender
 {
-    
+    NSArray* products = [[SIDataManager sharedManager] fetchAllProducts];
+    NSLog(@"FetchProducts: %@", products);
 }
 
 - (void)viewDidUnload

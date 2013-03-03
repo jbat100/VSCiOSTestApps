@@ -19,6 +19,10 @@
 
 extern NSString * const SIDataManagerErrorDomain;
 
+extern const NSInteger SIDataManagerUpdateOngoingErrorCode;
+extern const NSInteger SIDataManagerNetworkErrorCode;
+extern const NSInteger SIDataManagerBadSetupErrorCode;
+
 /**
  Notification names
  */
@@ -30,14 +34,18 @@ extern NSString* const SIDatabaseUpdateEndedNotification;
     Notification userInfo dictionary keys
  */
 
-extern NSString* const SIErrorKey;
-extern NSString* const SISuccessKey;
-extern NSString* const SIUpdateTypeKey;
+extern NSString* const SIOutcomeKey;        // value should be SIOutcomeError or SIOutcomeSuccess
+extern NSString* const SIUpdateTypeKey;     // value should be SIUpdateTypeShops, SIUpdateTypeCategories or SIUpdateTypeProducts
+extern NSString* const SIErrorKey;          // if SIOutcomeKey has value SIOutcomeError this should contain an NSError
 
 /**
  Notification userInfo dictionary values
  */
 
+// outcomes (values for SIOutcomeKey) 
+extern NSString* const SIOutcomeError;
+extern NSString* const SIOutcomeSuccess;
+// update types (values for SIUpdateTypeKey)
 extern NSString* const SIUpdateTypeShops;
 extern NSString* const SIUpdateTypeCategories;
 extern NSString* const SIUpdateTypeProducts;
