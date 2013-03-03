@@ -6,9 +6,9 @@
 //  Copyright (c) 2013 Jonathan Thorpe. All rights reserved.
 //
 
-#import "SIProductTypeView.h"
+#import "SICategoryCell.h"
 
-@implementation SIProductTypeView
+@implementation SICategoryCell
 
 - (id)initWithFrame:(CGRect)frame
 {

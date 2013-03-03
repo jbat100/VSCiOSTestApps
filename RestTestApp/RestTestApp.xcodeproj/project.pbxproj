@@ -33,10 +33,10 @@
 		1068515D16BB0A8400505F04 /* SIShoppingCartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1068515C16BB0A8400505F04 /* SIShoppingCartViewController.m */; };
 		1068516016BB0B5000505F04 /* SILocationMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1068515F16BB0B5000505F04 /* SILocationMapViewController.m */; };
 		106B9EBB16BD5F8C001B121B /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 106B9EBA16BD5F8C001B121B /* MapKit.framework */; };
-		106B9EBF16BD61B9001B121B /* SIProductTypeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 106B9EBE16BD61B9001B121B /* SIProductTypeView.m */; };
-		106B9EC916BD666C001B121B /* SIProductTypeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 106B9EC816BD666C001B121B /* SIProductTypeView.xib */; };
+		106B9EBF16BD61B9001B121B /* SICategoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 106B9EBE16BD61B9001B121B /* SICategoryCell.m */; };
 		106B9ECE16BD8685001B121B /* add-small.png in Resources */ = {isa = PBXBuildFile; fileRef = 106B9ECC16BD8685001B121B /* add-small.png */; };
 		106B9ECF16BD8685001B121B /* remove-small.png in Resources */ = {isa = PBXBuildFile; fileRef = 106B9ECD16BD8685001B121B /* remove-small.png */; };
+		107ADC6E16E40FA1009A30ED /* SICategoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 107ADC6D16E40FA1009A30ED /* SICategoryCell.xib */; };
 		10806BCC16E38E4C00750558 /* SICreditCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 10806BCB16E38E4C00750558 /* SICreditCard.m */; };
 		10806BCF16E38E4D00750558 /* SIProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = 10806BCE16E38E4D00750558 /* SIProduct.m */; };
 		10806BD816E38E4D00750558 /* SICategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 10806BD716E38E4D00750558 /* SICategory.m */; };
@@ -115,11 +115,11 @@
 		1068515E16BB0B5000505F04 /* SILocationMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SILocationMapViewController.h; path = Classes/SILocationMapViewController.h; sourceTree = "<group>"; };
 		1068515F16BB0B5000505F04 /* SILocationMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SILocationMapViewController.m; path = Classes/SILocationMapViewController.m; sourceTree = "<group>"; };
 		106B9EBA16BD5F8C001B121B /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		106B9EBD16BD61B9001B121B /* SIProductTypeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SIProductTypeView.h; path = Classes/SIProductTypeView.h; sourceTree = "<group>"; };
-		106B9EBE16BD61B9001B121B /* SIProductTypeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SIProductTypeView.m; path = Classes/SIProductTypeView.m; sourceTree = "<group>"; };
-		106B9EC816BD666C001B121B /* SIProductTypeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SIProductTypeView.xib; path = Classes/SIProductTypeView.xib; sourceTree = "<group>"; };
+		106B9EBD16BD61B9001B121B /* SICategoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SICategoryCell.h; path = Classes/SICategoryCell.h; sourceTree = "<group>"; };
+		106B9EBE16BD61B9001B121B /* SICategoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SICategoryCell.m; path = Classes/SICategoryCell.m; sourceTree = "<group>"; };
 		106B9ECC16BD8685001B121B /* add-small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "add-small.png"; path = "RestTestApp/Resources/add-small.png"; sourceTree = "<group>"; };
 		106B9ECD16BD8685001B121B /* remove-small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "remove-small.png"; path = "RestTestApp/Resources/remove-small.png"; sourceTree = "<group>"; };
+		107ADC6D16E40FA1009A30ED /* SICategoryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SICategoryCell.xib; path = Classes/SICategoryCell.xib; sourceTree = "<group>"; };
 		10806BCA16E38E4C00750558 /* SICreditCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SICreditCard.h; path = CoreData/SICreditCard.h; sourceTree = "<group>"; };
 		10806BCB16E38E4C00750558 /* SICreditCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SICreditCard.m; path = CoreData/SICreditCard.m; sourceTree = "<group>"; };
 		10806BCD16E38E4D00750558 /* SIProduct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SIProduct.h; path = CoreData/SIProduct.h; sourceTree = "<group>"; };
@@ -346,9 +346,9 @@
 		106B9EBC16BD6171001B121B /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				106B9EBD16BD61B9001B121B /* SIProductTypeView.h */,
-				106B9EBE16BD61B9001B121B /* SIProductTypeView.m */,
-				106B9EC816BD666C001B121B /* SIProductTypeView.xib */,
+				106B9EBD16BD61B9001B121B /* SICategoryCell.h */,
+				106B9EBE16BD61B9001B121B /* SICategoryCell.m */,
+				107ADC6D16E40FA1009A30ED /* SICategoryCell.xib */,
 				101416F016C1B34A006CC6F0 /* SIProductListingCell.h */,
 				101416F116C1B34A006CC6F0 /* SIProductListingCell.m */,
 			);
@@ -522,9 +522,9 @@
 				10273A4416BA9493008E42CA /* Default-568h@2x.png in Resources */,
 				10273A4716BA9493008E42CA /* MainStoryboard_iPhone.storyboard in Resources */,
 				10273A4A16BA9493008E42CA /* MainStoryboard_iPad.storyboard in Resources */,
-				106B9EC916BD666C001B121B /* SIProductTypeView.xib in Resources */,
 				106B9ECE16BD8685001B121B /* add-small.png in Resources */,
 				106B9ECF16BD8685001B121B /* remove-small.png in Resources */,
+				107ADC6E16E40FA1009A30ED /* SICategoryCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -588,7 +588,7 @@
 				10B9535E16BC176C007A23D2 /* SIHTTPClient.m in Sources */,
 				10B9536516BC275A007A23D2 /* SIModel1.xcdatamodeld in Sources */,
 				10B9536B16BC2BEA007A23D2 /* SIDataManager.m in Sources */,
-				106B9EBF16BD61B9001B121B /* SIProductTypeView.m in Sources */,
+				106B9EBF16BD61B9001B121B /* SICategoryCell.m in Sources */,
 				101416F216C1B34A006CC6F0 /* SIProductListingCell.m in Sources */,
 				1014174816C1C473006CC6F0 /* SICreditCard+Additions.m in Sources */,
 				10E36E7C16DACDED0075FA48 /* SIDatabaseTestViewController.m in Sources */,

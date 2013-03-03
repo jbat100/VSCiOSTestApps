@@ -7,7 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PSTCollectionView.h"
 
-@interface SICategorySelectionViewController : UIViewController
+/*
+ *  Note: using PSUICollectionView (and associates) instead of UICollectionView allows the code to 
+ *  run on iOS 5, using the PSTCollectionView library in the pods. The API is according to the 
+ *  project Github page, 100% compatible.
+ */
+
+@interface SICategorySelectionViewController : UIViewController <PSUICollectionViewDelegate, PSUICollectionViewDataSource>
+
+@property (nonatomic, strong) PSUICollectionView* collectionView;
 
 @end
