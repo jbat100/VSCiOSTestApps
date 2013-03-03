@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SIProductTypeSelectionViewController : UIViewController
+@interface SICategorySelectionViewController : UIViewController
 
 @end

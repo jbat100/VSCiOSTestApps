@@ -14,17 +14,17 @@
 
 +(NSDictionary*) infoDictionaryFromCreditCardInfo:(CardIOCreditCardInfo*)creditCardInfo
 {
-    
+    return nil;
 }
 
 +(NSDictionary*) infoDictionaryFromEncodedData:(NSData*)encodedData
 {
-    
+    return nil;
 }
 
 +(NSData*) encodedDataFromInfoDictionary:(NSDictionary*)infoDictionary
 {
-    
+    return nil;
 }
 
 @end

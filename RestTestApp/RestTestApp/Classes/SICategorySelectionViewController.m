@@ -6,13 +6,13 @@
 //  Copyright (c) 2013 Jonathan Thorpe. All rights reserved.
 //
 
-#import "SIProductTypeSelectionViewController.h"
+#import "SICategorySelectionViewController.h"
 
-@interface SIProductTypeSelectionViewController ()
+@interface SICategorySelectionViewController ()
 
 @end
 
-@implementation SIProductTypeSelectionViewController
+@implementation SICategorySelectionViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

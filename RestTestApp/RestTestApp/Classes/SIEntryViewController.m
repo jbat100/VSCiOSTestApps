@@ -40,7 +40,9 @@
     assert(self.loginTextField);
     assert(self.passwordTextField);
     assert(self.createAccountButton);
-    assert(self.loginTopContraint);
+    
+    
+    //assert(self.loginTopContraint); // cannot use autolayout with iOS 5 which must be supported
     
     self.restLoginTopConstraintConstant = self.loginTopContraint.constant;
     
@@ -255,20 +257,19 @@
         CGRect passwordFieldFrame = self.passwordTextField.frame;
         CGFloat passFieldBottom = passwordFieldFrame.origin.y + passwordFieldFrame.size.height;
         CGFloat keyboardTop = viewFrame.size.height - endFrame.size.height;
-        //int offset = (int)(passFieldBottom - keyboardTop) - 10;
         int offset = (int)(keyboardTop - passFieldBottom) - 10;
         
         DDLogVerbose(@"keyboardTop %.2f, passFieldBottom %.2f, offset %d, duration %.2f",
                      keyboardTop, passFieldBottom, offset, duration);
         
-        //if (offset < 0.0)
         {
+            /*
             [UIView animateWithDuration:duration
                              animations:^{
                                  self.loginTopContraint.constant = self.restLoginTopConstraintConstant + offset;
-                                 //self.loginTopContraint.constant = offset;
                                  [self.view layoutIfNeeded];
                              }];
+             */
         }
         
     }
@@ -287,21 +288,24 @@
     
     if (durationNumber)
     {
+        /*
         [UIView animateWithDuration:[durationNumber doubleValue]
                          animations:^{
                              self.loginTopContraint.constant = self.restLoginTopConstraintConstant;
-                             //self.loginTopContraint.constant = 0.0;
                              [self.view layoutIfNeeded];
                          }];
+         */
     }
     
     else
     {
+        /*
         [UIView animateWithDuration:0.25
                          animations:^{
                              self.loginTopContraint.constant = 0;
                              [self.view layoutIfNeeded];
                          }];
+         */
     }
     
     [[self navigationItem] setLeftBarButtonItem:nil animated:YES];

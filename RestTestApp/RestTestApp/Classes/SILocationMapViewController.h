@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MapKit/MapKit.h>
 
-@interface SILocationMapViewController : UIViewController
+@interface SILocationMapViewController : UIViewController <MKMapViewDelegate>
+
+@property (nonatomic, strong) IBOutlet MKMapView* mapView;
+
+-(IBAction)autoAdjustMap:(id)sender;
 
 @end

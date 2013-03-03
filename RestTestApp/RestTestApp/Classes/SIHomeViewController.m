@@ -60,7 +60,7 @@
 
 - (IBAction)showOrder:(id)sender
 {
-    [self performSegueWithIdentifier:@"ProductTypes" sender:self];
+    [self performSegueWithIdentifier:@"Categories" sender:self];
 }
 
 - (IBAction)disconnect:(id)sender
