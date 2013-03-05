@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SIProductListingViewController : UIViewController
+@interface SIProductListingViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+
+@property (nonatomic, strong) NSArray* products;
+
+@property (nonatomic, strong) IBOutlet UITableView* tableView;
 
 @end

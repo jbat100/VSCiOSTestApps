@@ -388,13 +388,19 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
                                 <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
+                            <view contentMode="scaleToFill" id="qYX-Qa-hqP" customClass="PSUICollectionView">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="426"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Catégories" id="nyO-H8-BFg"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
-                        <segue destination="urL-BJ-WS1" kind="push" id="Qve-IC-Vl1"/>
+                        <outlet property="collectionView" destination="qYX-Qa-hqP" id="AZs-QZ-HDJ"/>
+                        <segue destination="urL-BJ-WS1" kind="push" identifier="Products" id="Qve-IC-Vl1"/>
                         <segue destination="0zr-J4-slc" kind="push" id="qxD-b0-gSI"/>
                     </connections>
                 </viewController>
@@ -606,6 +612,16 @@
         <class className="NSLayoutConstraint" superclassName="NSObject">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
         </class>
+        <class className="PSTCollectionView" superclassName="UIScrollView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PSTCollectionView.h"/>
+            <relationships>
+                <relationship kind="outlet" name="dataSource"/>
+                <relationship kind="outlet" name="delegate"/>
+            </relationships>
+        </class>
+        <class className="PSUICollectionView_" superclassName="PSTCollectionView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PSUICollectionView_.h"/>
+        </class>
         <class className="SIAccountCreationViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SIAccountCreationViewController.h"/>
             <relationships>
@@ -618,6 +634,10 @@
         </class>
         <class className="SICategorySelectionViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SICategorySelectionViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="adView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="collectionView" candidateClass="PSUICollectionView_"/>
+            </relationships>
         </class>
         <class className="SICreditCardViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SICreditCardViewController.h"/>

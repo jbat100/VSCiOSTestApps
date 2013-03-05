@@ -17,6 +17,8 @@
 
 @interface SICategorySelectionViewController : UIViewController <PSUICollectionViewDelegate, PSUICollectionViewDataSource>
 
-@property (nonatomic, strong) PSUICollectionView* collectionView;
+@property (nonatomic, strong) IBOutlet PSUICollectionView* collectionView;
+
+@property (nonatomic, strong) IBOutlet UIView* adView;
 
 @end
