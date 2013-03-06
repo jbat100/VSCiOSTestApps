@@ -12,6 +12,8 @@
 #import <RestKit/RestKit.h>
 
 @class SICategory;
+@class SIUser;
+@class SIProduct;
 
 /**
  Error domains and codes.
@@ -22,6 +24,10 @@ extern NSString * const SIDataManagerErrorDomain;
 extern const NSInteger SIDataManagerUpdateOngoingErrorCode;
 extern const NSInteger SIDataManagerNetworkErrorCode;
 extern const NSInteger SIDataManagerBadSetupErrorCode;
+extern const NSInteger SIDataManagerNoCurrentUserErrorCode;
+extern const NSInteger SIDataManagerOngoingOrderErrorCode;
+extern const NSInteger SIDataManagerPurchaseCountIsZeroErrorCode;
+extern const NSInteger SIDataManagerInternalErrorCode;
 
 /**
  Notification names
@@ -69,6 +75,22 @@ extern NSString* const SIUpdateTypeProducts;
 @property (nonatomic, assign, readonly) BOOL updatingShops;
 @property (nonatomic, assign, readonly) BOOL updatingCategories;
 @property (nonatomic, assign, readonly) BOOL updatingProducts;
+
+/**
+ User
+ */
+@property (nonatomic, strong) SIUser* currentUser;
+
+/**
+ Order management, operations can fail if:
+    - there is no currentUser (self.currentUser == nil), see SIDataManagerNoCurrentUserErrorCode
+    - an order is ongoing (being validated with the server), see SIDataManagerOngoingOrderErrorCode
+    - decreasePurchaseCountForProduct: can fail if the current purchase count is 0, see SIDataManagerPurchaseCountIsZeroErrorCode
+ */
+-(BOOL) resetPurchaseCountsError:(NSError**)error;
+-(BOOL) increasePurchaseCountForProduct:(SIProduct*)product error:(NSError**)error;
+-(BOOL) decreasePurchaseCountForProduct:(SIProduct*)product error:(NSError**)error;
+-(NSInteger) purchaseCountForProduct:(SIProduct*)product error:(NSError**)error;
 
 /**
  Update SIShop entries in CoreData database, if for some reason the update cannot be performed then the method will return NO and the error parameter will be filled. This method is asynchronous if it returns YES, it broadcasts a SIShopUpdateStartedNotification immediately and completion of the update is marked with a SIShopUpdateEndedNotification.

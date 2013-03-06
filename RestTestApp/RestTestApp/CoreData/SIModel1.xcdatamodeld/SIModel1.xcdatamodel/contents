@@ -53,6 +53,6 @@
         <element name="SICreditCard" positionX="-207" positionY="-558" width="128" height="103"/>
         <element name="SIProduct" positionX="-209" positionY="-144" width="128" height="178"/>
         <element name="SIShop" positionX="-380" positionY="-315" width="128" height="178"/>
-        <element name="SIUser" positionX="-432" positionY="-520" width="128" height="178"/>
+        <element name="SIUser" positionX="-432" positionY="-520" width="128" height="180"/>
     </elements>
 </model>

@@ -126,7 +126,6 @@ NSString* const SIProductSegueIdentifier = @"Products";
             
             DDLogError(@"%@ prepareForSegue:sender: ERROR unexpected state segue %@ selectedCategory %@",
                        self, segue, self.selectedCategory);
-            
         }
         else assert(NO);
     }

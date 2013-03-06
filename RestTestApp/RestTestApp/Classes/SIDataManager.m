@@ -101,6 +101,8 @@ const NSInteger SIDataManagerBadSetupErrorCode          = 3;
 @property (nonatomic, assign, readwrite) BOOL updatingShops;
 @property (nonatomic, assign, readwrite) BOOL updatingProducts;
 
+@property (nonatomic, strong) NSMutableDictionary* currentOrder; // keys are [SIProduct productID] values are NSNumber (NSInteger)
+
 /**
  Setup should only be called once, in the static singleton accessor would be the only good place I can think of right now.
  */
@@ -176,6 +178,62 @@ const NSInteger SIDataManagerBadSetupErrorCode          = 3;
 +(NSURL*) coreDataStoreURL
 {
     return [NSURL fileURLWithPath:[self coreDataStoreURLString]];
+}
+
+#pragma mark - Order Management
+
+-(BOOL) resetPurchaseCountsError:(NSError*__autoreleasing *)error
+{
+    self.currentOrder = [NSMutableDictionary dictionary];
+    return YES;
+}
+
+-(BOOL) increasePurchaseCountForProduct:(SIProduct*)product error:(NSError*__autoreleasing *)error
+{
+    if (self.currentUser == nil)
+    {
+        *error = [[NSError alloc] initWithDomain:SIDataManagerErrorDomain code:SIDataManagerNoCurrentUserErrorCode userInfo:nil];
+        return NO;
+    }
+    NSInteger count = [self purchaseCountForProduct:product error:nil];
+    count++;
+    [self.currentOrder setObject:[NSNumber numberWithInteger:count] forKey:[product productID]];
+    return YES;
+}
+
+-(BOOL) decreasePurchaseCountForProduct:(SIProduct*)product error:(NSError*__autoreleasing *)error
+{
+    if (self.currentUser == nil)
+    {
+        *error = [[NSError alloc] initWithDomain:SIDataManagerErrorDomain code:SIDataManagerNoCurrentUserErrorCode userInfo:nil];
+        return NO;
+    }
+    NSInteger count = [self purchaseCountForProduct:product error:nil];
+    if (count <= 0)
+    {
+        [self.currentOrder setObject:[NSNumber numberWithInteger:0] forKey:[product productID]];
+        *error = [[NSError alloc] initWithDomain:SIDataManagerErrorDomain code:SIDataManagerPurchaseCountIsZeroErrorCode userInfo:nil];
+        return NO;
+    }
+    count--;
+    [self.currentOrder setObject:[NSNumber numberWithInteger:count] forKey:[product productID]];
+    return YES;
+}
+
+-(NSInteger) purchaseCountForProduct:(SIProduct*)product error:(NSError *__autoreleasing *)error
+{
+    if (self.currentUser == nil)
+    {
+        *error = [[NSError alloc] initWithDomain:SIDataManagerErrorDomain code:SIDataManagerNoCurrentUserErrorCode userInfo:nil];
+        return -1;
+    }
+    NSInteger count = 0;
+    NSNumber* countNumber = [self.currentOrder objectForKey:[product productID]];
+    if (countNumber)
+    {
+        count = [countNumber integerValue];
+    }
+    return count;
 }
 
 #pragma mark - Init and Setup
@@ -366,6 +424,14 @@ const NSInteger SIDataManagerBadSetupErrorCode          = 3;
     if (self.setupSucceeded == NO) return NO;
     
     return YES;
+}
+
+#pragma mark - Custom Setters
+
+-(void) setCurrentUser:(SIUser *)currentUser
+{
+    self.currentOrder = [NSMutableDictionary dictionary]; // maybe load previously saved order for this user?
+    _currentUser = currentUser;
 }
 
 #pragma mark - Update API

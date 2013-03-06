@@ -6,9 +6,9 @@
 //  Copyright (c) 2013 Jonathan Thorpe. All rights reserved.
 //
 
-#import "SIProductListingCell.h"
+#import "SIProductCell.h"
 
-@implementation SIProductListingCell
+@implementation SIProductCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {

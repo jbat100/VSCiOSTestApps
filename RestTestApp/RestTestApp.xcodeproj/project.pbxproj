@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		101416F216C1B34A006CC6F0 /* SIProductListingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 101416F116C1B34A006CC6F0 /* SIProductListingCell.m */; };
+		101416F216C1B34A006CC6F0 /* SIProductCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 101416F116C1B34A006CC6F0 /* SIProductCell.m */; };
 		1014174816C1C473006CC6F0 /* SICreditCard+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 1014174716C1C473006CC6F0 /* SICreditCard+Additions.m */; };
+		101BCEEF16E7F5AD008A3EE2 /* SIUser+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 101BCEEE16E7F5AD008A3EE2 /* SIUser+Additions.m */; };
 		10273A2E16BA9493008E42CA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10273A2D16BA9492008E42CA /* UIKit.framework */; };
 		10273A3016BA9493008E42CA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10273A2F16BA9493008E42CA /* Foundation.framework */; };
 		10273A3216BA9493008E42CA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10273A3116BA9493008E42CA /* CoreGraphics.framework */; };
@@ -74,10 +75,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		101416F016C1B34A006CC6F0 /* SIProductListingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SIProductListingCell.h; path = Classes/SIProductListingCell.h; sourceTree = "<group>"; };
-		101416F116C1B34A006CC6F0 /* SIProductListingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SIProductListingCell.m; path = Classes/SIProductListingCell.m; sourceTree = "<group>"; };
+		101416F016C1B34A006CC6F0 /* SIProductCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SIProductCell.h; path = Classes/SIProductCell.h; sourceTree = "<group>"; };
+		101416F116C1B34A006CC6F0 /* SIProductCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SIProductCell.m; path = Classes/SIProductCell.m; sourceTree = "<group>"; };
 		1014174616C1C473006CC6F0 /* SICreditCard+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SICreditCard+Additions.h"; path = "CoreData/SICreditCard+Additions.h"; sourceTree = "<group>"; };
 		1014174716C1C473006CC6F0 /* SICreditCard+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "SICreditCard+Additions.m"; path = "CoreData/SICreditCard+Additions.m"; sourceTree = "<group>"; };
+		101BCEED16E7F5AD008A3EE2 /* SIUser+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SIUser+Additions.h"; path = "CoreData/SIUser+Additions.h"; sourceTree = "<group>"; };
+		101BCEEE16E7F5AD008A3EE2 /* SIUser+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "SIUser+Additions.m"; path = "CoreData/SIUser+Additions.m"; sourceTree = "<group>"; };
 		10273A2A16BA9492008E42CA /* RestTestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RestTestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		10273A2D16BA9492008E42CA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		10273A2F16BA9493008E42CA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -221,8 +224,17 @@
 			children = (
 				1014174616C1C473006CC6F0 /* SICreditCard+Additions.h */,
 				1014174716C1C473006CC6F0 /* SICreditCard+Additions.m */,
+				101BCEED16E7F5AD008A3EE2 /* SIUser+Additions.h */,
+				101BCEEE16E7F5AD008A3EE2 /* SIUser+Additions.m */,
 			);
 			name = Categories;
+			sourceTree = "<group>";
+		};
+		101BCEEC16E7EDEB008A3EE2 /* Ordering */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Ordering;
 			sourceTree = "<group>";
 		};
 		10273A2116BA9492008E42CA = {
@@ -349,8 +361,8 @@
 				106B9EBD16BD61B9001B121B /* SICategoryCell.h */,
 				106B9EBE16BD61B9001B121B /* SICategoryCell.m */,
 				107ADC6D16E40FA1009A30ED /* SICategoryCell.xib */,
-				101416F016C1B34A006CC6F0 /* SIProductListingCell.h */,
-				101416F116C1B34A006CC6F0 /* SIProductListingCell.m */,
+				101416F016C1B34A006CC6F0 /* SIProductCell.h */,
+				101416F116C1B34A006CC6F0 /* SIProductCell.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -429,6 +441,7 @@
 				10B9536316BC275A007A23D2 /* SIModel1.xcdatamodeld */,
 				1014174916C1C48B006CC6F0 /* CoreData */,
 				1014174A16C1C4A1006CC6F0 /* Categories */,
+				101BCEEC16E7EDEB008A3EE2 /* Ordering */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -589,7 +602,7 @@
 				10B9536516BC275A007A23D2 /* SIModel1.xcdatamodeld in Sources */,
 				10B9536B16BC2BEA007A23D2 /* SIDataManager.m in Sources */,
 				106B9EBF16BD61B9001B121B /* SICategoryCell.m in Sources */,
-				101416F216C1B34A006CC6F0 /* SIProductListingCell.m in Sources */,
+				101416F216C1B34A006CC6F0 /* SIProductCell.m in Sources */,
 				1014174816C1C473006CC6F0 /* SICreditCard+Additions.m in Sources */,
 				10E36E7C16DACDED0075FA48 /* SIDatabaseTestViewController.m in Sources */,
 				10806BCC16E38E4C00750558 /* SICreditCard.m in Sources */,
@@ -598,6 +611,7 @@
 				10806BDB16E38E9800750558 /* SIUser.m in Sources */,
 				10806BE116E39C0900750558 /* SIShop.m in Sources */,
 				10806BE516E3B5FC00750558 /* SIShopAnnotation.m in Sources */,
+				101BCEEF16E7F5AD008A3EE2 /* SIUser+Additions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -288,7 +288,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="424"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="ProductDescriptionCell" rowHeight="180" id="RgL-tT-ZPH" customClass="SIProductListingCell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="SIProductCellIdentifier" rowHeight="180" id="RgL-tT-ZPH" customClass="SIProductCell">
                                         <rect key="frame" x="0.0" y="22" width="320" height="180"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -357,6 +357,10 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="urL-BJ-WS1" id="qs7-EF-uwN"/>
+                                    <outlet property="delegate" destination="urL-BJ-WS1" id="dmw-da-IW6"/>
+                                </connections>
                             </tableView>
                             <view contentMode="scaleToFill" id="rom-da-hwD">
                                 <rect key="frame" x="0.0" y="424" width="320" height="80"/>
@@ -367,6 +371,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="zR3-71-Z2w"/>
                     <connections>
+                        <outlet property="tableView" destination="h90-98-fCf" id="ex2-8J-Mph"/>
                         <segue destination="wBS-FZ-EAc" kind="push" id="CB8-eh-190"/>
                         <segue destination="0zr-J4-slc" kind="push" id="qT1-ry-PXe"/>
                     </connections>
@@ -612,16 +617,6 @@
         <class className="NSLayoutConstraint" superclassName="NSObject">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
         </class>
-        <class className="PSTCollectionView" superclassName="UIScrollView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PSTCollectionView.h"/>
-            <relationships>
-                <relationship kind="outlet" name="dataSource"/>
-                <relationship kind="outlet" name="delegate"/>
-            </relationships>
-        </class>
-        <class className="PSUICollectionView_" superclassName="PSTCollectionView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PSUICollectionView_.h"/>
-        </class>
         <class className="SIAccountCreationViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SIAccountCreationViewController.h"/>
             <relationships>
@@ -636,7 +631,7 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SICategorySelectionViewController.h"/>
             <relationships>
                 <relationship kind="outlet" name="adView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="collectionView" candidateClass="PSUICollectionView_"/>
+                <relationship kind="outlet" name="collectionView" candidateClass="PSUICollectionView"/>
             </relationships>
         </class>
         <class className="SICreditCardViewController" superclassName="UIViewController">
@@ -693,11 +688,8 @@
                 <relationship kind="action" name="scanCard:"/>
             </relationships>
         </class>
-        <class className="SIProductDescriptionViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SIProductDescriptionViewController.h"/>
-        </class>
-        <class className="SIProductListingCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SIProductListingCell.h"/>
+        <class className="SIProductCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SIProductCell.h"/>
             <relationships>
                 <relationship kind="outlet" name="addButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="productDescriptionLabel" candidateClass="UILabel"/>
@@ -707,8 +699,14 @@
                 <relationship kind="outlet" name="removeButton" candidateClass="UIButton"/>
             </relationships>
         </class>
+        <class className="SIProductDescriptionViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SIProductDescriptionViewController.h"/>
+        </class>
         <class className="SIProductListingViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SIProductListingViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+            </relationships>
         </class>
         <class className="SIShoppingCartViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SIShoppingCartViewController.h"/>
@@ -720,7 +718,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="qT1-ry-PXe"/>
         <segue reference="WqQ-Cc-I9c"/>
-        <segue reference="qxD-b0-gSI"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SIProductListingCell : UITableViewCell
+@interface SIProductCell : UITableViewCell
 
 @property (strong, nonatomic) IBOutlet UILabel *productNameLabel;
 @property (strong, nonatomic) IBOutlet UILabel *productPriceLabel;
