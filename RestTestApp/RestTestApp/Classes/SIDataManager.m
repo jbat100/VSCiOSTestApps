@@ -14,6 +14,7 @@
 #import "SIShop.h"
 #import "SICategory.h"
 #import "SIProduct.h"
+#import "SIOrder.h"
 
 /*
  
@@ -101,13 +102,24 @@ const NSInteger SIDataManagerBadSetupErrorCode          = 3;
 @property (nonatomic, assign, readwrite) BOOL updatingShops;
 @property (nonatomic, assign, readwrite) BOOL updatingProducts;
 
-@property (nonatomic, strong) NSMutableDictionary* currentOrder; // keys are [SIProduct productID] values are NSNumber (NSInteger)
 
 /**
  Setup should only be called once, in the static singleton accessor would be the only good place I can think of right now.
  */
 
 -(void)setup;
+
+/**
+ Utility for saving context with error handling (used after all updates)
+ */
+
+-(void) performSaveForContext:(NSManagedObjectContext*)context;
+
+/**
+ Utility for deleting all objects of a given entity, used for full replacements after update
+ */
+
+-(void) deleteAllObjectsForEntityDescription:(NSEntityDescription*)entityDescription inContext:(NSManagedObjectContext*)context;
 
 /**
  Used to centralise the decision as to which managed object context will be used for fetch requests
@@ -124,12 +136,14 @@ const NSInteger SIDataManagerBadSetupErrorCode          = 3;
 
 +(void) load
 {
-    NSError *error = nil;
-    BOOL success = RKEnsureDirectoryExistsAtPath(RKApplicationDataDirectory(), &error);
-    if (!success)
-    {
-        DDLogError(@"%@ failed to create application data directory at path '%@': %@", self, RKApplicationDataDirectory(), error);
-        assert(NO);
+    @autoreleasepool {
+        NSError *error = nil;
+        BOOL success = RKEnsureDirectoryExistsAtPath(RKApplicationDataDirectory(), &error);
+        if (!success)
+        {
+            DDLogError(@"%@ failed to create application data directory at path '%@': %@", self, RKApplicationDataDirectory(), error);
+            assert(NO);
+        }
     }
 }
 
@@ -143,6 +157,8 @@ const NSInteger SIDataManagerBadSetupErrorCode          = 3;
         _sharedClient = [[SIDataManager alloc] init];
         assert(_sharedClient);
         [_sharedClient setup];
+        // used for test
+        _sharedClient.currentOrder = [[SIOrder alloc] init];
     });
     return _sharedClient;
 }
@@ -152,7 +168,8 @@ const NSInteger SIDataManagerBadSetupErrorCode          = 3;
 +(NSURL*) dataWebServiceURL
 {
     //return [NSURL URLWithString:@"http://restkit.org"];
-    return [NSURL URLWithString:@"http://streatit-dev.herokuapp.com"];
+    //return [NSURL URLWithString:@"http://streatit-dev.herokuapp.com"];
+    return [NSURL URLWithString:@"http://sidev.herokuapp.com"];
 }
 
 +(NSString*) applicationDocumentsDirectoryURLString
@@ -178,62 +195,6 @@ const NSInteger SIDataManagerBadSetupErrorCode          = 3;
 +(NSURL*) coreDataStoreURL
 {
     return [NSURL fileURLWithPath:[self coreDataStoreURLString]];
-}
-
-#pragma mark - Order Management
-
--(BOOL) resetPurchaseCountsError:(NSError*__autoreleasing *)error
-{
-    self.currentOrder = [NSMutableDictionary dictionary];
-    return YES;
-}
-
--(BOOL) increasePurchaseCountForProduct:(SIProduct*)product error:(NSError*__autoreleasing *)error
-{
-    if (self.currentUser == nil)
-    {
-        *error = [[NSError alloc] initWithDomain:SIDataManagerErrorDomain code:SIDataManagerNoCurrentUserErrorCode userInfo:nil];
-        return NO;
-    }
-    NSInteger count = [self purchaseCountForProduct:product error:nil];
-    count++;
-    [self.currentOrder setObject:[NSNumber numberWithInteger:count] forKey:[product productID]];
-    return YES;
-}
-
--(BOOL) decreasePurchaseCountForProduct:(SIProduct*)product error:(NSError*__autoreleasing *)error
-{
-    if (self.currentUser == nil)
-    {
-        *error = [[NSError alloc] initWithDomain:SIDataManagerErrorDomain code:SIDataManagerNoCurrentUserErrorCode userInfo:nil];
-        return NO;
-    }
-    NSInteger count = [self purchaseCountForProduct:product error:nil];
-    if (count <= 0)
-    {
-        [self.currentOrder setObject:[NSNumber numberWithInteger:0] forKey:[product productID]];
-        *error = [[NSError alloc] initWithDomain:SIDataManagerErrorDomain code:SIDataManagerPurchaseCountIsZeroErrorCode userInfo:nil];
-        return NO;
-    }
-    count--;
-    [self.currentOrder setObject:[NSNumber numberWithInteger:count] forKey:[product productID]];
-    return YES;
-}
-
--(NSInteger) purchaseCountForProduct:(SIProduct*)product error:(NSError *__autoreleasing *)error
-{
-    if (self.currentUser == nil)
-    {
-        *error = [[NSError alloc] initWithDomain:SIDataManagerErrorDomain code:SIDataManagerNoCurrentUserErrorCode userInfo:nil];
-        return -1;
-    }
-    NSInteger count = 0;
-    NSNumber* countNumber = [self.currentOrder objectForKey:[product productID]];
-    if (countNumber)
-    {
-        count = [countNumber integerValue];
-    }
-    return count;
 }
 
 #pragma mark - Init and Setup
@@ -426,12 +387,56 @@ const NSInteger SIDataManagerBadSetupErrorCode          = 3;
     return YES;
 }
 
+-(void) performSaveForContext:(NSManagedObjectContext*)context
+{
+    NSError *saveError = nil;
+    BOOL saveSuccess = [context save:&saveError];
+    if (!saveSuccess)
+    {
+        DDLogError(@"%@ ERROR saving context %@ %@", self, context, saveError);
+    }
+    else
+    {
+        DDLogVerbose(@"%@ saved context successfully %@", self, context);
+    }
+}
+
+-(void) deleteAllObjectsForEntityDescription:(NSEntityDescription*)entityDescription inContext:(NSManagedObjectContext*)context
+{
+    NSFetchRequest * request = [[NSFetchRequest alloc] init];
+    [request setEntity:entityDescription];
+    [request setIncludesPropertyValues:NO]; //only fetch the managedObjectID to be quicker...
+    
+    NSError * error = nil;
+    NSArray * objects = [context executeFetchRequest:request error:&error];
+    
+    if (error)
+    {
+        DDLogError(@"%@ ERROR during purge request %@ %@", self, context, error);
+        return;
+    }
+    
+    for (NSManagedObject* object in objects)
+    {
+        [context deleteObject:object];
+    }
+    
+    DDLogVerbose(@"%@ purged objects for %@ in %@", self, entityDescription, context);
+}
+
 #pragma mark - Custom Setters
 
 -(void) setCurrentUser:(SIUser *)currentUser
 {
-    self.currentOrder = [NSMutableDictionary dictionary]; // maybe load previously saved order for this user?
     _currentUser = currentUser;
+    if (currentUser)
+    {
+        self.currentOrder = [[SIOrder alloc] init];
+    }
+    else
+    {
+        self.currentOrder = nil;
+    }
 }
 
 #pragma mark - Update API
@@ -442,6 +447,8 @@ const NSInteger SIDataManagerBadSetupErrorCode          = 3;
     
     DDLogVerbose(@"Updating shops...");
     [self.restKitObjectManager getObjectsAtPath:@"/magasins" parameters:nil success:^(RKObjectRequestOperation *op, RKMappingResult *result) {
+        
+        [self replaceCurrentShopsWithShops:[result array]];
         
         DDLogVerbose(@"Shop update success: %@", [result array]);
         NSDictionary* userInfo = @{SIOutcomeKey : SIOutcomeSuccess, SIUpdateTypeKey : SIUpdateTypeShops};
@@ -466,6 +473,8 @@ const NSInteger SIDataManagerBadSetupErrorCode          = 3;
     DDLogVerbose(@"Updating products...");
     [self.restKitObjectManager getObjectsAtPath:@"/produits" parameters:nil success:^(RKObjectRequestOperation *op, RKMappingResult *result) {
         
+        [self replaceCurrentProductsWithProducts:[result array]];
+        
         DDLogVerbose(@"Product update success: %@", [result array]);
         NSDictionary* userInfo = @{SIOutcomeKey : SIOutcomeSuccess, SIUpdateTypeKey : SIUpdateTypeProducts};
         [[NSNotificationCenter defaultCenter] postNotificationName:SIDatabaseUpdateEndedNotification object:self userInfo:userInfo];
@@ -489,6 +498,8 @@ const NSInteger SIDataManagerBadSetupErrorCode          = 3;
     DDLogVerbose(@"Updating categories...");
     [self.restKitObjectManager getObjectsAtPath:@"/categories" parameters:nil success:^(RKObjectRequestOperation *op, RKMappingResult *result) {
         
+        [self replaceCurrentCategoriesWithCategories:[result array]];
+        
         DDLogVerbose(@"Category update success: %@", [result array]);
         NSDictionary* userInfo = @{SIOutcomeKey : SIOutcomeSuccess, SIUpdateTypeKey : SIUpdateTypeCategories};
         [[NSNotificationCenter defaultCenter] postNotificationName:SIDatabaseUpdateEndedNotification object:self userInfo:userInfo];
@@ -503,6 +514,69 @@ const NSInteger SIDataManagerBadSetupErrorCode          = 3;
     }];
     
     return NO;
+}
+
+#pragma mark - Replacement Helpers
+
+-(void) replaceCurrentShopsWithShops:(NSArray*)newShops
+{
+    NSManagedObjectContext* context = [self managedObjectContextForFetchRequests];
+    NSEntityDescription* entityDescription = [NSEntityDescription entityForName:@"SIShop" inManagedObjectContext:context];
+    [self deleteAllObjectsForEntityDescription:entityDescription inContext:context];
+    
+    for (SIShop* shop in newShops)
+    {
+        if ([shop isKindOfClass:[SIShop class]])
+        {
+            [context insertObject:shop];
+        }
+        else
+        {
+            DDLogError(@"%@ replaceCurrentShopsWithShops unexpected object %@", self, shop);
+            assert(NO);
+        }
+    }
+
+}
+
+-(void) replaceCurrentCategoriesWithCategories:(NSArray*)newCategories
+{
+    NSManagedObjectContext* context = [self managedObjectContextForFetchRequests];
+    NSEntityDescription* entityDescription = [NSEntityDescription entityForName:@"SICategory" inManagedObjectContext:context];
+    [self deleteAllObjectsForEntityDescription:entityDescription inContext:context];
+    
+    for (SICategory* category in newCategories)
+    {
+        if ([category isKindOfClass:[SICategory class]])
+        {
+            [context insertObject:category];
+        }
+        else
+        {
+            DDLogError(@"%@ replaceCurrentShopsWithShops unexpected object %@", self, category);
+            assert(NO);
+        }
+    }
+}
+
+-(void) replaceCurrentProductsWithProducts:(NSArray*)newProducts
+{
+    NSManagedObjectContext* context = [self managedObjectContextForFetchRequests];
+    NSEntityDescription* entityDescription = [NSEntityDescription entityForName:@"SIProduct" inManagedObjectContext:context];
+    [self deleteAllObjectsForEntityDescription:entityDescription inContext:context];
+    
+    for (SIProduct* product in newProducts)
+    {
+        if ([product isKindOfClass:[SIProduct class]])
+        {
+            [context insertObject:product];
+        }
+        else
+        {
+            DDLogError(@"%@ replaceCurrentShopsWithShops unexpected object %@", self, product);
+            assert(NO);
+        }
+    }
 }
 
 #pragma mark - CoreData Fetches

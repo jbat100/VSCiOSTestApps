@@ -20,7 +20,7 @@ NSString* const SIProductSegueIdentifier = @"Products";
 
 @property (nonatomic, strong) NSArray* categories;
 @property (nonatomic, strong) PSUICollectionViewFlowLayout* collectionViewLayout;
-
+@property (nonatomic, strong) UILabel* noCategoriesLabel;
 @property (nonatomic, strong) SICategory* selectedCategory;
 
 @end
@@ -96,7 +96,12 @@ NSString* const SIProductSegueIdentifier = @"Products";
     self.categories = [[SIDataManager sharedManager] fetchAllCategories];
     
     [self.collectionView reloadData];
-    //[self.collectionView ];
+
+    // deselect everything...
+    for (int i=0; i < self.categories.count; i++)
+    {
+        [self.collectionView deselectItemAtIndexPath:[NSIndexPath indexPathForItem:i inSection:0] animated:NO];
+    }
     
     self.selectedCategory = nil;
 }
@@ -121,13 +126,14 @@ NSString* const SIProductSegueIdentifier = @"Products";
                 NSArray* products = [[SIDataManager sharedManager] fetchAllProductsForCategory:self.selectedCategory];
                 DDLogVerbose(@"%@ showing product listing for %@: %@", self, self.selectedCategory, products);
                 destinationViewController.products = products;
+                return;
             }
             else assert(NO);
-            
-            DDLogError(@"%@ prepareForSegue:sender: ERROR unexpected state segue %@ selectedCategory %@",
-                       self, segue, self.selectedCategory);
         }
         else assert(NO);
+        
+        DDLogError(@"%@ prepareForSegue:sender: ERROR unexpected state segue %@ selectedCategory %@",
+                   self, segue, self.selectedCategory);
     }
 }
 
@@ -183,7 +189,7 @@ NSString* const SIProductSegueIdentifier = @"Products";
     DDLogError(@"%@ collectionView:didSelectItemAtIndexPath: ERROR unexpected state indexPath %@, categories: %@",
                self, indexPath, self.categories);
     
-    [self.collectionView deselectItemAtIndexPath:indexPath animated:YES];
+    //[self.collectionView deselectItemAtIndexPath:indexPath animated:YES];
 }
 
 @end

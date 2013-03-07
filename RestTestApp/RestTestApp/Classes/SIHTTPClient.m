@@ -9,6 +9,17 @@
 #import "SIHTTPClient.h"
 
 #import "AFJSONRequestOperation.h"
+#import "SIOrder.h"
+
+/*
+ *  Private SIOrder.h Interface
+ */
+
+@interface SIOrder ()
+
+@property (nonatomic, assign) SIOrderState state;
+
+@end
 
 static NSString * const kStreatitAPIBaseURLString = @"https://api.twitter.com/1.1/";
 

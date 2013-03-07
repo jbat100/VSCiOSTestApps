@@ -25,6 +25,7 @@
 		10273A5716BA9494008E42CA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10273A2F16BA9493008E42CA /* Foundation.framework */; };
 		10273A5F16BA9494008E42CA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 10273A5D16BA9494008E42CA /* InfoPlist.strings */; };
 		10273A6216BA9494008E42CA /* RestTestAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 10273A6116BA9494008E42CA /* RestTestAppTests.m */; };
+		1063EE5E16E9242900FCF43E /* SIOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = 1063EE5D16E9242900FCF43E /* SIOrder.m */; };
 		1068514416BB073600505F04 /* SIAccountCreationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1068514316BB073600505F04 /* SIAccountCreationViewController.m */; };
 		1068514916BB085100505F04 /* SICreditCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1068514816BB085100505F04 /* SICreditCardViewController.m */; };
 		1068514C16BB08BC00505F04 /* SIHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1068514B16BB08BC00505F04 /* SIHomeViewController.m */; };
@@ -100,6 +101,8 @@
 		10273A5E16BA9494008E42CA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		10273A6016BA9494008E42CA /* RestTestAppTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RestTestAppTests.h; sourceTree = "<group>"; };
 		10273A6116BA9494008E42CA /* RestTestAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RestTestAppTests.m; sourceTree = "<group>"; };
+		1063EE5C16E9242900FCF43E /* SIOrder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SIOrder.h; path = Classes/SIOrder.h; sourceTree = "<group>"; };
+		1063EE5D16E9242900FCF43E /* SIOrder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SIOrder.m; path = Classes/SIOrder.m; sourceTree = "<group>"; };
 		1068514216BB073600505F04 /* SIAccountCreationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SIAccountCreationViewController.h; path = Classes/SIAccountCreationViewController.h; sourceTree = "<group>"; };
 		1068514316BB073600505F04 /* SIAccountCreationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SIAccountCreationViewController.m; path = Classes/SIAccountCreationViewController.m; sourceTree = "<group>"; };
 		1068514616BB07CA00505F04 /* apps-streatit-wireframe.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = "apps-streatit-wireframe.pdf"; path = "RestTestApp/Documents/apps-streatit-wireframe.pdf"; sourceTree = "<group>"; };
@@ -233,6 +236,8 @@
 		101BCEEC16E7EDEB008A3EE2 /* Ordering */ = {
 			isa = PBXGroup;
 			children = (
+				1063EE5C16E9242900FCF43E /* SIOrder.h */,
+				1063EE5D16E9242900FCF43E /* SIOrder.m */,
 			);
 			name = Ordering;
 			sourceTree = "<group>";
@@ -612,6 +617,7 @@
 				10806BE116E39C0900750558 /* SIShop.m in Sources */,
 				10806BE516E3B5FC00750558 /* SIShopAnnotation.m in Sources */,
 				101BCEEF16E7F5AD008A3EE2 /* SIUser+Additions.m in Sources */,
+				1063EE5E16E9242900FCF43E /* SIOrder.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

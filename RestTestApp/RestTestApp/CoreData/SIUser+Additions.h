@@ -10,5 +10,6 @@
 
 @interface SIUser (Additions)
 
+-(BOOL) isAuthenticated;
 
 @end

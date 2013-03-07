@@ -10,10 +10,12 @@
 
 #import "SIProduct.h"
 #import "SIProductCell.h"
-
 #import "SIDataManager.h"
+#import "SIOrder.h"
 
 @interface SIProductListingViewController ()
+
+@property (nonatomic, strong) NSNumberFormatter* priceNumberFormatter;
 
 -(void) customInit;
 
@@ -48,7 +50,10 @@
 
 -(void) customInit
 {
-
+    self.priceNumberFormatter = [[NSNumberFormatter alloc] init];
+    
+    [self.priceNumberFormatter setCurrencySymbol:@"€"];
+    [self.priceNumberFormatter setNumberStyle: NSNumberFormatterCurrencyStyle];
 }
 
 - (void)viewDidLoad
@@ -88,37 +93,49 @@
 
 -(IBAction)increasePurchaseCount:(id)sender
 {
-    if ([sender isKindOfClass:[SIProductCell class]])
+    UIButton *button = (UIButton *)sender;
+    CGPoint buttonPosition = [button convertPoint:CGPointMake(0, 0) toView:self.tableView];
+    NSIndexPath *path = [self.tableView indexPathForRowAtPoint:buttonPosition];
+    SIProductCell* cell = (SIProductCell*)[self.tableView cellForRowAtIndexPath:path];
+    
+    if (path)
     {
-        SIProductCell* cell = (SIProductCell*)sender;
-        NSIndexPath* path = [self.tableView indexPathForCell:cell];
         if ([self.products count] > path.row)
         {
             SIProduct* product = [self.products objectAtIndex:path.row];
-            [[SIDataManager sharedManager] increasePurchaseCountForProduct:product error:nil];
-            NSInteger count = [[SIDataManager sharedManager] purchaseCountForProduct:product error:nil];
-            [self setPurchaseCount:count forCell:cell];
-        }
-        else assert(NO);
-    }
+            [[SIDataManager sharedManager].currentOrder increasePurchaseCountForProduct:product error:nil];
+            NSInteger count = [[SIDataManager sharedManager].currentOrder purchaseCountForProduct:product];
+            if ([cell isKindOfClass:[SIProductCell class]])
+            {
+                [self setPurchaseCount:count forCell:cell];
+            }
+            else assert(NO);
+        } else assert(NO);
+    } else assert(NO);
+    
 }
 
 -(IBAction)decreasePurchaseCount:(id)sender
 {
-    if ([sender isKindOfClass:[SIProductCell class]])
+    UIButton *button = (UIButton *)sender;
+    CGPoint buttonPosition = [button convertPoint:CGPointMake(0, 0) toView:self.tableView];
+    NSIndexPath *path = [self.tableView indexPathForRowAtPoint:buttonPosition];
+    SIProductCell* cell = (SIProductCell*)[self.tableView cellForRowAtIndexPath:path];
+    
+    if (path)
     {
-        SIProductCell* cell = (SIProductCell*)sender;
-        NSIndexPath* path = [self.tableView indexPathForCell:cell];
         if ([self.products count] > path.row)
         {
             SIProduct* product = [self.products objectAtIndex:path.row];
-            // SIDataManager handles error cases (zero count for example) no need to check
-            [[SIDataManager sharedManager] decreasePurchaseCountForProduct:product error:nil];
-            NSInteger count = [[SIDataManager sharedManager] purchaseCountForProduct:product error:nil];
-            [self setPurchaseCount:count forCell:cell];
-        }
-        else assert(NO);
-    }
+            [[SIDataManager sharedManager].currentOrder decreasePurchaseCountForProduct:product error:nil];
+            NSInteger count = [[SIDataManager sharedManager].currentOrder purchaseCountForProduct:product];
+            if ([cell isKindOfClass:[SIProductCell class]])
+            {
+                [self setPurchaseCount:count forCell:cell];
+            }
+            else assert(NO);
+        } else assert(NO);
+    } else assert(NO);
 }
 
 #pragma mark - UITableView Delegate/DataSource
@@ -146,7 +163,7 @@
         NSString* priceString = [NSNumberFormatter localizedStringFromNumber:[product price] numberStyle:NSNumberFormatterCurrencyStyle];
         cell.productPriceLabel.text = priceString;
         cell.productDescriptionLabel.text = [product productDescription];
-        NSInteger count = [[SIDataManager sharedManager] purchaseCountForProduct:product error:nil];
+        NSInteger count = [[SIDataManager sharedManager].currentOrder purchaseCountForProduct:product];
         [self setPurchaseCount:count forCell:cell];
     }
     else assert(NO);

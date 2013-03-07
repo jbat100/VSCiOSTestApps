@@ -118,6 +118,16 @@
                  self, NSStringFromCGRect(self.loginTextField.frame), NSStringFromCGRect(self.passwordTextField.frame));
 }
 
+-(void) dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    
+    self.passwordTextField = nil;
+    self.loginBarButtonItem = nil;
+    self.createAccountButton = nil;
+    self.databaseTestButton = nil;
+}
+
 #pragma mark - Storyboarding
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
