@@ -8,8 +8,12 @@
 
 #import "SICategorySelectionViewController.h"
 #import "SIProductListingViewController.h"
+#import "SIShoppingCartViewController.h"
 #import "PSTCollectionView.h"
+
+#import "SIOrder.h"
 #import "SICategory.h"
+#import "SIProduct.h"
 #import "SICategoryCell.h"
 #import "SIDataManager.h"
 
@@ -23,6 +27,11 @@ NSString* const SIProductSegueIdentifier = @"Products";
 @property (nonatomic, strong) UILabel* noCategoriesLabel;
 @property (nonatomic, strong) SICategory* selectedCategory;
 
+@property (nonatomic, strong) UIBarButtonItem* shoppingCartButtonItem;
+
+-(void) customInit;
+
+
 @end
 
 @implementation SICategorySelectionViewController
@@ -30,10 +39,30 @@ NSString* const SIProductSegueIdentifier = @"Products";
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
+    if (self)
+    {
+        [self customInit];
     }
     return self;
+}
+
+-(id)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super initWithCoder:aDecoder];
+    if (self)
+    {
+        [self customInit];
+    }
+    return self;
+}
+
+-(void) customInit
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(orderChanged:) name:SIOrderChangedNotification object:nil];
+    
+    self.shoppingCartButtonItem = [[UIBarButtonItem alloc] initWithTitle:SIShoppingCartButtonTitle
+                                                                   style:UIBarButtonItemStyleBordered
+                                                                  target:self action:@selector(showShoppingCart:)];
 }
 
 - (void)viewDidLoad
@@ -87,6 +116,10 @@ NSString* const SIProductSegueIdentifier = @"Products";
     
     self.collectionView = nil;
     self.collectionViewLayout = nil;
+    
+    self.shoppingCartButtonItem = nil;
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 -(void) viewWillAppear:(BOOL)animated
@@ -94,6 +127,8 @@ NSString* const SIProductSegueIdentifier = @"Products";
     [super viewWillAppear:animated];
     
     self.categories = [[SIDataManager sharedManager] fetchAllCategories];
+    
+    [self.navigationItem setRightBarButtonItem:self.shoppingCartButtonItem animated:animated];
     
     [self.collectionView reloadData];
 
@@ -104,6 +139,10 @@ NSString* const SIProductSegueIdentifier = @"Products";
     }
     
     self.selectedCategory = nil;
+    
+
+    
+    //self.navigationItem.
 }
 
 - (void)didReceiveMemoryWarning
@@ -111,6 +150,31 @@ NSString* const SIProductSegueIdentifier = @"Products";
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+#pragma mark - Notification Callbacks
+
+-(void) orderChanged:(NSNotification*)notification
+{
+    
+}
+
+#pragma mark - Shopping Cart Button
+
+-(void) showShoppingCartButton
+{
+    //self.navigationItem.rightBarButtonItem = self.shoppingCartButtonItem;
+}
+
+-(void) hideShoppingCartButton
+{
+    
+}
+
+-(void) showShoppingCart:(id)sender
+{
+    [self performSegueWithIdentifier:SIShoppingCartSegueIdentifier sender:self];
+}
+
 
 #pragma mark - Segues
 
@@ -124,8 +188,16 @@ NSString* const SIProductSegueIdentifier = @"Products";
             if (self.selectedCategory)
             {
                 NSArray* products = [[SIDataManager sharedManager] fetchAllProductsForCategory:self.selectedCategory];
-                DDLogVerbose(@"%@ showing product listing for %@: %@", self, self.selectedCategory, products);
+                
+                DDLogVerbose(@"%@ showing product listing for category: %@ (id %@) -->",
+                             self, [self.selectedCategory name], [self.selectedCategory categoryID]);
+                for (SIProduct* product in products)
+                {
+                    DDLogVerbose(@"%@ category: %@", [product name], [product categoryID]);
+                }
+                
                 destinationViewController.products = products;
+                
                 return;
             }
             else assert(NO);
@@ -134,6 +206,11 @@ NSString* const SIProductSegueIdentifier = @"Products";
         
         DDLogError(@"%@ prepareForSegue:sender: ERROR unexpected state segue %@ selectedCategory %@",
                    self, segue, self.selectedCategory);
+    }
+    
+    else if ([[segue identifier] isEqualToString:SIShoppingCartSegueIdentifier])
+    {
+        // the SIDataManager singleton has the SIOrder which describes the cart
     }
 }
 

@@ -424,6 +424,64 @@ const NSInteger SIDataManagerBadSetupErrorCode          = 3;
     DDLogVerbose(@"%@ purged objects for %@ in %@", self, entityDescription, context);
 }
 
+#pragma mark - Order Utilities
+
+-(NSDecimalNumber*) totalPriceForOrder:(SIOrder*)order
+{
+    __block NSDecimalNumber* totalNumber = [NSDecimalNumber zero];
+    
+    NSDictionary* purchaseCounts = [order purchaseCounts];
+    
+    [purchaseCounts enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+        NSString* productID = (NSString*)key;
+        SIProduct* product = [self fetchProductWithProductID:productID];
+        if (product && [product price] && [obj isKindOfClass:[NSNumber class]])
+        {
+            NSDecimalNumber* countDecimalNumber = [NSDecimalNumber decimalNumberWithString:[(NSNumber*)obj stringValue]];
+            NSDecimalNumber* productTotalNumber = [[product price] decimalNumberByMultiplyingBy:countDecimalNumber];
+            totalNumber = [totalNumber decimalNumberByAdding:productTotalNumber];
+        }
+        else assert(NO);
+    }];
+    
+    return totalNumber;
+}
+
+-(NSArray*) productsWithPositivePurchaseCountForOrder:(SIOrder*)order
+{
+    __block __strong NSMutableArray* products = [NSMutableArray array];
+    
+    NSDictionary* purchaseCounts = [order purchaseCounts];
+    
+    [purchaseCounts enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+        NSString* productID = (NSString*)key;
+        SIProduct* product = [self fetchProductWithProductID:productID];
+        if (product)
+        {
+            NSNumber* countNumber = (NSNumber*)obj;
+            if ([countNumber integerValue] > 0)
+            {
+                DDLogVerbose(@"Added product %@", product);
+                [products addObject:product];
+            }
+        }
+    }];
+    
+    [products sortUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+        NSString* name1 = [(SIProduct*)obj1 name];
+        NSString* name2 = [(SIProduct*)obj2 name];
+        return [name1 caseInsensitiveCompare:name2];
+    }];
+    
+    DDLogVerbose(@"Products are %@", products);
+    
+    NSArray* immutableProducts = [NSArray arrayWithArray:products];
+    
+    //NSLog(@"Products are %@", immutableProducts);
+    
+    return [NSArray arrayWithArray:immutableProducts];
+}
+
 #pragma mark - Custom Setters
 
 -(void) setCurrentUser:(SIUser *)currentUser
@@ -448,7 +506,7 @@ const NSInteger SIDataManagerBadSetupErrorCode          = 3;
     DDLogVerbose(@"Updating shops...");
     [self.restKitObjectManager getObjectsAtPath:@"/magasins" parameters:nil success:^(RKObjectRequestOperation *op, RKMappingResult *result) {
         
-        [self replaceCurrentShopsWithShops:[result array]];
+        //[self replaceCurrentShopsWithShops:[result array]];
         
         DDLogVerbose(@"Shop update success: %@", [result array]);
         NSDictionary* userInfo = @{SIOutcomeKey : SIOutcomeSuccess, SIUpdateTypeKey : SIUpdateTypeShops};
@@ -689,6 +747,46 @@ const NSInteger SIDataManagerBadSetupErrorCode          = 3;
     return fetchResults;
 }
 
+-(SIProduct*) fetchProductWithProductID:(NSString*)productID
+{
+    if (!productID)
+    {
+        return nil;
+    }
+    
+    NSEntityDescription* entityDescription = [NSEntityDescription entityForName:@"SIProduct"
+                                                         inManagedObjectContext:[self managedObjectContextForFetchRequests]];
+    
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    [request setEntity:entityDescription];
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"productID == %@", productID];
+    [request setPredicate:predicate];
+    
+    NSError *error = nil;
+    NSArray *fetchResults = [[self managedObjectContextForFetchRequests] executeFetchRequest:request error:&error];
+    
+    if (error)
+    {
+        DDLogError(@"%@ fetchProductWithProductID %@ ERROR %@ : %@", self, productID, error, [error userInfo]);
+        return nil;
+    }
+    
+    if ([fetchResults count] == 0)
+    {
+        DDLogError(@"%@ fetchProductWithProductID %@ NOT FOUND", self, productID);
+        return nil;
+    }
+    
+    if ([fetchResults count] > 1)
+    {
+        DDLogError(@"%@ fetchProductWithProductID %@ MULTIPLE PRODUCTS", self, productID);
+    }
+    
+    SIProduct* product = [fetchResults objectAtIndex:0];
+    
+    return product;
+}
 
 #pragma mark - Normal CoreData Setup
 

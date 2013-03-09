@@ -77,13 +77,26 @@ extern NSString* const SIUpdateTypeProducts;
 /**
  User
  */
+
 @property (nonatomic, strong) SIUser* currentUser;
 
 /**
  Order
  */
+
 @property (nonatomic, strong) SIOrder* currentOrder;
 
+/**
+ Total price, wanted to handle this duty to SIOrder, but it has no knowledge of product price
+ */
+
+-(NSDecimalNumber*) totalPriceForOrder:(SIOrder*)order;
+
+/**
+ Products with non zero purchase counts
+ */
+
+-(NSArray*) productsWithPositivePurchaseCountForOrder:(SIOrder*)order;
 
 
 /**
@@ -127,5 +140,11 @@ extern NSString* const SIUpdateTypeProducts;
  */
 
 -(NSArray*) fetchAllProductsForCategory:(SICategory*)category;
+
+/**
+ Fetch a product with a given productID
+ */
+
+-(SIProduct*) fetchProductWithProductID:(NSString*)productID;
 
 @end

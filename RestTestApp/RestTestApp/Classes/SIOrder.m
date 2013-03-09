@@ -7,10 +7,14 @@
 //
 
 #import "SIOrder.h"
-
 #import "SIProduct.h"
+#import "SIDataManager.h"
 
-NSString * const SIOrderErrorDomain = @"SIOrderErrorDomain";
+#import <BlocksKit/BlocksKit.h>
+
+NSString* const SIOrderChangedNotification = @"SIOrderChangedNotification";
+
+NSString* const SIOrderErrorDomain = @"SIOrderErrorDomain";
 
 const NSInteger SIOrderImmutableErrorCode = 1;
 const NSInteger SIOrderPurchaseCountIsZeroErrorCode = 2;
@@ -36,6 +40,44 @@ const NSInteger SIOrderPurchaseCountIsZeroErrorCode = 2;
     return self;
 }
 
+#pragma mark - Helpers
+
+-(BOOL) canProceed
+{
+    NSArray* values = [self.purchaseCountDictionary allValues];
+    BOOL hasAtLeastOnePurchase = [values any:^BOOL(id obj) {
+        NSNumber* number = (NSNumber*)obj;
+        if ([number isKindOfClass:[NSNumber class]])
+        {
+            NSInteger integer = [number integerValue];
+            if (integer > 0)
+            {
+                return YES;
+            }
+        }
+        else assert(NO);
+        return NO;
+    }];
+    return hasAtLeastOnePurchase;
+}
+
+#pragma mark - Totals
+
+-(NSInteger) totalPurchaseCount
+{
+    __block NSInteger totalCount = 0;
+    
+    [self.purchaseCountDictionary enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+        NSNumber* countNumber = (NSNumber*)obj;
+        NSInteger count = [countNumber integerValue];
+        totalCount += count;
+    }];
+    
+    return totalCount;
+}
+
+#pragma mark - Purchase Counts
+
 -(BOOL) resetPurchaseCountsError:(NSError*__autoreleasing *)error
 {
     if (self.state != SIOrderStatePreparing)
@@ -44,6 +86,9 @@ const NSInteger SIOrderPurchaseCountIsZeroErrorCode = 2;
         return NO;
     }
     self.purchaseCountDictionary = [NSMutableDictionary dictionary];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:SIOrderChangedNotification object:self];
+    
     return YES;
 }
 
@@ -57,6 +102,9 @@ const NSInteger SIOrderPurchaseCountIsZeroErrorCode = 2;
     NSInteger count = [self purchaseCountForProduct:product];
     count++;
     [self.purchaseCountDictionary setObject:[NSNumber numberWithInteger:count] forKey:[product productID]];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:SIOrderChangedNotification object:self];
+    
     return YES;
 }
 
@@ -76,6 +124,9 @@ const NSInteger SIOrderPurchaseCountIsZeroErrorCode = 2;
     }
     count--;
     [self.purchaseCountDictionary setObject:[NSNumber numberWithInteger:count] forKey:[product productID]];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:SIOrderChangedNotification object:self];
+    
     return YES;
 }
 

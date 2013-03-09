@@ -11,6 +11,12 @@
 @class SIProduct;
 
 /**
+ Notifications
+ */
+
+extern NSString* const SIOrderChangedNotification;
+
+/**
  Error domains and codes.
  */
 
@@ -25,8 +31,8 @@ extern const NSInteger SIOrderPurchaseCountIsZeroErrorCode;
 typedef enum _SIOrderState {
     SIOrderStateNone = 0,   // should never happen, order can NOT be mutated
     SIOrderStatePreparing,  // order CAN be mutated
-    SIOrderStateOngoing,    // order can NOT be mutated
-    SIOrderStateDone        // order can NOT be mutated
+    SIOrderStateOngoing,    // order can NOT be mutated (back to SIOrderStatePreparing if fails, to SIOrderStateOngoing if succeeds)
+    SIOrderStateDone        // order can NOT be mutated, once the order is done, there is no going back
 } SIOrderState;
 
 
@@ -48,6 +54,19 @@ typedef enum _SIOrderState {
 -(BOOL) resetPurchaseCountsError:(NSError**)error;
 -(BOOL) increasePurchaseCountForProduct:(SIProduct*)product error:(NSError**)error;
 -(BOOL) decreasePurchaseCountForProduct:(SIProduct*)product error:(NSError**)error;
+
+/**
+ Will return YES if there is any point in performing the order (basically if there is at least one product with a purchase count greater than 0)
+ */
+
+-(BOOL) canProceed;
+
+/**
+ Total purchase count
+ */
+
+-(NSInteger) totalPurchaseCount;
+ 
 
 /**
  Order access methods, can be accesses in any state

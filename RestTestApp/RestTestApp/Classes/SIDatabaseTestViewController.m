@@ -7,8 +7,12 @@
 //
 
 #import "SIDatabaseTestViewController.h"
-
 #import "SIDataManager.h"
+#import "SICategory.h"
+#import "SIShop.h"
+#import "SIProduct.h"
+
+#import "DDLog.h"
 
 @interface SIDatabaseTestViewController ()
 
@@ -61,19 +65,31 @@
 - (IBAction)fetchShops:(id)sender
 {
     NSArray* shops = [[SIDataManager sharedManager] fetchAllShops];
-    NSLog(@"FetchShops: %@", shops);
+    DDLogInfo(@"FetchShops: %d", [shops count]);
+    for (SIShop* shop in shops)
+    {
+        DDLogInfo(@"%@", [shop name]);
+    }
 }
 
 - (IBAction)fetchCategories:(id)sender
 {
     NSArray* categories = [[SIDataManager sharedManager] fetchAllCategories];
-    NSLog(@"FetchCategories: %@", categories);
+    DDLogInfo(@"FetchCategories: %d", [categories count]);
+    for (SICategory* category in categories)
+    {
+        DDLogInfo(@"%@, %@", [category name], [category categoryDescription]);
+    }
 }
 
 - (IBAction)fetchProducts:(id)sender
 {
     NSArray* products = [[SIDataManager sharedManager] fetchAllProducts];
-    NSLog(@"FetchProducts: %@", products);
+    DDLogInfo(@"FetchProducts: %d", [products count]);
+    for (SIProduct* product in products)
+    {
+        DDLogInfo(@"%@, category: %@", [product name], [product categoryID]);
+    }
 }
 
 - (void)viewDidUnload

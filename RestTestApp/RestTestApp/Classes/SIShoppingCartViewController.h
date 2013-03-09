@@ -8,6 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SIShoppingCartViewController : UIViewController
+extern NSString* const SIShoppingCartButtonTitle;
+extern NSString* const SIShoppingCartSegueIdentifier;
+
+@interface SIShoppingCartViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+
+@property (nonatomic, strong) IBOutlet UITableView* tableView;
+
+@property (nonatomic, strong) IBOutlet UILabel* totalPriceLabel;
+@property (nonatomic, strong) IBOutlet UILabel* totalPurchaseCountLabel;
 
 @end
