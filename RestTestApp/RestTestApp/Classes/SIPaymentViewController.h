@@ -8,12 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
-#import "CardIO.h"
+extern NSString* const SIPaymentSegueIdentifier;
 
-@interface SIPaymentViewController : UIViewController <CardIOPaymentViewControllerDelegate>
+@interface SIPaymentViewController : UIViewController 
 
-@property (nonatomic, strong) CardIOCreditCardInfo* creditCardInfo;
+@property (strong, nonatomic) IBOutlet UILabel *totalTitleLabel;
+@property (strong, nonatomic) IBOutlet UILabel *totalPriceLabel;
+@property (strong, nonatomic) IBOutlet UIButton *mapButton;
+@property (strong, nonatomic) IBOutlet UIButton *payButton;
 
-- (IBAction)scanCard:(id)sender;
+- (IBAction)showMap:(id)sender;
+- (IBAction)processPayment:(id)sender;
 
 @end

@@ -47,6 +47,7 @@
 		10806BE516E3B5FC00750558 /* SIShopAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 10806BE416E3B5FC00750558 /* SIShopAnnotation.m */; };
 		10806BE716E3BC3400750558 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10806BE616E3BC3400750558 /* CoreLocation.framework */; };
 		109D511A16EB8A32000CFC4F /* SIProductCartCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 109D511916EB8A32000CFC4F /* SIProductCartCell.m */; };
+		109D511D16EC046E000CFC4F /* SIThemeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 109D511C16EC046E000CFC4F /* SIThemeManager.m */; };
 		10B9535E16BC176C007A23D2 /* SIHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B9535D16BC176C007A23D2 /* SIHTTPClient.m */; };
 		10B9536516BC275A007A23D2 /* SIModel1.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 10B9536316BC275A007A23D2 /* SIModel1.xcdatamodeld */; };
 		10B9536B16BC2BEA007A23D2 /* SIDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B9536A16BC2BEA007A23D2 /* SIDataManager.m */; };
@@ -142,6 +143,8 @@
 		10806BE616E3BC3400750558 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		109D511816EB8A32000CFC4F /* SIProductCartCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SIProductCartCell.h; path = Classes/SIProductCartCell.h; sourceTree = "<group>"; };
 		109D511916EB8A32000CFC4F /* SIProductCartCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SIProductCartCell.m; path = Classes/SIProductCartCell.m; sourceTree = "<group>"; };
+		109D511B16EC046E000CFC4F /* SIThemeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SIThemeManager.h; path = Classes/SIThemeManager.h; sourceTree = "<group>"; };
+		109D511C16EC046E000CFC4F /* SIThemeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SIThemeManager.m; path = Classes/SIThemeManager.m; sourceTree = "<group>"; };
 		10B9535C16BC176C007A23D2 /* SIHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SIHTTPClient.h; path = Classes/SIHTTPClient.h; sourceTree = "<group>"; };
 		10B9535D16BC176C007A23D2 /* SIHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SIHTTPClient.m; path = Classes/SIHTTPClient.m; sourceTree = "<group>"; };
 		10B9536416BC275A007A23D2 /* SIModel1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SIModel1.xcdatamodel; sourceTree = "<group>"; };
@@ -412,6 +415,8 @@
 				10B9535D16BC176C007A23D2 /* SIHTTPClient.m */,
 				10B9536916BC2BEA007A23D2 /* SIDataManager.h */,
 				10B9536A16BC2BEA007A23D2 /* SIDataManager.m */,
+				109D511B16EC046E000CFC4F /* SIThemeManager.h */,
+				109D511C16EC046E000CFC4F /* SIThemeManager.m */,
 			);
 			name = "Delegate And Managers";
 			sourceTree = "<group>";
@@ -624,6 +629,7 @@
 				101BCEEF16E7F5AD008A3EE2 /* SIUser+Additions.m in Sources */,
 				1063EE5E16E9242900FCF43E /* SIOrder.m in Sources */,
 				109D511A16EB8A32000CFC4F /* SIProductCartCell.m in Sources */,
+				109D511D16EC046E000CFC4F /* SIThemeManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

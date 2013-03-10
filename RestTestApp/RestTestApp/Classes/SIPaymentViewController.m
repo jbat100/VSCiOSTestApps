@@ -8,9 +8,16 @@
 
 #import "SIPaymentViewController.h"
 
+#import "SIDataManager.h"
+#import "SIThemeManager.h"
+
+#import "SIOrder.h"
+
+NSString* const SIPaymentSegueIdentifier = @"Payment";
+
 @interface SIPaymentViewController ()
 
-//@property (nonatomic, strong) CardIOPaymentViewController *scanViewController;
+-(void) reloadInterface;
 
 @end
 
@@ -37,11 +44,47 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)scanCard:(id)sender {
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self reloadInterface];
+}
+
+- (void)viewDidUnload {
     
-    /*
-     *  Create a new one every time just to be sure nothing funny happens...
-     */
+    [self setTotalTitleLabel:nil];
+    [self setTotalPriceLabel:nil];
+    [self setMapButton:nil];
+    [self setPayButton:nil];
+    
+    [super viewDidUnload];
+}
+
+-(void) reloadInterface
+{
+    SIOrder* order = [SIDataManager sharedManager].currentOrder;
+    NSDecimalNumber* totalPriceNumber = [[SIDataManager sharedManager] totalPriceForOrder:order];
+    
+    self.totalPriceLabel.text = [[SIThemeManager sharedManager].priceNumberFormatter stringFromNumber:totalPriceNumber];
+}
+
+#pragma mark - UI Callbacks
+
+- (IBAction)showMap:(id)sender
+{
+    
+}
+
+- (IBAction)processPayment:(id)sender
+{
+    
+}
+
+#pragma mark - CardIO (Obsolete)
+
+/*
+
+- (IBAction)scanCard:(id)sender {
     
     CardIOPaymentViewController *scanViewController = nil;
     
@@ -64,5 +107,8 @@
     // Use the card info...
     [scanViewController dismissModalViewControllerAnimated:YES];
 }
+ 
+ */
+
 
 @end

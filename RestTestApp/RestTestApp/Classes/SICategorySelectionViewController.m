@@ -58,8 +58,6 @@ NSString* const SIProductSegueIdentifier = @"Products";
 
 -(void) customInit
 {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(orderChanged:) name:SIOrderChangedNotification object:nil];
-    
     self.shoppingCartButtonItem = [[UIBarButtonItem alloc] initWithTitle:SIShoppingCartButtonTitle
                                                                    style:UIBarButtonItemStyleBordered
                                                                   target:self action:@selector(showShoppingCart:)];
@@ -70,7 +68,7 @@ NSString* const SIProductSegueIdentifier = @"Products";
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    //UICollectionViewFlowLayout
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(orderChanged:) name:SIOrderChangedNotification object:nil];
     
     self.view.backgroundColor = [UIColor blackColor];
     
@@ -98,26 +96,23 @@ NSString* const SIProductSegueIdentifier = @"Products";
     [self.view addSubview:self.collectionView];
 }
 
--(void) viewWillUnload
+-(void) viewDidUnload
 {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    
     self.collectionView.delegate = nil;
     self.collectionView.dataSource = nil;
     
     self.collectionView = nil;
     self.collectionViewLayout = nil;
     
-    [super viewWillUnload];
+    [super viewDidUnload];
 }
 
 -(void) dealloc
 {
     self.collectionView.delegate = nil;
     self.collectionView.dataSource = nil;
-    
-    self.collectionView = nil;
-    self.collectionViewLayout = nil;
-    
-    self.shoppingCartButtonItem = nil;
     
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
@@ -182,6 +177,11 @@ NSString* const SIProductSegueIdentifier = @"Products";
 {
     if ([[segue identifier] isEqualToString:SIProductSegueIdentifier])
     {
+        UIBarButtonItem* backButton = [[UIBarButtonItem alloc] initWithTitle:@"Categories"
+                                                                       style:UIBarButtonItemStylePlain
+                                                                      target:nil action:nil];
+        self.navigationItem.backBarButtonItem = backButton;
+        
         SIProductListingViewController* destinationViewController = [segue destinationViewController];
         if ([destinationViewController isKindOfClass:[SIProductListingViewController class]])
         {
@@ -210,7 +210,10 @@ NSString* const SIProductSegueIdentifier = @"Products";
     
     else if ([[segue identifier] isEqualToString:SIShoppingCartSegueIdentifier])
     {
-        // the SIDataManager singleton has the SIOrder which describes the cart
+        UIBarButtonItem* backButton = [[UIBarButtonItem alloc] initWithTitle:@"Retour"
+                                                                       style:UIBarButtonItemStylePlain
+                                                                      target:nil action:nil];
+        self.navigationItem.backBarButtonItem = backButton;
     }
 }
 

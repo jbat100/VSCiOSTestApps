@@ -13,6 +13,8 @@
 
 #import <MapKit/MapKit.h>
 
+NSString* const SILocationMapSegueIdentifier = @"Map";
+
 MKCoordinateRegion CoordinateRegionForLocations(NSArray* locations) {
     
     /*
@@ -88,6 +90,11 @@ MKCoordinateRegion CoordinateRegionForLocations(NSArray* locations) {
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+}
+
+-(void)viewDidUnload
+{
+    self.mapView = nil;
 }
 
 - (void)didReceiveMemoryWarning

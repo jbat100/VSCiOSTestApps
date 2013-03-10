@@ -10,14 +10,14 @@
 #import "SIProductDescriptionViewController.h"
 #import "SIShoppingCartViewController.h"
 
+#import "SIDataManager.h"
+#import "SIThemeManager.h"
+
 #import "SIProduct.h"
 #import "SIProductDescriptionCell.h"
-#import "SIDataManager.h"
 #import "SIOrder.h"
 
 @interface SIProductListingViewController ()
-
-@property (nonatomic, strong) NSNumberFormatter* priceNumberFormatter;
 
 @property (nonatomic, strong) UIBarButtonItem* shoppingCartButtonItem;
 
@@ -56,10 +56,6 @@
 
 -(void) customInit
 {
-    self.priceNumberFormatter = [[NSNumberFormatter alloc] init];
-    [self.priceNumberFormatter setCurrencySymbol:@"€"];
-    [self.priceNumberFormatter setNumberStyle: NSNumberFormatterCurrencyStyle];
-    
     self.shoppingCartButtonItem = [[UIBarButtonItem alloc] initWithTitle:SIShoppingCartButtonTitle
                                                                    style:UIBarButtonItemStyleBordered
                                                                   target:self action:@selector(showShoppingCart:)];
@@ -77,11 +73,18 @@
     [self.tableView reloadData];
 }
 
+-(void)viewDidUnload
+{
+    self.tableView = nil;
+    
+    [super viewDidUnload];
+}
+
 -(void) viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     
-    self.navigationItem.backBarButtonItem.title = @"Categories";
+    //self.navigationItem.backBarButtonItem.title = @"Categories";
     
     [self.navigationItem setRightBarButtonItem:self.shoppingCartButtonItem animated:animated];
     
@@ -96,8 +99,14 @@
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    
     if ([segue.identifier isEqualToString:SIProductDescriptionSegueIdentifier])
     {
+        UIBarButtonItem* backButton = [[UIBarButtonItem alloc] initWithTitle:@"Produits"
+                                                                       style:UIBarButtonItemStylePlain
+                                                                      target:nil action:nil];
+        self.navigationItem.backBarButtonItem = backButton;
+        
         SIProductDescriptionViewController* viewController = segue.destinationViewController;
         if ([viewController isKindOfClass:[SIProductDescriptionViewController class]])
         {
@@ -108,10 +117,15 @@
     
     if ([segue.identifier isEqualToString:SIShoppingCartSegueIdentifier])
     {
+        UIBarButtonItem* backButton = [[UIBarButtonItem alloc] initWithTitle:@"Retour"
+                                                                       style:UIBarButtonItemStylePlain
+                                                                      target:nil action:nil];
+        self.navigationItem.backBarButtonItem = backButton;
+        
         SIShoppingCartViewController* viewController = segue.destinationViewController;
         if ([viewController isKindOfClass:[SIShoppingCartViewController class]])
         {
-            
+            self.navigationItem.backBarButtonItem = backButton;
         }
         else assert(NO);
     }
@@ -205,7 +219,7 @@
     {
         SIProduct *product = [self.products objectAtIndex:indexPath.row];
         cell.productNameLabel.text = [product name];
-        NSString* priceString = [self.priceNumberFormatter stringFromNumber:[product price]];
+        NSString* priceString = [[SIThemeManager sharedManager].priceNumberFormatter stringFromNumber:[product price]];
         cell.productPriceLabel.text = priceString;
         cell.productDescriptionLabel.text = [product productDescription];
         NSInteger count = [[SIDataManager sharedManager].currentOrder purchaseCountForProduct:product];

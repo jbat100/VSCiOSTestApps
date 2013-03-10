@@ -7,7 +7,11 @@
 //
 
 #import "SIShoppingCartViewController.h"
+#import "SIPaymentViewController.h"
+
 #import "SIDataManager.h"
+#import "SIThemeManager.h"
+
 #import "SIProductCartCell.h"
 #import "SIProduct.h"
 #import "SIOrder.h"
@@ -20,11 +24,11 @@ NSString* const SIShoppingCartSegueIdentifier = @"ShoppingCart";
 @interface SIShoppingCartViewController ()
 
 @property (nonatomic, strong) IBOutlet UIView* lowerView;
-
-@property (nonatomic, strong) NSNumberFormatter* priceNumberFormatter;
 @property (nonatomic, strong) NSArray* products;
 
 -(void) customInit;
+
+-(void) proceedToPayment:(id)sender;
 
 @end
 
@@ -52,26 +56,40 @@ NSString* const SIShoppingCartSegueIdentifier = @"ShoppingCart";
 
 -(void) customInit
 {
-    self.priceNumberFormatter = [[NSNumberFormatter alloc] init];
-    [self.priceNumberFormatter setCurrencySymbol:@"€"];
-    [self.priceNumberFormatter setNumberStyle: NSNumberFormatterCurrencyStyle];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(orderChanged:)
-                                                 name:SIOrderChangedNotification object:nil];
+
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(orderChanged:)
+                                                 name:SIOrderChangedNotification object:nil];
+}
+
+-(void)viewDidUnload
+{
+    [super viewWillUnload];
+    
+    self.tableView = nil;
+    self.totalPriceLabel = nil;
+    self.totalPurchaseCountLabel = nil;
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     
-    SIOrder* order = [SIDataManager sharedManager].currentOrder;
+    UIBarButtonItem* buttonItem = [[UIBarButtonItem alloc] initWithTitle:@"Paiement"
+                                                                   style:UIBarButtonItemStyleBordered
+                                                                  target:self
+                                                                  action:@selector(proceedToPayment:)];
+    self.navigationItem.rightBarButtonItem = buttonItem;
     
+    SIOrder* order = [SIDataManager sharedManager].currentOrder;
     self.products = [[SIDataManager sharedManager] productsWithPositivePurchaseCountForOrder:order];
     
     DDLogVerbose(@"Products is %@", self.products);
@@ -84,6 +102,28 @@ NSString* const SIShoppingCartSegueIdentifier = @"ShoppingCart";
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    
+    self.tableView = nil;
+    self.totalPriceLabel = nil;
+    self.totalPurchaseCountLabel = nil;
+}
+
+#pragma mark - Segues
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:SIPaymentSegueIdentifier])
+    {
+        UIBarButtonItem* backButton = [[UIBarButtonItem alloc] initWithTitle:@"Retour"
+                                                                       style:UIBarButtonItemStylePlain
+                                                                      target:nil action:nil];
+        self.navigationItem.backBarButtonItem = backButton;
+    }
 }
 
 #pragma mark - UI Helpers
@@ -101,7 +141,7 @@ NSString* const SIShoppingCartSegueIdentifier = @"ShoppingCart";
         totalPurchaseCount = [order totalPurchaseCount];
     }
     
-    self.totalPriceLabel.text = [self.priceNumberFormatter stringFromNumber:totalPrice];
+    self.totalPriceLabel.text = [[SIThemeManager sharedManager].priceNumberFormatter stringFromNumber:totalPrice];
     self.totalPurchaseCountLabel.text = [NSString stringWithFormat:@"%d", totalPurchaseCount];
 }
 
@@ -140,6 +180,19 @@ NSString* const SIShoppingCartSegueIdentifier = @"ShoppingCart";
 }
 
 #pragma mark - UICallbacks
+
+-(void) proceedToPayment:(id)sender
+{
+    @try {
+        [self performSegueWithIdentifier:SIPaymentSegueIdentifier sender:self];
+    }
+    @catch (NSException *exception) {
+        DDLogError(@"%@ EXCEPTION %@", self, exception);
+    }
+    @finally {
+        
+    }
+}
 
 -(IBAction)increasePurchaseCount:(id)sender
 {

@@ -9,8 +9,10 @@
 #import "SIProductDescriptionViewController.h"
 #import "SIShoppingCartViewController.h"
 
-#import "SIProduct.h"
 #import "SIDataManager.h"
+#import "SIThemeManager.h"
+
+#import "SIProduct.h"
 #import "SIOrder.h"
 
 NSString* const SIProductDescriptionSegueIdentifier = @"ProductDescription";
@@ -18,7 +20,6 @@ NSString* const SIProductDescriptionSegueIdentifier = @"ProductDescription";
 @interface SIProductDescriptionViewController ()
 
 @property (nonatomic, strong) IBOutlet UIView* lowerView;
-@property (nonatomic, strong) NSNumberFormatter* priceNumberFormatter;
 @property (nonatomic, strong) UIBarButtonItem* shoppingCartButtonItem;
 
 -(void) customInit;
@@ -52,10 +53,6 @@ NSString* const SIProductDescriptionSegueIdentifier = @"ProductDescription";
 
 -(void) customInit
 {
-    self.priceNumberFormatter = [[NSNumberFormatter alloc] init];
-    [self.priceNumberFormatter setCurrencySymbol:@"€"];
-    [self.priceNumberFormatter setNumberStyle: NSNumberFormatterCurrencyStyle];
-    
     self.shoppingCartButtonItem = [[UIBarButtonItem alloc] initWithTitle:SIShoppingCartButtonTitle
                                                                    style:UIBarButtonItemStyleBordered
                                                                   target:self
@@ -66,6 +63,11 @@ NSString* const SIProductDescriptionSegueIdentifier = @"ProductDescription";
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    
+//    UIBarButtonItem *newBackButton = [[UIBarButtonItem alloc] initWithTitle:@"Produits"
+//                                                                      style:UIBarButtonItemStyleBordered
+//                                                                     target:nil action:nil];
+//    [[self navigationItem] setBackBarButtonItem:newBackButton];
     
     [self reloadInterface];
 }
@@ -81,17 +83,32 @@ NSString* const SIProductDescriptionSegueIdentifier = @"ProductDescription";
     self.addButton = nil;
     self.removeButton = nil;
     self.purchaseCountLabel = nil;
+    
 }
 
 -(void) viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     
-    self.navigationItem.backBarButtonItem.title = @"Produits";
+//    UIBarButtonItem *newBackButton = [[UIBarButtonItem alloc] initWithTitle:@"Produits"
+//                                                                      style:UIBarButtonItemStyleBordered
+//                                                                     target:nil action:nil];
+//    [[self navigationItem] setBackBarButtonItem:newBackButton];
     
     [self.navigationItem setRightBarButtonItem:self.shoppingCartButtonItem animated:animated];
     
     [self reloadInterface];
+}
+
+-(void) viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+//    UIBarButtonItem *newBackButton = [[UIBarButtonItem alloc] initWithTitle:@"Produits"
+//                                                                      style:UIBarButtonItemStyleBordered
+//                                                                     target:nil action:nil];
+//    [[self navigationItem] setBackBarButtonItem:newBackButton];
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -108,7 +125,7 @@ NSString* const SIProductDescriptionSegueIdentifier = @"ProductDescription";
     {
         self.productImageView = nil;
         self.productNameLabel.text = [self.product name];
-        self.productPriceLabel.text = [self.priceNumberFormatter stringFromNumber:[self.product price]];
+        self.productPriceLabel.text = [[SIThemeManager sharedManager].priceNumberFormatter stringFromNumber:[self.product price]];
         self.productDescriptionTextView.text = [self.product productDescription];
         
         [self updateCountLabel];
@@ -131,6 +148,20 @@ NSString* const SIProductDescriptionSegueIdentifier = @"ProductDescription";
 {
     _product = product;
     [self reloadInterface];
+}
+
+#pragma mark - Segues
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    UIBarButtonItem* backButton = [[UIBarButtonItem alloc] initWithTitle:@"Retour"
+                                                                   style:UIBarButtonItemStylePlain
+                                                                  target:nil action:nil];
+    
+    if ([segue.identifier isEqualToString:SIShoppingCartSegueIdentifier])
+    {
+        self.navigationItem.backBarButtonItem = backButton;
+    }
 }
 
 #pragma mark - UIHelpers
