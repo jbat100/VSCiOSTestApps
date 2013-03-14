@@ -8,12 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SIAccountCreationViewController : UIViewController
+@interface SIAccountCreationViewController : UIViewController <UITextFieldDelegate>
 
 @property (strong, nonatomic) IBOutlet UILabel *titlteLabel;
-@property (strong, nonatomic) IBOutlet UITextField *surnameTextField;
+@property (strong, nonatomic) IBOutlet UITextField *lastNameTextField;
 @property (strong, nonatomic) IBOutlet UITextField *firstNameTextField;
 @property (strong, nonatomic) IBOutlet UITextField *emailTextField;
-@property (strong, nonatomic) IBOutlet UITextField *passwordTextField;
 
 @end

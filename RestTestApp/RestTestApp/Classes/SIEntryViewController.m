@@ -228,18 +228,6 @@
     return YES;
 }
 
-- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
-{
-    /*
-     *  Every time the user types in a new character, test if we can login or not...
-     *  In fact use notifications instead, here the text HAS NOT YET BEEN CHANGED
-     */
-    
-    //self.loginBarButtonItem.enabled = [self isLoginPossible];
-    
-    return YES;
-}
-
 -(void) textFieldDidChange:(id)sender
 {
     if (sender == self.loginTextField || sender == self.passwordTextField)

@@ -786,31 +786,23 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nom" minimumFontSize="17" id="iSu-mq-niH">
-                                <rect key="frame" x="20" y="70" width="280" height="30"/>
+                                <rect key="frame" x="20" y="45" width="280" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Prénom" minimumFontSize="17" id="mQv-vu-tob">
-                                <rect key="frame" x="20" y="101" width="280" height="30"/>
+                                <rect key="frame" x="20" y="83" width="280" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" minimumFontSize="17" id="7FR-Ho-bjt">
-                                <rect key="frame" x="20" y="132" width="280" height="30"/>
+                                <rect key="frame" x="20" y="121" width="280" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Mot de passe" minimumFontSize="17" id="cLA-gn-l8P">
-                                <rect key="frame" x="20" y="162" width="280" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Création de compte" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="tzH-aw-YNi">
-                                <rect key="frame" x="20" y="16" width="280" height="21"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -819,9 +811,7 @@
                     <connections>
                         <outlet property="emailTextField" destination="7FR-Ho-bjt" id="Mc3-bo-IbX"/>
                         <outlet property="firstNameTextField" destination="mQv-vu-tob" id="3tT-qX-VkR"/>
-                        <outlet property="passwordTextField" destination="cLA-gn-l8P" id="vsk-YQ-z5O"/>
-                        <outlet property="surnameTextField" destination="iSu-mq-niH" id="MQ2-sX-CxO"/>
-                        <outlet property="titlteLabel" destination="tzH-aw-YNi" id="f9G-ZU-Xd1"/>
+                        <outlet property="lastNameTextField" destination="iSu-mq-niH" id="AL7-dg-a5v"/>
                         <segue destination="Kgs-qz-25R" kind="push" identifier="Home" id="Usl-S5-Scl"/>
                     </connections>
                 </viewController>
@@ -891,8 +881,7 @@
             <relationships>
                 <relationship kind="outlet" name="emailTextField" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="firstNameTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="passwordTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="surnameTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="lastNameTextField" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="titlteLabel" candidateClass="UILabel"/>
             </relationships>
         </class>
@@ -1006,8 +995,6 @@
         <class className="SIShoppingCartViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SIShoppingCartViewController.h"/>
             <relationships>
-                <relationship kind="action" name="decreasePurchaseCount:"/>
-                <relationship kind="action" name="increasePurchaseCount:"/>
                 <relationship kind="outlet" name="lowerView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
                 <relationship kind="outlet" name="totalPriceLabel" candidateClass="UILabel"/>
@@ -1021,7 +1008,7 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="9Jf-Wn-tCk"/>
+        <segue reference="Usl-S5-Scl"/>
         <segue reference="Vq3-Q0-NPI"/>
     </inferredMetricsTieBreakers>
 </document>

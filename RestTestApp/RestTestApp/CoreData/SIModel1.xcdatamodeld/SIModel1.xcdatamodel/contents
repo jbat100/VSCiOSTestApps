@@ -9,12 +9,6 @@
         <attribute name="updateDate" optional="YES" attributeType="Date" syncable="YES"/>
         <relationship name="products" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SIProduct" inverseName="category" inverseEntity="SIProduct" syncable="YES"/>
     </entity>
-    <entity name="SICreditCard" representedClassName="SICreditCard" syncable="YES">
-        <attribute name="encodedInfo" optional="YES" attributeType="Binary" syncable="YES"/>
-        <attribute name="lastDigits" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="serverCode" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SIUser" inverseName="creditCards" inverseEntity="SIUser" syncable="YES"/>
-    </entity>
     <entity name="SIProduct" representedClassName="SIProduct" syncable="YES">
         <attribute name="categoryID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="creationDate" optional="YES" attributeType="Date" syncable="YES"/>
@@ -37,22 +31,9 @@
         <attribute name="shopID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="updateDate" optional="YES" attributeType="Date" syncable="YES"/>
     </entity>
-    <entity name="SIUser" representedClassName="SIUser" syncable="YES">
-        <attribute name="creationDate" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="encodedPassword" optional="YES" attributeType="Binary" syncable="YES"/>
-        <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="serverCode" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="updateDate" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="userID" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="creditCards" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="SICreditCard" inverseName="user" inverseEntity="SICreditCard" syncable="YES"/>
-    </entity>
     <elements>
         <element name="SICategory" positionX="-461" positionY="-142" width="128" height="148"/>
-        <element name="SICreditCard" positionX="-207" positionY="-558" width="128" height="103"/>
         <element name="SIProduct" positionX="-209" positionY="-144" width="128" height="178"/>
         <element name="SIShop" positionX="-380" positionY="-315" width="128" height="178"/>
-        <element name="SIUser" positionX="-432" positionY="-520" width="128" height="180"/>
     </elements>
 </model>
