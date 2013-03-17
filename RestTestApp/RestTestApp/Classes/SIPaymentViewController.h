@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+#import "PayPalMobile.h"
+
 extern NSString* const SIPaymentSegueIdentifier;
 
-@interface SIPaymentViewController : UIViewController 
+@interface SIPaymentViewController : UIViewController <PayPalPaymentDelegate>
 
 @property (strong, nonatomic) IBOutlet UILabel *totalTitleLabel;
 @property (strong, nonatomic) IBOutlet UILabel *totalPriceLabel;

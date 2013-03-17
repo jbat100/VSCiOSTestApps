@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SIAccountCreationViewController : UIViewController <UITextFieldDelegate>
+extern NSString* const SIAccountCreationSegueIdentifier;
+
+@interface SIAccountCreationViewController : UIViewController <UITextFieldDelegate, UIAlertViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UILabel *titlteLabel;
 @property (strong, nonatomic) IBOutlet UITextField *lastNameTextField;

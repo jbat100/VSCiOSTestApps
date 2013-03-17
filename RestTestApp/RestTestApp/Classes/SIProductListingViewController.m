@@ -11,6 +11,7 @@
 #import "SIShoppingCartViewController.h"
 
 #import "SIDataManager.h"
+#import "SIHTTPClient.h"
 #import "SIThemeManager.h"
 
 #import "SIProduct.h"
@@ -59,6 +60,11 @@
     self.shoppingCartButtonItem = [[UIBarButtonItem alloc] initWithTitle:SIShoppingCartButtonTitle
                                                                    style:UIBarButtonItemStyleBordered
                                                                   target:self action:@selector(showShoppingCart:)];
+}
+
+-(void)dealloc
+{
+    
 }
 
 - (void)viewDidLoad
@@ -171,8 +177,8 @@
         if ([self.products count] > path.row)
         {
             SIProduct* product = [self.products objectAtIndex:path.row];
-            [[SIDataManager sharedManager].currentOrder increasePurchaseCountForProduct:product error:nil];
-            NSInteger count = [[SIDataManager sharedManager].currentOrder purchaseCountForProduct:product];
+            [[SIHTTPClient sharedClient].currentOrder increasePurchaseCountForProduct:product error:nil];
+            NSInteger count = [[SIHTTPClient sharedClient].currentOrder purchaseCountForProduct:product];
             [self setPurchaseCount:count forCell:cell];
         } else assert(NO);
     } else assert(NO);
@@ -190,8 +196,8 @@
         if ([self.products count] > path.row)
         {
             SIProduct* product = [self.products objectAtIndex:path.row];
-            [[SIDataManager sharedManager].currentOrder decreasePurchaseCountForProduct:product error:nil];
-            NSInteger count = [[SIDataManager sharedManager].currentOrder purchaseCountForProduct:product];
+            [[SIHTTPClient sharedClient].currentOrder decreasePurchaseCountForProduct:product error:nil];
+            NSInteger count = [[SIHTTPClient sharedClient].currentOrder purchaseCountForProduct:product];
             [self setPurchaseCount:count forCell:cell];
         } else assert(NO);
     } else assert(NO);
@@ -222,7 +228,7 @@
         NSString* priceString = [[SIThemeManager sharedManager].priceNumberFormatter stringFromNumber:[product price]];
         cell.productPriceLabel.text = priceString;
         cell.productDescriptionLabel.text = [product productDescription];
-        NSInteger count = [[SIDataManager sharedManager].currentOrder purchaseCountForProduct:product];
+        NSInteger count = [[SIHTTPClient sharedClient].currentOrder purchaseCountForProduct:product];
         [self setPurchaseCount:count forCell:cell];
     }
     else assert(NO);

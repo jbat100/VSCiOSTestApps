@@ -25,7 +25,6 @@ extern NSString * const SIDataManagerErrorDomain;
 extern const NSInteger SIDataManagerUpdateOngoingErrorCode;
 extern const NSInteger SIDataManagerNetworkErrorCode;
 extern const NSInteger SIDataManagerBadSetupErrorCode;
-extern const NSInteger SIDataManagerNoCurrentUserErrorCode;
 extern const NSInteger SIDataManagerInternalErrorCode;
 
 /**
@@ -74,17 +73,7 @@ extern NSString* const SIUpdateTypeProducts;
 @property (nonatomic, assign, readonly) BOOL updatingCategories;
 @property (nonatomic, assign, readonly) BOOL updatingProducts;
 
-/**
- User
- */
-
-@property (nonatomic, strong) SIUser* currentUser;
-
-/**
- Order
- */
-
-@property (nonatomic, strong) SIOrder* currentOrder;
+-(void) performFullDatabasUpdate;
 
 /**
  Total price, wanted to handle this duty to SIOrder, but it has no knowledge of product price

@@ -11,8 +11,9 @@
 #import "SICategory.h"
 #import "SIShop.h"
 #import "SIProduct.h"
-
 #import "DDLog.h"
+
+NSString* const SIDatabaseTestSegueIdentifier = @"DatabasTest";
 
 @interface SIDatabaseTestViewController ()
 

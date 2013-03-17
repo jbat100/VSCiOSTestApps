@@ -13,6 +13,7 @@
     #import <Foundation/Foundation.h>
 #endif
 
+#import "SILog.h"
 #import "DDLog.h"
 
 #if DEBUG==1

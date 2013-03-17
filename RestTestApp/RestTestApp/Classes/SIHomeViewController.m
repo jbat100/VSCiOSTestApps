@@ -8,6 +8,8 @@
 
 #import "SIHomeViewController.h"
 
+NSString* const SIHomeSegueIdentifier = @"Home";
+
 @interface SIHomeViewController ()
 
 @end
@@ -66,4 +68,10 @@
 {
     [self.navigationController popToRootViewControllerAnimated:NO];
 }
+
+- (IBAction)testDatabase:(id)sender
+{
+    [self performSegueWithIdentifier:@"DatabaseTest" sender:self];
+}
+
 @end

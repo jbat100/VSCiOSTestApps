@@ -16,7 +16,6 @@
  */
 
 extern NSString* const SIHTTPClientEndedUserCreation;
-extern NSString* const SIHTTPClientEndedUserAuthentication;
 extern NSString* const SIHTTPClientEndedOrder;
 
 /**
@@ -46,10 +45,13 @@ extern NSString* const SIHTTPClientFailure;
 
 extern NSString* const SIHTTPClientErrorDomain;
 
+extern const NSInteger SIHTTPClientNetworkErrorCode;
 extern const NSInteger SIHTTPClientUserNotAuthenticatedErrorCode;
+extern const NSInteger SIHTTPClientUserAlreadyExistsErrorCode;
 extern const NSInteger SIHTTPClientIncompleteUserInfoErrorCode;
 extern const NSInteger SIHTTPClientInvalidOrderContentErrorCode;
 extern const NSInteger SIHTTPClientInvalidOrderStateErrorCode;
+extern const NSInteger SIHTTPClientUnknownErrorCode;
 extern const NSInteger SIHTTPClientInternalErrorCode;
 
 /**
@@ -71,12 +73,25 @@ extern const NSInteger SIHTTPClientInternalErrorCode;
 
 +(NSString*) devicePassword;
 
+
+/**
+ User
+ */
+
+@property (nonatomic, strong) SIUser* currentUser;
+
+/**
+ Order
+ */
+
+@property (nonatomic, strong) SIOrder* currentOrder;
+
 /**
  SI specific operations
  */
 
 -(BOOL) createNewUser:(SIUser*)user error:(NSError**)error;
--(BOOL) performAuthentificationForUser:(SIUser*)user error:(NSError**)error;
+
 -(BOOL) performOrder:(SIOrder*)order forUser:(SIUser*)user error:(NSError**)error;
 
 @end

@@ -70,14 +70,14 @@
                         <outlet property="databaseTestButton" destination="vWA-1D-Vs3" id="zSg-Wq-LAW"/>
                         <outlet property="loginTextField" destination="DKN-QI-Aoy" id="zzw-aZ-oRl"/>
                         <outlet property="passwordTextField" destination="xuW-U1-fxl" id="yBs-vc-drv"/>
-                        <segue destination="m1G-AQ-ltc" kind="push" identifier="CreateAccount" id="IBR-Ze-jhi"/>
+                        <segue destination="m1G-AQ-ltc" kind="push" identifier="AccountCreation" id="IBR-Ze-jhi"/>
                         <segue destination="Kgs-qz-25R" kind="push" identifier="Home" id="WqQ-Cc-I9c"/>
                         <segue destination="RuK-QU-CP4" kind="push" identifier="DatabaseTest" id="0V5-La-wrn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QX0-DF-pzb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="340" y="-269"/>
+            <point key="canvasLocation" x="300" y="456"/>
         </scene>
         <!--Database Test View Controller-->
         <scene sceneID="X9h-QK-w30">
@@ -188,7 +188,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b7R-4B-miF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="880" y="168"/>
+            <point key="canvasLocation" x="1417" y="456"/>
         </scene>
         <!--Home View Controller - Menu Principal-->
         <scene sceneID="eTv-Gz-Tpu">
@@ -247,7 +247,7 @@
                                 <rect key="frame" x="20" y="228" width="280" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Déconnexion">
+                                <state key="normal" title="Tests">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -255,7 +255,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="disconnect:" destination="Kgs-qz-25R" eventType="touchUpInside" id="XpH-LU-9AS"/>
+                                    <action selector="testDatabase:" destination="Kgs-qz-25R" eventType="touchUpInside" id="caA-pe-zYr"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -264,17 +264,18 @@
                     <navigationItem key="navigationItem" title="Menu Principal" id="Uwn-lU-LZD"/>
                     <connections>
                         <outlet property="creditCardButton" destination="rD2-hW-bVv" id="rg5-dz-fmO"/>
-                        <outlet property="disconnectButton" destination="Heu-55-Z15" id="ygR-dg-K45"/>
                         <outlet property="mapButton" destination="GLr-vC-lks" id="Ndz-E6-VQL"/>
                         <outlet property="orderButton" destination="GDP-Tg-yzt" id="WBb-JI-YBF"/>
+                        <outlet property="testDatabaseButton" destination="Heu-55-Z15" id="Xkz-DU-yOu"/>
                         <segue destination="8Ea-eA-1Yg" kind="push" identifier="CreditCards" id="Ehc-gm-bPG"/>
                         <segue destination="EVN-8a-i36" kind="push" identifier="Map" id="RnF-t2-o1S"/>
                         <segue destination="Tt8-MO-cPS" kind="push" identifier="Categories" id="YZc-vq-ffY"/>
+                        <segue destination="RuK-QU-CP4" kind="push" identifier="DatabaseTest" id="XMs-uO-0q7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Knp-me-XnG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1417" y="-269"/>
+            <point key="canvasLocation" x="1422" y="-261"/>
         </scene>
         <!--Product Listing View Controller-->
         <scene sceneID="5ek-6h-moq">
@@ -310,7 +311,7 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="14.99" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6Ed-Qq-Wfu">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="14.99" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" id="6Ed-Qq-Wfu">
                                                     <rect key="frame" x="151" y="10" width="83" height="59"/>
                                                     <color key="backgroundColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Heavy" family="Avenir Next" pointSize="22"/>
@@ -775,7 +776,26 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eiH-K8-s1y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1956" y="524"/>
+            <point key="canvasLocation" x="1956" y="456"/>
+        </scene>
+        <!--Root View Controller-->
+        <scene sceneID="EdX-th-eSg">
+            <objects>
+                <viewController id="xep-3c-jeY" customClass="SIRootViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Y5a-eB-ZR2">
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="V8d-Dw-8iv"/>
+                    <connections>
+                        <segue destination="m1G-AQ-ltc" kind="custom" identifier="AccountCreation" customClass="SINoAnimationPushSegue" id="ucy-hL-X2R"/>
+                        <segue destination="Kgs-qz-25R" kind="custom" identifier="Home" customClass="SINoAnimationPushSegue" id="RdT-Pp-gRb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CwE-1Y-rsc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="233" y="-431"/>
         </scene>
         <!--Account Creation View Controller-->
         <scene sceneID="fap-rP-njb">
@@ -790,18 +810,27 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
+                                <connections>
+                                    <outlet property="delegate" destination="m1G-AQ-ltc" id="BrX-2x-Or5"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Prénom" minimumFontSize="17" id="mQv-vu-tob">
                                 <rect key="frame" x="20" y="83" width="280" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
+                                <connections>
+                                    <outlet property="delegate" destination="m1G-AQ-ltc" id="XU9-y8-4t9"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" minimumFontSize="17" id="7FR-Ho-bjt">
                                 <rect key="frame" x="20" y="121" width="280" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
+                                <connections>
+                                    <outlet property="delegate" destination="m1G-AQ-ltc" id="A4z-8L-qSZ"/>
+                                </connections>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -813,11 +842,12 @@
                         <outlet property="firstNameTextField" destination="mQv-vu-tob" id="3tT-qX-VkR"/>
                         <outlet property="lastNameTextField" destination="iSu-mq-niH" id="AL7-dg-a5v"/>
                         <segue destination="Kgs-qz-25R" kind="push" identifier="Home" id="Usl-S5-Scl"/>
+                        <segue destination="RuK-QU-CP4" kind="push" identifier="DatabaseTest" id="QPu-cb-xWl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LoE-YQ-xrB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="880" y="-829"/>
+            <point key="canvasLocation" x="881" y="-763"/>
         </scene>
         <!--Credit Card View Controller - Cartes de Paiement-->
         <scene sceneID="IGx-V9-t5H">
@@ -860,12 +890,12 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="Kgs-qz-25R" kind="relationship" relationship="rootViewController" id="9Jf-Wn-tCk"/>
+                        <segue destination="xep-3c-jeY" kind="relationship" relationship="rootViewController" id="Yn3-c4-tdz"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aC1-QO-1Fy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-85" y="249"/>
+            <point key="canvasLocation" x="-248" y="-431"/>
         </scene>
     </scenes>
     <resources>
@@ -927,10 +957,12 @@
                 <relationship kind="action" name="showCreditCards:"/>
                 <relationship kind="action" name="showMap:"/>
                 <relationship kind="action" name="showOrder:"/>
+                <relationship kind="action" name="testDatabase:"/>
                 <relationship kind="outlet" name="creditCardButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="disconnectButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="mapButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="orderButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="testDatabaseButton" candidateClass="UIButton"/>
             </relationships>
         </class>
         <class className="SILocationMapViewController" superclassName="UIViewController">
@@ -992,6 +1024,9 @@
                 <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
             </relationships>
         </class>
+        <class className="SIRootViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SIRootViewController.h"/>
+        </class>
         <class className="SIShoppingCartViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SIShoppingCartViewController.h"/>
             <relationships>
@@ -1008,7 +1043,9 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="ucy-hL-X2R"/>
         <segue reference="Usl-S5-Scl"/>
-        <segue reference="Vq3-Q0-NPI"/>
+        <segue reference="XMs-uO-0q7"/>
+        <segue reference="qT1-ry-PXe"/>
     </inferredMetricsTieBreakers>
 </document>

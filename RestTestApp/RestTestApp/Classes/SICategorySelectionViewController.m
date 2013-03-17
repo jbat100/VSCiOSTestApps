@@ -31,6 +31,7 @@ NSString* const SIProductSegueIdentifier = @"Products";
 
 -(void) customInit;
 
+-(void) reloadInterface;
 
 @end
 
@@ -68,7 +69,15 @@ NSString* const SIProductSegueIdentifier = @"Products";
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(orderChanged:) name:SIOrderChangedNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(databaseUpdatedNotification:)
+                                                 name:SIDatabaseUpdateEndedNotification
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(orderChanged:)
+                                                 name:SIOrderChangedNotification
+                                               object:nil];
     
     self.view.backgroundColor = [UIColor blackColor];
     
@@ -121,23 +130,9 @@ NSString* const SIProductSegueIdentifier = @"Products";
 {
     [super viewWillAppear:animated];
     
-    self.categories = [[SIDataManager sharedManager] fetchAllCategories];
-    
     [self.navigationItem setRightBarButtonItem:self.shoppingCartButtonItem animated:animated];
     
-    [self.collectionView reloadData];
-
-    // deselect everything...
-    for (int i=0; i < self.categories.count; i++)
-    {
-        [self.collectionView deselectItemAtIndexPath:[NSIndexPath indexPathForItem:i inSection:0] animated:NO];
-    }
-    
-    self.selectedCategory = nil;
-    
-
-    
-    //self.navigationItem.
+    [self reloadInterface];
 }
 
 - (void)didReceiveMemoryWarning
@@ -146,11 +141,63 @@ NSString* const SIProductSegueIdentifier = @"Products";
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - UI Helpers
+
+-(void) reloadInterface
+{
+    self.categories = [[SIDataManager sharedManager] fetchAllCategories];
+    
+    [self.collectionView reloadData];
+    
+    // deselect everything...
+    for (int i=0; i < self.categories.count; i++)
+    {
+        [self.collectionView deselectItemAtIndexPath:[NSIndexPath indexPathForItem:i inSection:0] animated:NO];
+    }
+    
+    self.selectedCategory = nil;
+    
+    if ([self.categories count] == 0)
+    {
+        self.noCategoriesLabel = [[UILabel alloc] initWithFrame:self.collectionView.frame];
+        self.noCategoriesLabel.textColor = [UIColor blackColor];
+        self.noCategoriesLabel.textAlignment = NSTextAlignmentCenter;
+        self.noCategoriesLabel.text = @"Aucune Catégorie";
+        [self.view addSubview:self.noCategoriesLabel];
+        self.collectionView.hidden = YES;
+    }
+    else
+    {
+        [self.noCategoriesLabel removeFromSuperview];
+        self.noCategoriesLabel = nil;
+        self.collectionView.hidden = NO;
+    }
+}
+
 #pragma mark - Notification Callbacks
 
 -(void) orderChanged:(NSNotification*)notification
 {
     
+}
+
+-(void) databaseUpdatedNotification:(NSNotification*)notification
+{
+    if ([[[notification userInfo] objectForKey:SIUpdateTypeKey] isEqualToString:SIUpdateTypeCategories] ||
+        [[[notification userInfo] objectForKey:SIUpdateTypeKey] isEqualToString:SIUpdateTypeProducts])
+    {
+        /*
+         If we are beyond this view controller then we must roolback as data could be invalid
+         */
+        
+        if ([self.navigationController.viewControllers indexOfObjectIdenticalTo:self] != NSNotFound)
+        {
+            [self.navigationController popToViewController:self animated:YES];
+            self.selectedCategory = nil;
+        }
+        
+        [self reloadInterface];
+    }
 }
 
 #pragma mark - Shopping Cart Button

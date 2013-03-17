@@ -10,6 +10,7 @@
 #import "SIShoppingCartViewController.h"
 
 #import "SIDataManager.h"
+#import "SIHTTPClient.h"
 #import "SIThemeManager.h"
 
 #import "SIProduct.h"
@@ -168,7 +169,7 @@ NSString* const SIProductDescriptionSegueIdentifier = @"ProductDescription";
 
 -(void) updateCountLabel
 {
-    NSInteger count = [[SIDataManager sharedManager].currentOrder purchaseCountForProduct:self.product];
+    NSInteger count = [[SIHTTPClient sharedClient].currentOrder purchaseCountForProduct:self.product];
     self.purchaseCountLabel.text = [NSString stringWithFormat:@"Quantité: %d", count];
 }
 
@@ -183,7 +184,7 @@ NSString* const SIProductDescriptionSegueIdentifier = @"ProductDescription";
 {
     if (self.product)
     {
-        [[SIDataManager sharedManager].currentOrder increasePurchaseCountForProduct:self.product error:nil];
+        [[SIHTTPClient sharedClient].currentOrder increasePurchaseCountForProduct:self.product error:nil];
         [self updateCountLabel];
     }
 }
@@ -192,7 +193,7 @@ NSString* const SIProductDescriptionSegueIdentifier = @"ProductDescription";
 {
     if (self.product)
     {
-        [[SIDataManager sharedManager].currentOrder decreasePurchaseCountForProduct:self.product error:nil];
+        [[SIHTTPClient sharedClient].currentOrder decreasePurchaseCountForProduct:self.product error:nil];
         [self updateCountLabel];
     }
 }

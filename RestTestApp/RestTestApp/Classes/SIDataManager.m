@@ -93,6 +93,8 @@ const NSInteger SIDataManagerBadSetupErrorCode          = 3;
 +(NSString*) coreDataStoreURLString;
 +(NSURL*) coreDataStoreURL;
 
+@property (nonatomic, assign) BOOL fullUpdateRequested;
+
 @property (nonatomic, strong, readwrite) RKObjectManager *restKitObjectManager;
 @property (nonatomic, strong, readwrite) RKManagedObjectStore* restKitManagedObjectStore;
 
@@ -151,16 +153,14 @@ const NSInteger SIDataManagerBadSetupErrorCode          = 3;
 
 +(SIDataManager*) sharedManager
 {
-    static SIDataManager *_sharedClient = nil;
+    static __strong SIDataManager *_sharedManager = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        _sharedClient = [[SIDataManager alloc] init];
-        assert(_sharedClient);
-        [_sharedClient setup];
-        // used for test
-        _sharedClient.currentOrder = [[SIOrder alloc] init];
+        _sharedManager = [[SIDataManager alloc] init];
+        assert(_sharedManager);
+        [_sharedManager setup];
     });
-    return _sharedClient;
+    return _sharedManager;
 }
 
 #pragma mark - URLs and Directories
@@ -184,7 +184,7 @@ const NSInteger SIDataManagerBadSetupErrorCode          = 3;
 
 +(NSString*) coreDataStoreName
 {
-    return @"StreatModel1.sqlite";
+    return @"SIDatabase.sqlite";
 }
 
 +(NSString*) coreDataStoreURLString
@@ -482,22 +482,19 @@ const NSInteger SIDataManagerBadSetupErrorCode          = 3;
     return [NSArray arrayWithArray:immutableProducts];
 }
 
-#pragma mark - Custom Setters
 
--(void) setCurrentUser:(SIUser *)currentUser
-{
-    _currentUser = currentUser;
-    if (currentUser)
-    {
-        self.currentOrder = [[SIOrder alloc] init];
-    }
-    else
-    {
-        self.currentOrder = nil;
-    }
-}
 
 #pragma mark - Update API
+
+-(void) performFullDatabasUpdate
+{
+
+    //self.fullUpdateRequested = YES;
+    
+    [self updateShopsError:nil];
+    [self updateCategoriesError:nil];
+    [self updateProductsError:nil];
+}
 
 -(BOOL) updateShopsError:(NSError**)pError
 {

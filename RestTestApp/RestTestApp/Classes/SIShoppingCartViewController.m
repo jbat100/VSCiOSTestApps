@@ -10,6 +10,7 @@
 #import "SIPaymentViewController.h"
 
 #import "SIDataManager.h"
+#import "SIHTTPClient.h"
 #import "SIThemeManager.h"
 
 #import "SIProductCartCell.h"
@@ -89,7 +90,7 @@ NSString* const SIShoppingCartSegueIdentifier = @"ShoppingCart";
                                                                   action:@selector(proceedToPayment:)];
     self.navigationItem.rightBarButtonItem = buttonItem;
     
-    SIOrder* order = [SIDataManager sharedManager].currentOrder;
+    SIOrder* order = [SIHTTPClient sharedClient].currentOrder;
     self.products = [[SIDataManager sharedManager] productsWithPositivePurchaseCountForOrder:order];
     
     DDLogVerbose(@"Products is %@", self.products);
@@ -130,7 +131,7 @@ NSString* const SIShoppingCartSegueIdentifier = @"ShoppingCart";
 
 -(void) updateTotals
 {
-    SIOrder* order = [SIDataManager sharedManager].currentOrder;
+    SIOrder* order = [SIHTTPClient sharedClient].currentOrder;
     
     NSDecimalNumber* totalPrice = [NSDecimalNumber zero];
     NSInteger totalPurchaseCount = 0;
@@ -168,7 +169,7 @@ NSString* const SIShoppingCartSegueIdentifier = @"ShoppingCart";
 
 -(void) orderChanged:(NSNotification*)notification
 {
-    if ([notification object] == [SIDataManager sharedManager].currentOrder)
+    if ([notification object] == [SIHTTPClient sharedClient].currentOrder)
     {
         [self updateTotals];
     }
@@ -206,8 +207,8 @@ NSString* const SIShoppingCartSegueIdentifier = @"ShoppingCart";
         if ([self.products count] > path.row)
         {
             SIProduct* product = [self.products objectAtIndex:path.row];
-            [[SIDataManager sharedManager].currentOrder increasePurchaseCountForProduct:product error:nil];
-            NSInteger count = [[SIDataManager sharedManager].currentOrder purchaseCountForProduct:product];
+            [[SIHTTPClient sharedClient].currentOrder increasePurchaseCountForProduct:product error:nil];
+            NSInteger count = [[SIHTTPClient sharedClient].currentOrder purchaseCountForProduct:product];
             [self setPurchaseCount:count forCell:cell];
         } else assert(NO);
     } else assert(NO);
@@ -226,8 +227,8 @@ NSString* const SIShoppingCartSegueIdentifier = @"ShoppingCart";
         if ([self.products count] > path.row)
         {
             SIProduct* product = [self.products objectAtIndex:path.row];
-            [[SIDataManager sharedManager].currentOrder decreasePurchaseCountForProduct:product error:nil];
-            NSInteger count = [[SIDataManager sharedManager].currentOrder purchaseCountForProduct:product];
+            [[SIHTTPClient sharedClient].currentOrder decreasePurchaseCountForProduct:product error:nil];
+            NSInteger count = [[SIHTTPClient sharedClient].currentOrder purchaseCountForProduct:product];
             [self setPurchaseCount:count forCell:cell];
         } else assert(NO);
     } else assert(NO);
@@ -259,7 +260,7 @@ NSString* const SIShoppingCartSegueIdentifier = @"ShoppingCart";
         if ([product isKindOfClass:[SIProduct class]])
         {
             cell.productNameLabel.text = [product name];
-            NSInteger count = [[SIDataManager sharedManager].currentOrder purchaseCountForProduct:product];
+            NSInteger count = [[SIHTTPClient sharedClient].currentOrder purchaseCountForProduct:product];
             [self setPurchaseCount:count forCell:cell];
         }
         else

@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		101416F216C1B34A006CC6F0 /* SIProductDescriptionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 101416F116C1B34A006CC6F0 /* SIProductDescriptionCell.m */; };
-		1014174816C1C473006CC6F0 /* SICreditCard+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 1014174716C1C473006CC6F0 /* SICreditCard+Additions.m */; };
-		101BCEEF16E7F5AD008A3EE2 /* SIUser+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 101BCEEE16E7F5AD008A3EE2 /* SIUser+Additions.m */; };
 		10273A2E16BA9493008E42CA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10273A2D16BA9492008E42CA /* UIKit.framework */; };
 		10273A3016BA9493008E42CA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10273A2F16BA9493008E42CA /* Foundation.framework */; };
 		10273A3216BA9493008E42CA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10273A3116BA9493008E42CA /* CoreGraphics.framework */; };
@@ -49,13 +47,17 @@
 		10B9535E16BC176C007A23D2 /* SIHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B9535D16BC176C007A23D2 /* SIHTTPClient.m */; };
 		10B9536516BC275A007A23D2 /* SIModel1.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 10B9536316BC275A007A23D2 /* SIModel1.xcdatamodeld */; };
 		10B9536B16BC2BEA007A23D2 /* SIDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B9536A16BC2BEA007A23D2 /* SIDataManager.m */; };
-		10D4C3DF16F13B460099BD7F /* NSString+MD5Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 10D4C3DB16F13B460099BD7F /* NSString+MD5Addition.m */; };
+		10D4C3DF16F13B460099BD7F /* NSString+MD5Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 10D4C3DB16F13B460099BD7F /* NSString+MD5Addition.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		10D4C3E016F13B460099BD7F /* UIDevice+IdentifierAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = 10D4C3DE16F13B460099BD7F /* UIDevice+IdentifierAddition.m */; };
 		10E19C7116F26A1000121655 /* SIUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E19C7016F26A1000121655 /* SIUser.m */; };
 		10E36E7C16DACDED0075FA48 /* SIDatabaseTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E36E7B16DACDED0075FA48 /* SIDatabaseTestViewController.m */; };
+		10EC5F3716F4F7B400602B79 /* SIRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10EC5F3616F4F7B400602B79 /* SIRootViewController.m */; };
+		10EC5F3A16F504AF00602B79 /* SINoAnimationPushSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 10EC5F3916F504AF00602B79 /* SINoAnimationPushSegue.m */; };
+		10EC5F4116F5317600602B79 /* libPayPalMobile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 10EC5F3D16F5317600602B79 /* libPayPalMobile.a */; };
+		10EC5F4316F53ADA00602B79 /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 10EC5F4216F53ADA00602B79 /* libxml2.2.dylib */; };
+		10EC5F4516F53AE700602B79 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10EC5F4416F53AE700602B79 /* MessageUI.framework */; };
 		10F1496216BA9EFF00309C93 /* SIEntryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10F1495F16BA9EFF00309C93 /* SIEntryViewController.m */; };
-		10F1496316BA9EFF00309C93 /* RestTestAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 10F1496116BA9EFF00309C93 /* RestTestAppDelegate.m */; };
-		10F1496C16BAD2A400309C93 /* libCardIO.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 10F1496B16BAD2A400309C93 /* libCardIO.a */; };
+		10F1496316BA9EFF00309C93 /* SIAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 10F1496116BA9EFF00309C93 /* SIAppDelegate.m */; };
 		10F1497516BAD50900309C93 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10F1496D16BAD50900309C93 /* AudioToolbox.framework */; };
 		10F1497616BAD50900309C93 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10F1496E16BAD50900309C93 /* AVFoundation.framework */; };
 		10F1497716BAD50900309C93 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10F1496F16BAD50900309C93 /* CoreMedia.framework */; };
@@ -81,10 +83,6 @@
 /* Begin PBXFileReference section */
 		101416F016C1B34A006CC6F0 /* SIProductDescriptionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SIProductDescriptionCell.h; path = Classes/SIProductDescriptionCell.h; sourceTree = "<group>"; };
 		101416F116C1B34A006CC6F0 /* SIProductDescriptionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SIProductDescriptionCell.m; path = Classes/SIProductDescriptionCell.m; sourceTree = "<group>"; };
-		1014174616C1C473006CC6F0 /* SICreditCard+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SICreditCard+Additions.h"; path = "CoreData/SICreditCard+Additions.h"; sourceTree = "<group>"; };
-		1014174716C1C473006CC6F0 /* SICreditCard+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "SICreditCard+Additions.m"; path = "CoreData/SICreditCard+Additions.m"; sourceTree = "<group>"; };
-		101BCEED16E7F5AD008A3EE2 /* SIUser+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SIUser+Additions.h"; path = "CoreData/SIUser+Additions.h"; sourceTree = "<group>"; };
-		101BCEEE16E7F5AD008A3EE2 /* SIUser+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "SIUser+Additions.m"; path = "CoreData/SIUser+Additions.m"; sourceTree = "<group>"; };
 		10273A2A16BA9492008E42CA /* RestTestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RestTestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		10273A2D16BA9492008E42CA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		10273A2F16BA9493008E42CA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -155,15 +153,21 @@
 		10E19C7016F26A1000121655 /* SIUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SIUser.m; path = Classes/SIUser.m; sourceTree = "<group>"; };
 		10E36E7A16DACDED0075FA48 /* SIDatabaseTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SIDatabaseTestViewController.h; path = Classes/SIDatabaseTestViewController.h; sourceTree = "<group>"; };
 		10E36E7B16DACDED0075FA48 /* SIDatabaseTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SIDatabaseTestViewController.m; path = Classes/SIDatabaseTestViewController.m; sourceTree = "<group>"; };
+		10EC5F3516F4F7B300602B79 /* SIRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SIRootViewController.h; path = Classes/SIRootViewController.h; sourceTree = "<group>"; };
+		10EC5F3616F4F7B400602B79 /* SIRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SIRootViewController.m; path = Classes/SIRootViewController.m; sourceTree = "<group>"; };
+		10EC5F3816F504AF00602B79 /* SINoAnimationPushSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SINoAnimationPushSegue.h; path = Classes/SINoAnimationPushSegue.h; sourceTree = "<group>"; };
+		10EC5F3916F504AF00602B79 /* SINoAnimationPushSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SINoAnimationPushSegue.m; path = Classes/SINoAnimationPushSegue.m; sourceTree = "<group>"; };
+		10EC5F3B16F5091900602B79 /* SILog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SILog.h; path = Classes/SILog.h; sourceTree = "<group>"; };
+		10EC5F3D16F5317600602B79 /* libPayPalMobile.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPayPalMobile.a; path = "RestTestApp/PayPalSDK-1.0.2/PayPalMobile/libPayPalMobile.a"; sourceTree = "<group>"; };
+		10EC5F3E16F5317600602B79 /* PayPalMobile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PayPalMobile.h; path = "RestTestApp/PayPalSDK-1.0.2/PayPalMobile/PayPalMobile.h"; sourceTree = "<group>"; };
+		10EC5F3F16F5317600602B79 /* PayPalPayment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PayPalPayment.h; path = "RestTestApp/PayPalSDK-1.0.2/PayPalMobile/PayPalPayment.h"; sourceTree = "<group>"; };
+		10EC5F4016F5317600602B79 /* PayPalPaymentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PayPalPaymentViewController.h; path = "RestTestApp/PayPalSDK-1.0.2/PayPalMobile/PayPalPaymentViewController.h"; sourceTree = "<group>"; };
+		10EC5F4216F53ADA00602B79 /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = usr/lib/libxml2.2.dylib; sourceTree = SDKROOT; };
+		10EC5F4416F53AE700602B79 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		10F1495E16BA9EFF00309C93 /* SIEntryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SIEntryViewController.h; path = Classes/SIEntryViewController.h; sourceTree = "<group>"; };
 		10F1495F16BA9EFF00309C93 /* SIEntryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SIEntryViewController.m; path = Classes/SIEntryViewController.m; sourceTree = "<group>"; };
-		10F1496016BA9EFF00309C93 /* RestTestAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RestTestAppDelegate.h; path = Classes/RestTestAppDelegate.h; sourceTree = "<group>"; };
-		10F1496116BA9EFF00309C93 /* RestTestAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RestTestAppDelegate.m; path = Classes/RestTestAppDelegate.m; sourceTree = "<group>"; };
-		10F1496716BAD2A400309C93 /* CardIO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CardIO.h; path = RestTestApp/CardIOSDK/CardIO/CardIO.h; sourceTree = "<group>"; };
-		10F1496816BAD2A400309C93 /* CardIOCreditCardInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CardIOCreditCardInfo.h; path = RestTestApp/CardIOSDK/CardIO/CardIOCreditCardInfo.h; sourceTree = "<group>"; };
-		10F1496916BAD2A400309C93 /* CardIOPaymentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CardIOPaymentViewController.h; path = RestTestApp/CardIOSDK/CardIO/CardIOPaymentViewController.h; sourceTree = "<group>"; };
-		10F1496A16BAD2A400309C93 /* CardIOPaymentViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CardIOPaymentViewControllerDelegate.h; path = RestTestApp/CardIOSDK/CardIO/CardIOPaymentViewControllerDelegate.h; sourceTree = "<group>"; };
-		10F1496B16BAD2A400309C93 /* libCardIO.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libCardIO.a; path = RestTestApp/CardIOSDK/CardIO/libCardIO.a; sourceTree = "<group>"; };
+		10F1496016BA9EFF00309C93 /* SIAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SIAppDelegate.h; path = Classes/SIAppDelegate.h; sourceTree = "<group>"; };
+		10F1496116BA9EFF00309C93 /* SIAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SIAppDelegate.m; path = Classes/SIAppDelegate.m; sourceTree = "<group>"; };
 		10F1496D16BAD50900309C93 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		10F1496E16BAD50900309C93 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		10F1496F16BAD50900309C93 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
@@ -183,6 +187,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				10EC5F4516F53AE700602B79 /* MessageUI.framework in Frameworks */,
 				10806BE716E3BC3400750558 /* CoreLocation.framework in Frameworks */,
 				106B9EBB16BD5F8C001B121B /* MapKit.framework in Frameworks */,
 				10F1497516BAD50900309C93 /* AudioToolbox.framework in Frameworks */,
@@ -196,8 +201,9 @@
 				10273A2E16BA9493008E42CA /* UIKit.framework in Frameworks */,
 				10273A3016BA9493008E42CA /* Foundation.framework in Frameworks */,
 				10273A3216BA9493008E42CA /* CoreGraphics.framework in Frameworks */,
+				10EC5F4316F53ADA00602B79 /* libxml2.2.dylib in Frameworks */,
 				2A204C42306F4F9B9EDC9A32 /* libPods.a in Frameworks */,
-				10F1496C16BAD2A400309C93 /* libCardIO.a in Frameworks */,
+				10EC5F4116F5317600602B79 /* libPayPalMobile.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -227,17 +233,6 @@
 			name = CoreData;
 			sourceTree = "<group>";
 		};
-		1014174A16C1C4A1006CC6F0 /* Categories */ = {
-			isa = PBXGroup;
-			children = (
-				1014174616C1C473006CC6F0 /* SICreditCard+Additions.h */,
-				1014174716C1C473006CC6F0 /* SICreditCard+Additions.m */,
-				101BCEED16E7F5AD008A3EE2 /* SIUser+Additions.h */,
-				101BCEEE16E7F5AD008A3EE2 /* SIUser+Additions.m */,
-			);
-			name = Categories;
-			sourceTree = "<group>";
-		};
 		101BCEEC16E7EDEB008A3EE2 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -252,9 +247,9 @@
 		10273A2116BA9492008E42CA = {
 			isa = PBXGroup;
 			children = (
+				10EC5F3C16F5316B00602B79 /* PayPal */,
 				106B9ECA16BD8654001B121B /* Resources */,
 				1068514516BB07A300505F04 /* Documents */,
-				10F1496616BAD28300309C93 /* CardIOSDK */,
 				10273A3316BA9493008E42CA /* RestTestApp */,
 				10273A5A16BA9494008E42CA /* RestTestAppTests */,
 				10273A2C16BA9492008E42CA /* Frameworks */,
@@ -275,7 +270,9 @@
 		10273A2C16BA9492008E42CA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				10F1496B16BAD2A400309C93 /* libCardIO.a */,
+				10EC5F4216F53ADA00602B79 /* libxml2.2.dylib */,
+				63E089D5A3004C2D93373A4D /* libPods.a */,
+				10EC5F4416F53AE700602B79 /* MessageUI.framework */,
 				10806BE616E3BC3400750558 /* CoreLocation.framework */,
 				106B9EBA16BD5F8C001B121B /* MapKit.framework */,
 				10F1496D16BAD50900309C93 /* AudioToolbox.framework */,
@@ -290,7 +287,6 @@
 				10273A2F16BA9493008E42CA /* Foundation.framework */,
 				10273A3116BA9493008E42CA /* CoreGraphics.framework */,
 				10273A5416BA9494008E42CA /* SenTestingKit.framework */,
-				63E089D5A3004C2D93373A4D /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -403,8 +399,11 @@
 		10806BE216E3B5CF00750558 /* Others */ = {
 			isa = PBXGroup;
 			children = (
+				10EC5F3B16F5091900602B79 /* SILog.h */,
 				10806BE316E3B5FC00750558 /* SIShopAnnotation.h */,
 				10806BE416E3B5FC00750558 /* SIShopAnnotation.m */,
+				10EC5F3816F504AF00602B79 /* SINoAnimationPushSegue.h */,
+				10EC5F3916F504AF00602B79 /* SINoAnimationPushSegue.m */,
 			);
 			name = Others;
 			sourceTree = "<group>";
@@ -412,8 +411,8 @@
 		10B9535A16BC16F5007A23D2 /* Delegate And Managers */ = {
 			isa = PBXGroup;
 			children = (
-				10F1496016BA9EFF00309C93 /* RestTestAppDelegate.h */,
-				10F1496116BA9EFF00309C93 /* RestTestAppDelegate.m */,
+				10F1496016BA9EFF00309C93 /* SIAppDelegate.h */,
+				10F1496116BA9EFF00309C93 /* SIAppDelegate.m */,
 				10B9535C16BC176C007A23D2 /* SIHTTPClient.h */,
 				10B9535D16BC176C007A23D2 /* SIHTTPClient.m */,
 				10B9536916BC2BEA007A23D2 /* SIDataManager.h */,
@@ -427,6 +426,8 @@
 		10B9535B16BC1711007A23D2 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				10EC5F3516F4F7B300602B79 /* SIRootViewController.h */,
+				10EC5F3616F4F7B400602B79 /* SIRootViewController.m */,
 				10F1495E16BA9EFF00309C93 /* SIEntryViewController.h */,
 				10F1495F16BA9EFF00309C93 /* SIEntryViewController.m */,
 				1068514216BB073600505F04 /* SIAccountCreationViewController.h */,
@@ -458,7 +459,6 @@
 			children = (
 				10B9536316BC275A007A23D2 /* SIModel1.xcdatamodeld */,
 				1014174916C1C48B006CC6F0 /* CoreData */,
-				1014174A16C1C4A1006CC6F0 /* Categories */,
 				101BCEEC16E7EDEB008A3EE2 /* Model */,
 			);
 			name = Model;
@@ -482,15 +482,15 @@
 			path = UUID;
 			sourceTree = "<group>";
 		};
-		10F1496616BAD28300309C93 /* CardIOSDK */ = {
+		10EC5F3C16F5316B00602B79 /* PayPal */ = {
 			isa = PBXGroup;
 			children = (
-				10F1496716BAD2A400309C93 /* CardIO.h */,
-				10F1496816BAD2A400309C93 /* CardIOCreditCardInfo.h */,
-				10F1496916BAD2A400309C93 /* CardIOPaymentViewController.h */,
-				10F1496A16BAD2A400309C93 /* CardIOPaymentViewControllerDelegate.h */,
+				10EC5F3D16F5317600602B79 /* libPayPalMobile.a */,
+				10EC5F3E16F5317600602B79 /* PayPalMobile.h */,
+				10EC5F3F16F5317600602B79 /* PayPalPayment.h */,
+				10EC5F4016F5317600602B79 /* PayPalPaymentViewController.h */,
 			);
-			name = CardIOSDK;
+			name = PayPal;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -624,7 +624,7 @@
 			files = (
 				10273A3A16BA9493008E42CA /* main.m in Sources */,
 				10F1496216BA9EFF00309C93 /* SIEntryViewController.m in Sources */,
-				10F1496316BA9EFF00309C93 /* RestTestAppDelegate.m in Sources */,
+				10F1496316BA9EFF00309C93 /* SIAppDelegate.m in Sources */,
 				10F1498016BAD95C00309C93 /* SIPaymentViewController.m in Sources */,
 				1068514416BB073600505F04 /* SIAccountCreationViewController.m in Sources */,
 				1068514916BB085100505F04 /* SICreditCardViewController.m in Sources */,
@@ -639,19 +639,19 @@
 				10B9536B16BC2BEA007A23D2 /* SIDataManager.m in Sources */,
 				106B9EBF16BD61B9001B121B /* SICategoryCell.m in Sources */,
 				101416F216C1B34A006CC6F0 /* SIProductDescriptionCell.m in Sources */,
-				1014174816C1C473006CC6F0 /* SICreditCard+Additions.m in Sources */,
 				10E36E7C16DACDED0075FA48 /* SIDatabaseTestViewController.m in Sources */,
 				10806BCF16E38E4D00750558 /* SIProduct.m in Sources */,
 				10806BD816E38E4D00750558 /* SICategory.m in Sources */,
 				10806BE116E39C0900750558 /* SIShop.m in Sources */,
 				10806BE516E3B5FC00750558 /* SIShopAnnotation.m in Sources */,
-				101BCEEF16E7F5AD008A3EE2 /* SIUser+Additions.m in Sources */,
 				1063EE5E16E9242900FCF43E /* SIOrder.m in Sources */,
 				109D511A16EB8A32000CFC4F /* SIProductCartCell.m in Sources */,
 				109D511D16EC046E000CFC4F /* SIThemeManager.m in Sources */,
 				10D4C3DF16F13B460099BD7F /* NSString+MD5Addition.m in Sources */,
 				10D4C3E016F13B460099BD7F /* UIDevice+IdentifierAddition.m in Sources */,
 				10E19C7116F26A1000121655 /* SIUser.m in Sources */,
+				10EC5F3716F4F7B400602B79 /* SIRootViewController.m in Sources */,
+				10EC5F3A16F504AF00602B79 /* SINoAnimationPushSegue.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -778,6 +778,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/RestTestApp/CardIOSDK/CardIO\"",
+					"\"$(SRCROOT)/RestTestApp/PayPalSDK-1.0.2/PayPalMobile\"",
 				);
 				OTHER_LDFLAGS = (
 					$inherited,
@@ -800,6 +801,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/RestTestApp/CardIOSDK/CardIO\"",
+					"\"$(SRCROOT)/RestTestApp/PayPalSDK-1.0.2/PayPalMobile\"",
 				);
 				OTHER_LDFLAGS = (
 					$inherited,

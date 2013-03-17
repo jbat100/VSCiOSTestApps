@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+extern NSString* const SIDatabaseTestSegueIdentifier;
+
 @interface SIDatabaseTestViewController : UIViewController
 
 @property (strong, nonatomic) IBOutlet UIButton *fetchCategories;

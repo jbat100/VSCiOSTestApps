@@ -14,7 +14,7 @@
 #import "AFJSONRequestOperation.h"
 #import "UIDevice+IdentifierAddition.h"
 
-NSString* const SIHTTPClientEndedAuthentication = @"SIHTTPClientEndedAuthentication";
+NSString* const SIHTTPClientEndedUserCreation = @"SIHTTPClientEndedUserCreation";
 NSString* const SIHTTPClientEndedOrder = @"SIHTTPClientEndedOrder";
 
 NSString* const SIHTTPClientOutcomeKey = @"SIHTTPClientOutcomeKey";
@@ -29,7 +29,11 @@ NSString* const SIHTTPClientErrorDomain = @"SIHTTPClientErrorDomain";
 const NSInteger SIHTTPClientUserNotAuthenticatedErrorCode   = 1;
 const NSInteger SIHTTPClientInvalidOrderContentErrorCode    = 2;
 const NSInteger SIHTTPClientInvalidOrderStateErrorCode      = 3;
-const NSInteger SIHTTPClientInternalErrorCode               = 4;
+const NSInteger SIHTTPClientIncompleteUserInfoErrorCode     = 4;
+const NSInteger SIHTTPClientNetworkErrorCode                = 5;
+const NSInteger SIHTTPClientUserAlreadyExistsErrorCode      = 6;
+const NSInteger SIHTTPClientUnknownErrorCode                = 998;
+const NSInteger SIHTTPClientInternalErrorCode               = 999;
 
 /*
  *  Private SIOrder.h Interface
@@ -37,11 +41,13 @@ const NSInteger SIHTTPClientInternalErrorCode               = 4;
 
 @interface SIOrder ()
 
++(NSURL*) dataWebServiceURL;
+
++(NSError*) translateRequestError:(NSError*)error;
+
 @property (nonatomic, assign) SIOrderState state;
 
 @end
-
-static NSString * const kStreatitAPIBaseURLString = @"https://api.twitter.com/1.1/";
 
 @implementation SIHTTPClient
 
@@ -50,10 +56,17 @@ static NSString * const kStreatitAPIBaseURLString = @"https://api.twitter.com/1.
     static SIHTTPClient *_sharedClient = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        _sharedClient = [[SIHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:kStreatitAPIBaseURLString]];
+        _sharedClient = [[SIHTTPClient alloc] initWithBaseURL:[self dataWebServiceURL]];
+        // used for test
+        _sharedClient.currentOrder = [[SIOrder alloc] init];
     });
     
     return _sharedClient;
+}
+
++(NSURL*) dataWebServiceURL
+{
+    return [NSURL URLWithString:@"http://sidev.herokuapp.com"];
 }
 
 - (id)initWithBaseURL:(NSURL *)url {
@@ -62,12 +75,18 @@ static NSString * const kStreatitAPIBaseURLString = @"https://api.twitter.com/1.
         return nil;
     }
     
-    [self registerHTTPOperationClass:[AFJSONRequestOperation class]];
+    //[self registerHTTPOperationClass:[AFJSONRequestOperation class]];
+    
+    [self registerHTTPOperationClass:[AFHTTPRequestOperation class]];
     
     // Accept HTTP Header; see http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.1
-	[self setDefaultHeader:@"Accept" value:@"application/json"];
+	//[self setDefaultHeader:@"Accept" value:@"application/json"];
+    // Accept HTTP Header; see http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.1
+    //[self setDefaultHeader:@"Accept" value:@"application/json"];
+    //[self setDefaultHeader:@"Accept-Charset" value:@"utf-8"];
     
     //self.parameterEncoding = AFFormURLParameterEncoding;
+    
     self.parameterEncoding = AFJSONParameterEncoding;
     
     return self;
@@ -88,6 +107,73 @@ static NSString * const kStreatitAPIBaseURLString = @"https://api.twitter.com/1.
     }
     
     return pass;
+}
+
+#pragma mark - Custom Setters
+
+-(void) setCurrentUser:(SIUser *)currentUser
+{
+    _currentUser = currentUser;
+    if (currentUser)
+    {
+        self.currentOrder = [[SIOrder alloc] init];
+    }
+    else
+    {
+        self.currentOrder = nil;
+    }
+}
+
+#pragma mark - Error Translation
+
++(NSError*) translateRequestError:(NSError*)error
+{
+    
+    DDLogVerbose(@"Translating error %@", error);
+    
+    if ([error.domain isEqualToString:NSURLErrorDomain])
+    {
+        // NSURLErrorDomain means there is a network problem
+        return [NSError errorWithDomain:SIHTTPClientErrorDomain
+                                   code:SIHTTPClientNetworkErrorCode
+                               userInfo:nil];
+    }
+    
+    if ([error.domain isEqualToString:AFNetworkingErrorDomain])
+    {
+        // AFNetworkingErrorDomain means there is a response, but it is not in the expected 200-299 range
+        NSString* recovery = [error localizedRecoverySuggestion];
+        if (recovery)
+        {
+            do {
+                
+                NSData* jsonRecoveryData = [recovery dataUsingEncoding:NSUTF8StringEncoding];
+                id jsonRecoveryObject = [NSJSONSerialization JSONObjectWithData:jsonRecoveryData options:0 error:nil];
+                if (!jsonRecoveryObject) break;
+                if ([jsonRecoveryObject isKindOfClass:[NSDictionary class]] == NO) break;
+                NSArray* recoveryMessageArray = [(NSDictionary*)jsonRecoveryObject objectForKey:@"message"];
+                if ([recoveryMessageArray isKindOfClass:[NSArray class]] == NO) break;
+                if ([recoveryMessageArray count] == 0) break;
+                NSString* recoveryMessage = [recoveryMessageArray objectAtIndex:0];
+                if ([recoveryMessage isKindOfClass:[NSString class]] == NO) break;
+                if ([recoveryMessage isEqualToString:@"Account already created"])
+                {
+                    return [NSError errorWithDomain:SIHTTPClientErrorDomain
+                                               code:SIHTTPClientUserAlreadyExistsErrorCode
+                                           userInfo:nil];
+                }
+                
+            } while (0);
+            
+            
+            // attempt to read JSON message...
+            
+        }
+    }
+    
+    return [NSError errorWithDomain:SIHTTPClientErrorDomain
+                               code:SIHTTPClientUnknownErrorCode
+                           userInfo:nil];
 }
 
 #pragma mark - User Creation Request
@@ -123,10 +209,12 @@ static NSString * const kStreatitAPIBaseURLString = @"https://api.twitter.com/1.
     
     if (!user.email || !user.email || !user.lastName)
     {
-        DDLogError(@"%@ createNewUser:error: ERROR invalid user %@", self, user);
+        DDLogError(@"CreateNewUser: ERROR invalid user %@", user);
         *error = [[NSError alloc] initWithDomain:SIHTTPClientErrorDomain code:SIHTTPClientIncompleteUserInfoErrorCode userInfo:nil];
         return NO;
     }
+    
+    DDLogVerbose(@"CreateNewUser: with %@", user);
     
     /*
      Check the device password (should exist and be less that 50 characters long)
@@ -150,8 +238,10 @@ static NSString * const kStreatitAPIBaseURLString = @"https://api.twitter.com/1.
     NSDictionary* parameters = @{@"api_key" : @"marvellous",
                                  @"email" : user.email,
                                  @"name" : user.lastName,
-                                 @"firstname" : user.lastName,
+                                 @"firstname" : user.firstName,
                                  @"device_password" : devicePasswordString};
+    
+    DDLogVerbose(@"CreateNewUser: parameters: %@", parameters);
     
     /*
      Make the post request and get success/failure through blocks
@@ -161,21 +251,33 @@ static NSString * const kStreatitAPIBaseURLString = @"https://api.twitter.com/1.
         parameters:parameters
            success:^(AFHTTPRequestOperation *operation, id responseObject) {
                
-               DDLogVerbose(@"%@ createNewUser:error: SUCCESS, response: %@", self, responseObject);
+               NSString* responseString = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+               
+               /* On success, response seems to be a big fat pile of html */
+               
+               DDLogVerbose(@"CreateNewUser:error: SUCCESS, response (%d bytes): %@", [responseObject length], responseString);
                
                /* TODO: Check the response object to see if the creation succeeded!! */
                
                user.authenticated = YES;
+               
+               self.currentUser = user;
+               
                NSDictionary* userInfo = @{SIHTTPClientOutcomeKey : SIHTTPClientSuccess, SIHTTPClientUserKey : user};
                [[NSNotificationCenter defaultCenter] postNotificationName:SIHTTPClientEndedUserCreation object:nil userInfo:userInfo];
                
            } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                
-               DDLogError(@"%@ createNewUser:error: FAILED, error: %@", self, error);
+               DDLogError(@"CreateNewUser:error: FAILED, error: %@", error);
+               
+               NSError* translatedError = [[self class] translateRequestError:error];
+               
                user.authenticated = NO;
+               
                NSDictionary* userInfo = @{SIHTTPClientOutcomeKey : SIHTTPClientFailure,
                                           SIHTTPClientUserKey : user,
-                                          SIHTTPClientErrorKey : error};
+                                          SIHTTPClientErrorKey : translatedError};
+               
                [[NSNotificationCenter defaultCenter] postNotificationName:SIHTTPClientEndedUserCreation object:nil userInfo:userInfo];
                
            }];
@@ -183,12 +285,6 @@ static NSString * const kStreatitAPIBaseURLString = @"https://api.twitter.com/1.
     return YES;
 }
 
-#pragma mark - User Authentification Request
-
--(BOOL) performAuthentificationForUser:(SIUser*)user error:(NSError**)error
-{
-    return YES;
-}
 
 #pragma mark - Perform Order Request
 

@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface SIUser : NSObject
+@interface SIUser : NSObject <NSCoding>
 
 @property (nonatomic, strong) NSString* email;
 @property (nonatomic, strong) NSString* firstName;
