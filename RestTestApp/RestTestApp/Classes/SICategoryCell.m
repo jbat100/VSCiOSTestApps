@@ -35,6 +35,8 @@
         //self.mainLabel.backgroundColor = [UIColor underPageBackgroundColor];
         self.mainLabel.backgroundColor = self.unselectedColor;
         self.mainLabel.textColor = [UIColor blackColor];
+        self.mainLabel.numberOfLines = 0;
+        self.mainLabel.lineBreakMode = NSLineBreakByWordWrapping;
         
         self.mainLabel.opaque = NO;
         

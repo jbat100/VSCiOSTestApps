@@ -220,6 +220,16 @@
     static NSString* SIProductCellIdentifier = @"SIProductCellIdentifier";
     SIProductDescriptionCell* cell = (SIProductDescriptionCell*)[tableView dequeueReusableCellWithIdentifier:SIProductCellIdentifier];
     assert(cell); // we should always get a cell (using storyboard)
+    {
+        cell.productNameLabel.backgroundColor = [UIColor clearColor];
+        cell.productPriceLabel.backgroundColor = [UIColor clearColor];
+        cell.productDescriptionLabel.backgroundColor = [UIColor clearColor];
+        cell.productNameLabel.backgroundColor = [UIColor clearColor];
+        
+        cell.productNameLabel.font = [SIThemeManager sharedManager].defaultProductNameFont;
+        cell.productDescriptionLabel.font = [SIThemeManager sharedManager].defaultProductDescriptionFont;
+        cell.productPriceLabel.font = [SIThemeManager sharedManager].defaultPriceFont;
+    }
     
     if ([self.products count] > indexPath.row)
     {

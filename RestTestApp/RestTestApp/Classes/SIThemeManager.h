@@ -14,15 +14,16 @@
 
 @property (nonatomic, strong) NSNumberFormatter* priceNumberFormatter;
 
--(void) performAppearanceSetup;
+-(void) performGlobalAppearanceSetup;
 
--(void) applyThemeToPriceLabel:(UILabel*)label;
--(void) applyThemeToBigPriceLabel:(UILabel*)label;
+@property (nonatomic, copy) UIFont* defaultTitleFont;
+@property (nonatomic, copy) UIFont* defaultButtonLabelFont;
+@property (nonatomic, copy) UIFont* defaultPriceFont;
+@property (nonatomic, copy) UIFont* defaultBigPriceFont;
+@property (nonatomic, copy) UIFont* defaultCategoryNameFont;
+@property (nonatomic, copy) UIFont* defaultProductNameFont;
+@property (nonatomic, copy) UIFont* defaultProductDescriptionFont;
 
--(void) applyThemeToCategoryNameLabel:(UILabel*)label;
-
--(void) applyThemeToProductNameLabel:(UILabel*)label;
--(void) applyThemeToProductDescriptionLabel:(UILabel*)label;
--(void) applyThemeToProductDescriptionTextView:(UITextView*)textView;
+@property (nonatomic, copy) UIColor* defaultButtonLabelTextColor;
 
 @end

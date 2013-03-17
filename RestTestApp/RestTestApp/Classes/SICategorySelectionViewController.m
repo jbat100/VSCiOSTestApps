@@ -16,6 +16,7 @@
 #import "SIProduct.h"
 #import "SICategoryCell.h"
 #import "SIDataManager.h"
+#import "SIThemeManager.h"
 
 NSString* const SICategoryCellIdentifier = @"SICategoryCellIdentifier";
 NSString* const SIProductSegueIdentifier = @"Products";
@@ -187,13 +188,20 @@ NSString* const SIProductSegueIdentifier = @"Products";
         [[[notification userInfo] objectForKey:SIUpdateTypeKey] isEqualToString:SIUpdateTypeProducts])
     {
         /*
-         If we are beyond this view controller then we must roolback as data could be invalid
+         If we are beyond this view controller then we must roolback as data could be invalid, I think this
+         crashed if it occured during a push animation
          */
         
         if ([self.navigationController.viewControllers indexOfObjectIdenticalTo:self] != NSNotFound)
         {
-            [self.navigationController popToViewController:self animated:YES];
-            self.selectedCategory = nil;
+            NSUInteger selfIndex = [self.navigationController.viewControllers indexOfObjectIdenticalTo:self];
+            NSUInteger topIndex = [self.navigationController.viewControllers count] - 1;
+            
+            if (topIndex > selfIndex)
+            {
+                [self.navigationController popToViewController:self animated:YES];
+                self.selectedCategory = nil;
+            }
         }
         
         [self reloadInterface];
@@ -284,6 +292,7 @@ NSString* const SIProductSegueIdentifier = @"Products";
         SICategory* category = [self.categories objectAtIndex:indexPath.item];
         if ([category isKindOfClass:[SICategory class]])
         {
+            cell.mainLabel.font = [SIThemeManager sharedManager].defaultCategoryNameFont;
             cell.mainLabel.text = [category name];
             return cell;
         }

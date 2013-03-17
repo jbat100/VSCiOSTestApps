@@ -10,6 +10,8 @@
 
 #import "SIHTTPClient.h"
 #import "SIDataManager.h"
+#import "SIThemeManager.h"
+
 #import "SIAccountCreationViewController.h"
 #import "SIUser.h"
 
@@ -40,6 +42,8 @@
 {
     [DDLog addLogger:[DDASLLogger sharedInstance]];
     [DDLog addLogger:[DDTTYLogger sharedInstance]];
+    
+    [[SIThemeManager sharedManager] performGlobalAppearanceSetup];
     
     NSString* userPath = [self userPath];
     if ([[NSFileManager defaultManager] fileExistsAtPath:userPath])
