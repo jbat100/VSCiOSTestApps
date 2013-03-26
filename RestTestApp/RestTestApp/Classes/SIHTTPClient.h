@@ -51,6 +51,7 @@ extern const NSInteger SIHTTPClientUserAlreadyExistsErrorCode;
 extern const NSInteger SIHTTPClientIncompleteUserInfoErrorCode;
 extern const NSInteger SIHTTPClientInvalidOrderContentErrorCode;
 extern const NSInteger SIHTTPClientInvalidOrderStateErrorCode;
+extern const NSInteger SIHTTPClientInvalidParameterErrorCode;
 extern const NSInteger SIHTTPClientUnknownErrorCode;
 extern const NSInteger SIHTTPClientInternalErrorCode;
 
@@ -73,7 +74,6 @@ extern const NSInteger SIHTTPClientInternalErrorCode;
 
 +(NSString*) devicePassword;
 
-
 /**
  User
  */
@@ -91,6 +91,10 @@ extern const NSInteger SIHTTPClientInternalErrorCode;
  */
 
 -(BOOL) createNewUser:(SIUser*)user error:(NSError**)error;
+
+/**
+ Perform order once the payment has been validated with paypal, the order state must be SIOrderStateValidated
+ */
 
 -(BOOL) performOrder:(SIOrder*)order forUser:(SIUser*)user error:(NSError**)error;
 

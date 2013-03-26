@@ -32,7 +32,8 @@ typedef enum _SIOrderState {
     SIOrderStateNone = 0,   // should never happen, order can NOT be mutated
     SIOrderStatePreparing,  // order CAN be mutated
     SIOrderStateOngoing,    // order can NOT be mutated (back to SIOrderStatePreparing if fails, to SIOrderStateOngoing if succeeds)
-    SIOrderStateDone        // order can NOT be mutated, once the order is done, there is no going back
+    SIOrderStateValidated,  // validated by paypal order can NOT be mutated, once the order is done, there is no going back
+    SIOrderStatePerformed   // verified with StreatIt, order can NOT be mutated, once the order is verified, there is no going back
 } SIOrderState;
 
 
@@ -40,10 +41,12 @@ typedef enum _SIOrderState {
  SIOrder used to manage an order, keeps track of purchase counts for each product
  */
 
-@interface SIOrder : NSObject
+@interface SIOrder : NSObject <NSCoding>
 
 @property (nonatomic, assign, readonly) SIOrderState state;
-@property (nonatomic, strong, readonly) NSDictionary* outcomeInfo; // Info on order outcome (nil if state is not SIOrderStateDone)
+@property (nonatomic, strong, readonly) NSString* payKey; // Paypal Key (nil if state is not SIOrderStateValidated or SIOrderStatePerformed)
+@property (nonatomic, strong) NSString* shopId; // this must be a valid shop id for the order to be performed
+@property (nonatomic, strong) NSDecimalNumber* paidPrice; // the price which the user paid to paypal
 
 /**
  Order management, operations can fail if:
@@ -74,6 +77,5 @@ typedef enum _SIOrderState {
 
 -(NSInteger) purchaseCountForProduct:(SIProduct*)product;
 -(NSDictionary*) purchaseCounts; // [SIProduct productID] as Key, NSNumber (NSInteger) as Value
-
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "SIOrder.h"
+#import "SIOrderPrivate.h"
 #import "SIProduct.h"
 #import "SIDataManager.h"
 
@@ -19,14 +20,6 @@ NSString* const SIOrderErrorDomain = @"SIOrderErrorDomain";
 const NSInteger SIOrderImmutableErrorCode = 1;
 const NSInteger SIOrderPurchaseCountIsZeroErrorCode = 2;
 
-@interface SIOrder ()
-
-@property (nonatomic, assign) SIOrderState state;
-
-@property (nonatomic, strong) NSMutableDictionary* purchaseCountDictionary; // keys are [SIProduct productID] values are NSNumber (NSInteger)
-
-@end
-
 @implementation SIOrder
 
 -(id) init
@@ -38,6 +31,34 @@ const NSInteger SIOrderPurchaseCountIsZeroErrorCode = 2;
         self.state = SIOrderStatePreparing;
     }
     return self;
+}
+
+#pragma mark - NSCoding
+
+-(id)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super init];
+    if (self)
+    {
+        NSDictionary* localPurchaseCountDictionary = [aDecoder decodeObjectForKey:@"SIOrderPurchaseCountDictionary"];
+        assert([localPurchaseCountDictionary isKindOfClass:[NSDictionary class]]);
+        if ([localPurchaseCountDictionary isKindOfClass:[NSDictionary class]])
+        {
+            self.purchaseCountDictionary = [NSMutableDictionary dictionaryWithDictionary:localPurchaseCountDictionary];
+        }
+        
+        self.state = (SIOrderState)[aDecoder decodeIntegerForKey:@"SIOrderState"];
+        
+        self.payKey = [aDecoder decodeObjectForKey:@"SIOrderPayKey"];
+        
+        
+    }
+    return self;
+}
+
+-(void)encodeWithCoder:(NSCoder *)aCoder
+{
+    
 }
 
 #pragma mark - Helpers

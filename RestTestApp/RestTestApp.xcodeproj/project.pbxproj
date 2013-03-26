@@ -47,13 +47,13 @@
 		10B9535E16BC176C007A23D2 /* SIHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B9535D16BC176C007A23D2 /* SIHTTPClient.m */; };
 		10B9536516BC275A007A23D2 /* SIModel1.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 10B9536316BC275A007A23D2 /* SIModel1.xcdatamodeld */; };
 		10B9536B16BC2BEA007A23D2 /* SIDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B9536A16BC2BEA007A23D2 /* SIDataManager.m */; };
+		10D3593216FF49C300FA0E52 /* libPayPalMPL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 10D3592716FF49C300FA0E52 /* libPayPalMPL.a */; };
 		10D4C3DF16F13B460099BD7F /* NSString+MD5Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 10D4C3DB16F13B460099BD7F /* NSString+MD5Addition.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		10D4C3E016F13B460099BD7F /* UIDevice+IdentifierAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = 10D4C3DE16F13B460099BD7F /* UIDevice+IdentifierAddition.m */; };
 		10E19C7116F26A1000121655 /* SIUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E19C7016F26A1000121655 /* SIUser.m */; };
 		10E36E7C16DACDED0075FA48 /* SIDatabaseTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E36E7B16DACDED0075FA48 /* SIDatabaseTestViewController.m */; };
 		10EC5F3716F4F7B400602B79 /* SIRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10EC5F3616F4F7B400602B79 /* SIRootViewController.m */; };
 		10EC5F3A16F504AF00602B79 /* SINoAnimationPushSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 10EC5F3916F504AF00602B79 /* SINoAnimationPushSegue.m */; };
-		10EC5F4116F5317600602B79 /* libPayPalMobile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 10EC5F3D16F5317600602B79 /* libPayPalMobile.a */; };
 		10EC5F4316F53ADA00602B79 /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 10EC5F4216F53ADA00602B79 /* libxml2.2.dylib */; };
 		10EC5F4516F53AE700602B79 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10EC5F4416F53AE700602B79 /* MessageUI.framework */; };
 		10F1496216BA9EFF00309C93 /* SIEntryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10F1495F16BA9EFF00309C93 /* SIEntryViewController.m */; };
@@ -145,6 +145,18 @@
 		10B9536416BC275A007A23D2 /* SIModel1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SIModel1.xcdatamodel; sourceTree = "<group>"; };
 		10B9536916BC2BEA007A23D2 /* SIDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SIDataManager.h; path = Classes/SIDataManager.h; sourceTree = "<group>"; };
 		10B9536A16BC2BEA007A23D2 /* SIDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SIDataManager.m; path = Classes/SIDataManager.m; sourceTree = "<group>"; };
+		10CBBC4B1702468B000B6BF0 /* SIOrderPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SIOrderPrivate.h; path = Classes/SIOrderPrivate.h; sourceTree = "<group>"; };
+		10D3592716FF49C300FA0E52 /* libPayPalMPL.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPayPalMPL.a; path = "RestTestApp/PayPalMPL_1-6-0/libPayPalMPL.a"; sourceTree = "<group>"; };
+		10D3592816FF49C300FA0E52 /* PayPal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PayPal.h; path = "RestTestApp/PayPalMPL_1-6-0/PayPal.h"; sourceTree = "<group>"; };
+		10D3592916FF49C300FA0E52 /* PayPalAddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PayPalAddress.h; path = "RestTestApp/PayPalMPL_1-6-0/PayPalAddress.h"; sourceTree = "<group>"; };
+		10D3592A16FF49C300FA0E52 /* PayPalAdvancedPayment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PayPalAdvancedPayment.h; path = "RestTestApp/PayPalMPL_1-6-0/PayPalAdvancedPayment.h"; sourceTree = "<group>"; };
+		10D3592B16FF49C300FA0E52 /* PayPalAmounts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PayPalAmounts.h; path = "RestTestApp/PayPalMPL_1-6-0/PayPalAmounts.h"; sourceTree = "<group>"; };
+		10D3592C16FF49C300FA0E52 /* PayPalInvoiceData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PayPalInvoiceData.h; path = "RestTestApp/PayPalMPL_1-6-0/PayPalInvoiceData.h"; sourceTree = "<group>"; };
+		10D3592D16FF49C300FA0E52 /* PayPalInvoiceItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PayPalInvoiceItem.h; path = "RestTestApp/PayPalMPL_1-6-0/PayPalInvoiceItem.h"; sourceTree = "<group>"; };
+		10D3592E16FF49C300FA0E52 /* PayPalPayment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PayPalPayment.h; path = "RestTestApp/PayPalMPL_1-6-0/PayPalPayment.h"; sourceTree = "<group>"; };
+		10D3592F16FF49C300FA0E52 /* PayPalPreapprovalDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PayPalPreapprovalDetails.h; path = "RestTestApp/PayPalMPL_1-6-0/PayPalPreapprovalDetails.h"; sourceTree = "<group>"; };
+		10D3593016FF49C300FA0E52 /* PayPalReceiverAmounts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PayPalReceiverAmounts.h; path = "RestTestApp/PayPalMPL_1-6-0/PayPalReceiverAmounts.h"; sourceTree = "<group>"; };
+		10D3593116FF49C300FA0E52 /* PayPalReceiverPaymentDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PayPalReceiverPaymentDetails.h; path = "RestTestApp/PayPalMPL_1-6-0/PayPalReceiverPaymentDetails.h"; sourceTree = "<group>"; };
 		10D4C3DA16F13B460099BD7F /* NSString+MD5Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MD5Addition.h"; sourceTree = "<group>"; };
 		10D4C3DB16F13B460099BD7F /* NSString+MD5Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MD5Addition.m"; sourceTree = "<group>"; };
 		10D4C3DD16F13B460099BD7F /* UIDevice+IdentifierAddition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+IdentifierAddition.h"; sourceTree = "<group>"; };
@@ -158,10 +170,6 @@
 		10EC5F3816F504AF00602B79 /* SINoAnimationPushSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SINoAnimationPushSegue.h; path = Classes/SINoAnimationPushSegue.h; sourceTree = "<group>"; };
 		10EC5F3916F504AF00602B79 /* SINoAnimationPushSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SINoAnimationPushSegue.m; path = Classes/SINoAnimationPushSegue.m; sourceTree = "<group>"; };
 		10EC5F3B16F5091900602B79 /* SILog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SILog.h; path = Classes/SILog.h; sourceTree = "<group>"; };
-		10EC5F3D16F5317600602B79 /* libPayPalMobile.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPayPalMobile.a; path = "RestTestApp/PayPalSDK-1.0.2/PayPalMobile/libPayPalMobile.a"; sourceTree = "<group>"; };
-		10EC5F3E16F5317600602B79 /* PayPalMobile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PayPalMobile.h; path = "RestTestApp/PayPalSDK-1.0.2/PayPalMobile/PayPalMobile.h"; sourceTree = "<group>"; };
-		10EC5F3F16F5317600602B79 /* PayPalPayment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PayPalPayment.h; path = "RestTestApp/PayPalSDK-1.0.2/PayPalMobile/PayPalPayment.h"; sourceTree = "<group>"; };
-		10EC5F4016F5317600602B79 /* PayPalPaymentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PayPalPaymentViewController.h; path = "RestTestApp/PayPalSDK-1.0.2/PayPalMobile/PayPalPaymentViewController.h"; sourceTree = "<group>"; };
 		10EC5F4216F53ADA00602B79 /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = usr/lib/libxml2.2.dylib; sourceTree = SDKROOT; };
 		10EC5F4416F53AE700602B79 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		10F1495E16BA9EFF00309C93 /* SIEntryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SIEntryViewController.h; path = Classes/SIEntryViewController.h; sourceTree = "<group>"; };
@@ -203,7 +211,7 @@
 				10273A3216BA9493008E42CA /* CoreGraphics.framework in Frameworks */,
 				10EC5F4316F53ADA00602B79 /* libxml2.2.dylib in Frameworks */,
 				2A204C42306F4F9B9EDC9A32 /* libPods.a in Frameworks */,
-				10EC5F4116F5317600602B79 /* libPayPalMobile.a in Frameworks */,
+				10D3593216FF49C300FA0E52 /* libPayPalMPL.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -236,6 +244,7 @@
 		101BCEEC16E7EDEB008A3EE2 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				10CBBC4B1702468B000B6BF0 /* SIOrderPrivate.h */,
 				1063EE5C16E9242900FCF43E /* SIOrder.h */,
 				1063EE5D16E9242900FCF43E /* SIOrder.m */,
 				10E19C6F16F26A1000121655 /* SIUser.h */,
@@ -485,10 +494,17 @@
 		10EC5F3C16F5316B00602B79 /* PayPal */ = {
 			isa = PBXGroup;
 			children = (
-				10EC5F3D16F5317600602B79 /* libPayPalMobile.a */,
-				10EC5F3E16F5317600602B79 /* PayPalMobile.h */,
-				10EC5F3F16F5317600602B79 /* PayPalPayment.h */,
-				10EC5F4016F5317600602B79 /* PayPalPaymentViewController.h */,
+				10D3592716FF49C300FA0E52 /* libPayPalMPL.a */,
+				10D3592816FF49C300FA0E52 /* PayPal.h */,
+				10D3592916FF49C300FA0E52 /* PayPalAddress.h */,
+				10D3592A16FF49C300FA0E52 /* PayPalAdvancedPayment.h */,
+				10D3592B16FF49C300FA0E52 /* PayPalAmounts.h */,
+				10D3592C16FF49C300FA0E52 /* PayPalInvoiceData.h */,
+				10D3592D16FF49C300FA0E52 /* PayPalInvoiceItem.h */,
+				10D3592E16FF49C300FA0E52 /* PayPalPayment.h */,
+				10D3592F16FF49C300FA0E52 /* PayPalPreapprovalDetails.h */,
+				10D3593016FF49C300FA0E52 /* PayPalReceiverAmounts.h */,
+				10D3593116FF49C300FA0E52 /* PayPalReceiverPaymentDetails.h */,
 			);
 			name = PayPal;
 			sourceTree = "<group>";
@@ -779,6 +795,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/RestTestApp/CardIOSDK/CardIO\"",
 					"\"$(SRCROOT)/RestTestApp/PayPalSDK-1.0.2/PayPalMobile\"",
+					"\"$(SRCROOT)/RestTestApp/PayPalMPL_1-6-0\"",
 				);
 				OTHER_LDFLAGS = (
 					$inherited,
@@ -802,6 +819,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/RestTestApp/CardIOSDK/CardIO\"",
 					"\"$(SRCROOT)/RestTestApp/PayPalSDK-1.0.2/PayPalMobile\"",
+					"\"$(SRCROOT)/RestTestApp/PayPalMPL_1-6-0\"",
 				);
 				OTHER_LDFLAGS = (
 					$inherited,

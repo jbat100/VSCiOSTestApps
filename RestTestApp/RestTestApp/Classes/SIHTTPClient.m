@@ -32,6 +32,7 @@ const NSInteger SIHTTPClientInvalidOrderStateErrorCode      = 3;
 const NSInteger SIHTTPClientIncompleteUserInfoErrorCode     = 4;
 const NSInteger SIHTTPClientNetworkErrorCode                = 5;
 const NSInteger SIHTTPClientUserAlreadyExistsErrorCode      = 6;
+const NSInteger SIHTTPClientInvalidParameterErrorCode       = 7;
 const NSInteger SIHTTPClientUnknownErrorCode                = 998;
 const NSInteger SIHTTPClientInternalErrorCode               = 999;
 
@@ -41,11 +42,25 @@ const NSInteger SIHTTPClientInternalErrorCode               = 999;
 
 @interface SIOrder ()
 
+/**
+ StreatIt web service URL address
+ */
+
 +(NSURL*) dataWebServiceURL;
+
+/**
+ Error conversion
+ */
 
 +(NSError*) translateRequestError:(NSError*)error;
 
-@property (nonatomic, assign) SIOrderState state;
+/**
+ JSON Helpers
+ */
+
++(NSArray*) productJSONArrayForOrder:(SIOrder*)order;
+
++(NSString*)stringInCentimesForPriceInEuros:(NSDecimalNumber*)euros;
 
 @end
 
@@ -67,6 +82,38 @@ const NSInteger SIHTTPClientInternalErrorCode               = 999;
 +(NSURL*) dataWebServiceURL
 {
     return [NSURL URLWithString:@"http://sidev.herokuapp.com"];
+}
+
++(NSArray*) productJSONArrayForOrder:(SIOrder*)order
+{
+    /*
+        Creates an array with the product codes (product codes are duplicated if the count is > 1), which is silly...
+     */
+    
+    NSDictionary* purchaseCounts = [order purchaseCounts]; // this costs a dictionary copy so I create a local copy
+    
+    NSMutableArray* jsonArray = [NSMutableArray array];
+    
+    if (purchaseCounts)
+    {
+        NSArray* productIDs = [purchaseCounts allKeys];
+        for (NSString* productID in productIDs)
+        {
+            NSNumber* countNumber = [purchaseCounts objectForKey:productIDs];
+            NSInteger count = [countNumber integerValue];
+            if (count > 0)
+            {
+                for (NSInteger i = 0; i < count; i++)
+                {
+                    [jsonArray addObject:productID];
+                }
+            }
+        }
+        
+        return [NSArray arrayWithArray:jsonArray];
+    }
+    
+    return nil;
 }
 
 - (id)initWithBaseURL:(NSURL *)url {
@@ -290,7 +337,54 @@ const NSInteger SIHTTPClientInternalErrorCode               = 999;
 
 -(BOOL) performOrder:(SIOrder*)order forUser:(SIUser*)user error:(NSError**)error
 {
+    if (order == nil)
+    {
+        DDLogError(@"%@ performOrder:forUser:error: order must not be nil", self);
+        if (error) *error = [NSError errorWithDomain:SIHTTPClientErrorDomain code:SIHTTPClientInvalidParameterErrorCode userInfo:nil];
+        return NO;
+    }
+    
+    if (user == nil)
+    {
+        DDLogError(@"%@ performOrder:forUser:error: user must not be nil", self);
+        if (error) *error = [NSError errorWithDomain:SIHTTPClientErrorDomain code:SIHTTPClientInvalidParameterErrorCode userInfo:nil];
+        return NO;
+    }
+    
+    if (order.state != SIOrderStateValidated)
+    {
+        DDLogError(@"%@ performOrder:forUser:error: order.state must be SIOrderStateValidated", self);
+        if (error) *error = [NSError errorWithDomain:SIHTTPClientErrorDomain code:SIHTTPClientInvalidOrderStateErrorCode userInfo:nil];
+        return NO;
+    }
+    
+    if (order.shopId == nil)
+    {
+        // TODO: shopId should be verified more (check in database if it refers to a proper entry)
+        DDLogError(@"%@ performOrder:forUser:error: order.shopId not be nil", self);
+        if (error) *error = [NSError errorWithDomain:SIHTTPClientErrorDomain code:SIHTTPClientInvalidOrderContentErrorCode userInfo:nil];
+        return NO;
+    }
+
+    // http://sidev.herokuapp.com/ipn
+    
+    NSDictionary* clientJSONDict = @{ @"email" : user.email, @"pass" : [[self class] devicePassword] };
+    
+    NSDecimalNumber* totalPrice = order.paidPrice;
+    NSDecimalNumber* totalPriceInCentimes = [totalPrice decimalNumberByMultiplyingByPowerOf10:2];
+    NSNumberFormatter* formatter = [[NSNumberFormatter alloc] init];
+    formatter.roundingMode = NSNumberFormatterRoundFloor;
+    formatter.maximumFractionDigits = 0;
+    NSString* centimes = [formatter stringFromNumber:totalPriceInCentimes];
+    
+    
+    NSDictionary* parameters = @{ @"client" : clientJSONDict,
+                                  @"commande" : @{ @"magasin_id" : order.shopId, @"paykey" : order.payKey }
+                                  };
+    
+    
     return YES;
+
 }
 
 @end

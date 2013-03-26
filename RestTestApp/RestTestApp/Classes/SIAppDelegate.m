@@ -15,9 +15,15 @@
 #import "SIAccountCreationViewController.h"
 #import "SIUser.h"
 
+#import "PayPal.h"
+
 #import "DDLog.h"
 #import "DDASLLogger.h"
 #import "DDTTYLogger.h"
+
+NSString* const SIPayPalSandboxAppID = @"APP-80W284485P519543T";
+NSString* const SIPayPalLiveAppID = @"APP-0WK04030N8889952X";
+
 
 @interface SIAppDelegate ()
 
@@ -42,6 +48,17 @@
 {
     [DDLog addLogger:[DDASLLogger sharedInstance]];
     [DDLog addLogger:[DDTTYLogger sharedInstance]];
+    
+    /*
+     
+     From the demo app:
+     
+     You must call initializeWithAppID:forEnvironment: or initializeWithAppID: before performing any other action with the library. You must supply your application ID, and you may specify the environment by passing in ENV_LIVE (default), ENV_SANDBOX, or ENV_NONE (offline demo mode).
+     
+     */
+    
+    [PayPal initializeWithAppID:SIPayPalSandboxAppID forEnvironment:ENV_SANDBOX];
+    
     
     [[SIThemeManager sharedManager] performGlobalAppearanceSetup];
     
