@@ -44,6 +44,7 @@
 		10806BE716E3BC3400750558 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10806BE616E3BC3400750558 /* CoreLocation.framework */; };
 		109D511A16EB8A32000CFC4F /* SIProductCartCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 109D511916EB8A32000CFC4F /* SIProductCartCell.m */; };
 		109D511D16EC046E000CFC4F /* SIThemeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 109D511C16EC046E000CFC4F /* SIThemeManager.m */; };
+		10A6520817037A1C003F33B5 /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 10A6520717037A1C003F33B5 /* libz.1.2.5.dylib */; };
 		10B9535E16BC176C007A23D2 /* SIHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B9535D16BC176C007A23D2 /* SIHTTPClient.m */; };
 		10B9536516BC275A007A23D2 /* SIModel1.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 10B9536316BC275A007A23D2 /* SIModel1.xcdatamodeld */; };
 		10B9536B16BC2BEA007A23D2 /* SIDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B9536A16BC2BEA007A23D2 /* SIDataManager.m */; };
@@ -140,6 +141,7 @@
 		109D511916EB8A32000CFC4F /* SIProductCartCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SIProductCartCell.m; path = Classes/SIProductCartCell.m; sourceTree = "<group>"; };
 		109D511B16EC046E000CFC4F /* SIThemeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SIThemeManager.h; path = Classes/SIThemeManager.h; sourceTree = "<group>"; };
 		109D511C16EC046E000CFC4F /* SIThemeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SIThemeManager.m; path = Classes/SIThemeManager.m; sourceTree = "<group>"; };
+		10A6520717037A1C003F33B5 /* libz.1.2.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.5.dylib; path = usr/lib/libz.1.2.5.dylib; sourceTree = SDKROOT; };
 		10B9535C16BC176C007A23D2 /* SIHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SIHTTPClient.h; path = Classes/SIHTTPClient.h; sourceTree = "<group>"; };
 		10B9535D16BC176C007A23D2 /* SIHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SIHTTPClient.m; path = Classes/SIHTTPClient.m; sourceTree = "<group>"; };
 		10B9536416BC275A007A23D2 /* SIModel1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SIModel1.xcdatamodel; sourceTree = "<group>"; };
@@ -195,6 +197,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				10A6520817037A1C003F33B5 /* libz.1.2.5.dylib in Frameworks */,
 				10EC5F4516F53AE700602B79 /* MessageUI.framework in Frameworks */,
 				10806BE716E3BC3400750558 /* CoreLocation.framework in Frameworks */,
 				106B9EBB16BD5F8C001B121B /* MapKit.framework in Frameworks */,
@@ -279,6 +282,7 @@
 		10273A2C16BA9492008E42CA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				10A6520717037A1C003F33B5 /* libz.1.2.5.dylib */,
 				10EC5F4216F53ADA00602B79 /* libxml2.2.dylib */,
 				63E089D5A3004C2D93373A4D /* libPods.a */,
 				10EC5F4416F53AE700602B79 /* MessageUI.framework */,

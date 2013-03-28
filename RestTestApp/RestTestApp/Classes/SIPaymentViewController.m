@@ -118,13 +118,14 @@ NSString* const SIPayPalEmail = @"devpaypal@primase.fr";
     
     self.payPalPaymentStatus = SIPayPalPaymentStatusNone;
     
+    /*
 	UIButton *button = [[PayPal getPayPalInst] getPayButtonWithTarget:self andAction:action andButtonType:type];
 	CGRect frame = button.frame;
 	frame.origin.x = round((self.view.frame.size.width - button.frame.size.width) / 2.);
 	frame.origin.y = round(y + size.height);
 	button.frame = frame;
 	[self.view addSubview:button];
-    
+    */
 }
 
 - (void)didReceiveMemoryWarning
@@ -197,7 +198,7 @@ NSString* const SIPayPalEmail = @"devpaypal@primase.fr";
 	[PayPal getPayPalInst].feePayer = FEEPAYER_EACHRECEIVER;
 	
 	//for a payment with a single recipient, use a PayPalPayment object
-	PayPalPayment *payment = [[[PayPalPayment alloc] init] autorelease];
+	PayPalPayment *payment = [[PayPalPayment alloc] init];
 	payment.recipient = @"martroi@primase.fr";
 	payment.paymentCurrency = @"EUR";
 	payment.description = @"Paiement StreatIt";
@@ -207,7 +208,7 @@ NSString* const SIPayPalEmail = @"devpaypal@primase.fr";
 	payment.subTotal = totalPrice;
 	
 	//invoiceData is a PayPalInvoiceData object which contains tax, shipping, and a list of PayPalInvoiceItem objects
-	payment.invoiceData = [[[PayPalInvoiceData alloc] init] autorelease];
+	payment.invoiceData = [[PayPalInvoiceData alloc] init];
 	payment.invoiceData.totalShipping = [NSDecimalNumber decimalNumberWithString:@"2"];
 	payment.invoiceData.totalTax = [NSDecimalNumber decimalNumberWithString:@"0.35"];
 	
@@ -215,7 +216,7 @@ NSString* const SIPayPalEmail = @"devpaypal@primase.fr";
 	//NOTE: sum of totalPrice for all items must equal payment.subTotal
 	//NOTE: example only shows a single item, but you can have more than one
 	payment.invoiceData.invoiceItems = [NSMutableArray array];
-	PayPalInvoiceItem *item = [[[PayPalInvoiceItem alloc] init] autorelease];
+	PayPalInvoiceItem *item = [[PayPalInvoiceItem alloc] init];
 	item.totalPrice = payment.subTotal;
 	item.name = @"Paiement StreatIt";
 	[payment.invoiceData.invoiceItems addObject:item];
@@ -321,8 +322,8 @@ NSString* const SIPayPalEmail = @"devpaypal@primase.fr";
      Save order to disk so that we have a record of it if things go wrong when authenticating with StreatIt server
      */
     
-    NSString* orderFilePath = [[self class] orderFilePath]
-    assert(orderFilePath);
+    NSString* orderFilePath = [[self class] orderFilePath];
+    //assert(orderFilePath);
     if (orderFilePath)
     {
         BOOL success = [NSKeyedArchiver archiveRootObject:self.order toFile:orderFilePath];
@@ -385,7 +386,7 @@ NSString* const SIPayPalEmail = @"devpaypal@primase.fr";
             break;
             
         default:
-            DDLogError(@"%@ paymentLibraryExit unexpected payPalPaymentStatus %d", self.payPalPaymentStatus);
+            DDLogError(@"%@ paymentLibraryExit unexpected payPalPaymentStatus %d", self, self.payPalPaymentStatus);
             break;
     }
     
@@ -396,7 +397,7 @@ NSString* const SIPayPalEmail = @"devpaypal@primase.fr";
 
 - (void)payPalPaymentDidComplete:(PayPalPayment *)completedPayment
 {
-    DDLogVerbose(@"%@ payPalPaymentDidComplete: %@, confirmation: %@", self, completedPayment, completedPayment.confirmation);
+    //DDLogVerbose(@"%@ payPalPaymentDidComplete: %@, confirmation: %@", self, completedPayment, completedPayment.confirmation);
     
     /*
      

@@ -503,7 +503,7 @@ const NSInteger SIDataManagerBadSetupErrorCode          = 3;
     DDLogVerbose(@"Updating shops...");
     [self.restKitObjectManager getObjectsAtPath:@"/magasins" parameters:nil success:^(RKObjectRequestOperation *op, RKMappingResult *result) {
         
-        //[self replaceCurrentShopsWithShops:[result array]];
+        [self replaceCurrentShopsWithShops:[result array]];
         
         DDLogVerbose(@"Shop update success: %@", [result array]);
         NSDictionary* userInfo = @{SIOutcomeKey : SIOutcomeSuccess, SIUpdateTypeKey : SIUpdateTypeShops};

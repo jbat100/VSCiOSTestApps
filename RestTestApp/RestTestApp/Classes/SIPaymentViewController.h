@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-#import "PayPalMobile.h"
+#import "PayPal.h"
 
 extern NSString* const SIPaymentSegueIdentifier;
 
