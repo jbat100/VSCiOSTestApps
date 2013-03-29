@@ -40,7 +40,7 @@ const NSInteger SIHTTPClientInternalErrorCode               = 999;
  *  Private SIOrder.h Interface
  */
 
-@interface SIHTTPClient ()
+@interface SIOrder ()
 
 /**
  StreatIt web service URL address
@@ -60,7 +60,7 @@ const NSInteger SIHTTPClientInternalErrorCode               = 999;
 
 +(NSArray*) productJSONArrayForOrder:(SIOrder*)order;
 
-+(NSString*) stringInCentimesForPriceInEuros:(NSDecimalNumber*)euros;
++(NSString*)stringInCentimesForPriceInEuros:(NSDecimalNumber*)euros;
 
 @end
 

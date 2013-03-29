@@ -7,19 +7,14 @@
 //
 
 #import "SIDataManager.h"
-#import "SIDataManager+Private.h"
 #import "DDLog.h"
 #import <RestKit/RestKit.h>
 #import <CoreData/CoreData.h>
-
-#import "AFJSONRequestOperation.h"
-#import "UIDevice+IdentifierAddition.h"
 
 #import "SIShop.h"
 #import "SICategory.h"
 #import "SIProduct.h"
 #import "SIOrder.h"
-#import "SIUser.h"
 
 /*
  
@@ -558,6 +553,8 @@ const NSInteger SIDataManagerBadSetupErrorCode          = 3;
     DDLogVerbose(@"Updating categories...");
     [self.restKitObjectManager getObjectsAtPath:@"/categories" parameters:nil success:^(RKObjectRequestOperation *op, RKMappingResult *result) {
         
+        [self replaceCurrentCategoriesWithCategories:[result array]];
+        
         DDLogVerbose(@"Category update success: %@", [result array]);
         NSDictionary* userInfo = @{SIOutcomeKey : SIOutcomeSuccess, SIUpdateTypeKey : SIUpdateTypeCategories};
         [[NSNotificationCenter defaultCenter] postNotificationName:SIDatabaseUpdateEndedNotification object:self userInfo:userInfo];
@@ -574,13 +571,77 @@ const NSInteger SIDataManagerBadSetupErrorCode          = 3;
     return NO;
 }
 
+#pragma mark - Replacement Helpers
 
+-(void) replaceCurrentShopsWithShops:(NSArray*)newShops
+{
+    NSManagedObjectContext* context = [self managedObjectContextForFetchRequests];
+    NSEntityDescription* entityDescription = [NSEntityDescription entityForName:@"SIShop" inManagedObjectContext:context];
+    [self deleteAllObjectsForEntityDescription:entityDescription inContext:context];
+    
+    for (SIShop* shop in newShops)
+    {
+        if ([shop isKindOfClass:[SIShop class]])
+        {
+            [context insertObject:shop];
+        }
+        else
+        {
+            DDLogError(@"%@ replaceCurrentShopsWithShops unexpected object %@", self, shop);
+            assert(NO);
+        }
+    }
+
+}
+
+-(void) replaceCurrentCategoriesWithCategories:(NSArray*)newCategories
+{
+    NSManagedObjectContext* context = [self managedObjectContextForFetchRequests];
+    NSEntityDescription* entityDescription = [NSEntityDescription entityForName:@"SICategory" inManagedObjectContext:context];
+    [self deleteAllObjectsForEntityDescription:entityDescription inContext:context];
+    
+    for (SICategory* category in newCategories)
+    {
+        if ([category isKindOfClass:[SICategory class]])
+        {
+            [context insertObject:category];
+        }
+        else
+        {
+            DDLogError(@"%@ replaceCurrentShopsWithShops unexpected object %@", self, category);
+            assert(NO);
+        }
+    }
+}
+
+-(void) replaceCurrentProductsWithProducts:(NSArray*)newProducts
+{
+    NSManagedObjectContext* context = [self managedObjectContextForFetchRequests];
+    NSEntityDescription* entityDescription = [NSEntityDescription entityForName:@"SIProduct" inManagedObjectContext:context];
+    [self deleteAllObjectsForEntityDescription:entityDescription inContext:context];
+    
+    for (SIProduct* product in newProducts)
+    {
+        if ([product isKindOfClass:[SIProduct class]])
+        {
+            [context insertObject:product];
+        }
+        else
+        {
+            DDLogError(@"%@ replaceCurrentShopsWithShops unexpected object %@", self, product);
+            assert(NO);
+        }
+    }
+}
 
 #pragma mark - CoreData Fetches
 
 -(NSManagedObjectContext*) managedObjectContextForFetchRequests
-{    
-    return self.managedObjectContext;
+{
+    assert(self.restKitManagedObjectStore);
+    assert([self.restKitManagedObjectStore mainQueueManagedObjectContext]);
+    
+    return [self.restKitManagedObjectStore mainQueueManagedObjectContext];
 }
 
 -(NSArray*) fetchAllShops
@@ -654,6 +715,35 @@ const NSInteger SIDataManagerBadSetupErrorCode          = 3;
     return fetchResults;
 }
 
+
+-(NSArray*) fetchAllProductsForCategory:(SICategory*)category
+{
+    NSEntityDescription* entityDescription = [NSEntityDescription entityForName:@"SIProduct"
+                                                         inManagedObjectContext:[self managedObjectContextForFetchRequests]];
+    
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    [request setEntity:entityDescription];
+    
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"name"
+                                                                   ascending:YES selector:@selector(caseInsensitiveCompare:)];
+    [request setSortDescriptors:@[sortDescriptor]];
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"categoryID == %@", [category categoryID]];
+    [request setPredicate:predicate];
+    
+    NSError *error = nil;
+    NSArray *fetchResults = [[self managedObjectContextForFetchRequests] executeFetchRequest:request error:&error];
+    
+    if (error)
+    {
+        DDLogError(@"%@ fetchAllProductsForCategory %@ ERROR %@ : %@", self, category, error, [error userInfo]);
+    }
+    
+    DDLogVerbose(@"%@ fetchAllProductsForCategory %@ (%lu results)", self, category, (unsigned long)[fetchResults count]);
+    
+    return fetchResults;
+}
+
 -(SIProduct*) fetchProductWithProductID:(NSString*)productID
 {
     if (!productID)
@@ -697,67 +787,71 @@ const NSInteger SIDataManagerBadSetupErrorCode          = 3;
 
 #pragma mark - Normal CoreData Setup
 
-- (NSManagedObjectModel *)managedObjectModel
-{
-    if (_managedObjectModel != nil)
-    {
-        return _managedObjectModel;
-    }
-    
-    NSString *modelPath = [[NSBundle mainBundle] pathForResource:@"StreatModel1" ofType:@"momd"];
-    NSURL *modelURL = [NSURL fileURLWithPath:modelPath];
-    
-    _managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
-    
-    assert(_managedObjectModel);
-    if(!_managedObjectModel)
-    {
-        DDLogError(@"%@ could not create NSManagedObjectModel", self);
-        abort();
-    }
-    
-    DDLogVerbose(@"%@ created %@", self, _managedObjectModel);
-    
-    return _managedObjectModel;
-}
-
--(NSPersistentStoreCoordinator*) persistentStoreCoordinator
-{
-    if (_persistentStoreCoordinator != nil)
-    {
-        return _persistentStoreCoordinator;
-    }
-    
-    NSURL *storeURL = [[[self class] applicationDocumentsDirectoryURL] URLByAppendingPathComponent:@"SIData.sqlite"];
-    NSError *error = nil;
-    
-    _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
-    
-    if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error])
-    {
-        DDLogError(@"%@ could not add persistent store at %@ (%@ : %@)", _persistentStoreCoordinator, storeURL, error, [error userInfo]);
-        abort();
-    }
-    
-    DDLogVerbose(@"%@ created %@", self, _persistentStoreCoordinator);
-    
-    return _persistentStoreCoordinator;
-}
-
--(NSManagedObjectContext*) managedObjectContext
-{
-    if (_managedObjectContext != nil)
-    {
-        return _managedObjectContext;
-    }
-    
-    NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
-    
-    _managedObjectContext = [[NSManagedObjectContext alloc] init];
-    [_managedObjectContext setPersistentStoreCoordinator:coordinator];
-    
-    return _managedObjectContext;
-}
+/*
+ 
+ - (NSManagedObjectModel *)managedObjectModel
+ {
+ if (_managedObjectModel != nil)
+ {
+ return _managedObjectModel;
+ }
+ 
+ NSString *modelPath = [[NSBundle mainBundle] pathForResource:@"StreatModel1" ofType:@"momd"];
+ NSURL *modelURL = [NSURL fileURLWithPath:modelPath];
+ 
+ _managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
+ 
+ assert(_managedObjectModel);
+ if(!_managedObjectModel)
+ {
+ DDLogError(@"%@ could not create NSManagedObjectModel", self);
+ abort();
+ }
+ 
+ DDLogVerbose(@"%@ created %@", self, _managedObjectModel);
+ 
+ return _managedObjectModel;
+ }
+ 
+ -(NSPersistentStoreCoordinator*) persistentStoreCoordinator
+ {
+ if (_persistentStoreCoordinator != nil)
+ {
+ return _persistentStoreCoordinator;
+ }
+ 
+ NSURL *storeURL = [[[self class] applicationDocumentsDirectoryURL] URLByAppendingPathComponent:@"SIData.sqlite"];
+ NSError *error = nil;
+ 
+ _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
+ 
+ if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error])
+ {
+ DDLogError(@"%@ could not add persistent store at %@ (%@ : %@)", _persistentStoreCoordinator, storeURL, error, [error userInfo]);
+ abort();
+ }
+ 
+ DDLogVerbose(@"%@ created %@", self, _persistentStoreCoordinator);
+ 
+ return _persistentStoreCoordinator;
+ }
+ 
+ -(NSManagedObjectContext*) managedObjectContext
+ {
+ if (_managedObjectContext != nil)
+ {
+ return _managedObjectContext;
+ }
+ 
+ NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
+ 
+ _managedObjectContext = [[NSManagedObjectContext alloc] init];
+ [_managedObjectContext setPersistentStoreCoordinator:coordinator];
+ 
+ return _managedObjectContext;
+ }
+ 
+ */
 
 
 @end

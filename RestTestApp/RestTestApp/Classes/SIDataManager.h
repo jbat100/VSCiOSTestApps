@@ -11,8 +11,6 @@
 #import <CoreData/CoreData.h>
 #import <RestKit/RestKit.h>
 
-#import "AFHTTPClient.h"
-
 @class SICategory;
 @class SIUser;
 @class SIProduct;
@@ -24,34 +22,25 @@
 
 extern NSString * const SIDataManagerErrorDomain;
 
-extern const NSInteger SIUpdateOngoingErrorCode;
-extern const NSInteger SINetworkErrorCode;
-extern const NSInteger SIBadSetupErrorCode;
-extern const NSInteger SIUserNotAuthenticatedErrorCode;
-extern const NSInteger SIUserAlreadyExistsErrorCode;
-extern const NSInteger SIIncompleteUserInfoErrorCode;
-extern const NSInteger SIInvalidOrderContentErrorCode;
-extern const NSInteger SIInvalidOrderStateErrorCode;
-extern const NSInteger SIInvalidParameterErrorCode;
-extern const NSInteger SIUnknownErrorCode;
-extern const NSInteger SIInternalErrorCode;
+extern const NSInteger SIDataManagerUpdateOngoingErrorCode;
+extern const NSInteger SIDataManagerNetworkErrorCode;
+extern const NSInteger SIDataManagerBadSetupErrorCode;
+extern const NSInteger SIDataManagerInternalErrorCode;
 
 /**
  Notification names
  */
 
+extern NSString* const SIDatabaseUpdateStartedNotification;
 extern NSString* const SIDatabaseUpdateEndedNotification;
-extern NSString* const SIUserCreationEndedNotification;
-extern NSString* const SIOrderEndedNotification;
 
 /**
     Notification userInfo dictionary keys
  */
 
 extern NSString* const SIOutcomeKey;        // value should be SIOutcomeError or SIOutcomeSuccess
+extern NSString* const SIUpdateTypeKey;     // value should be SIUpdateTypeShops, SIUpdateTypeCategories or SIUpdateTypeProducts
 extern NSString* const SIErrorKey;          // if SIOutcomeKey has value SIOutcomeError this should contain an NSError
-extern NSString* const SIUserKey;           // value is SIUser instance
-extern NSString* const SIOrderKey;          // value is SIOrder instance
 
 /**
  Notification userInfo dictionary values
@@ -60,66 +49,31 @@ extern NSString* const SIOrderKey;          // value is SIOrder instance
 // outcomes (values for SIOutcomeKey) 
 extern NSString* const SIOutcomeError;
 extern NSString* const SIOutcomeSuccess;
+// update types (values for SIUpdateTypeKey)
+extern NSString* const SIUpdateTypeShops;
+extern NSString* const SIUpdateTypeCategories;
+extern NSString* const SIUpdateTypeProducts;
 
 
-@interface SIDataManager : AFHTTPClient
+@interface SIDataManager : NSObject
 
 +(SIDataManager*) sharedManager;
-- (id)initWithBaseURL:(NSURL *)url;
-
-/**
- StreatIt webservice URL
- */
-
-/**
- The device dependent password used as device_password field in user creation/authentification requests
- */
-
-+(NSString*) devicePassword;
-
-/**
- Application document directory path
- */
 
 +(NSString*) applicationDocumentsDirectoryURLString;
 +(NSURL*) applicationDocumentsDirectoryURL;
 
 /**
- Check if database is updating
+ No need to make the properties atomic, we should only call these methods from the main thread anyway so as to make sure that we do not upset CoreData
  */
 
-@property (nonatomic, assign, readonly) BOOL updatingDatabase;
+@property (nonatomic, strong, readonly) RKObjectManager *restKitObjectManager;
+@property (nonatomic, strong, readonly) RKManagedObjectStore* restKitManagedObjectStore;
 
-/**
- User
- */
+@property (nonatomic, assign, readonly) BOOL updatingShops;
+@property (nonatomic, assign, readonly) BOOL updatingCategories;
+@property (nonatomic, assign, readonly) BOOL updatingProducts;
 
-@property (nonatomic, strong) SIUser* currentUser;
-
-/**
- Order
- */
-
-@property (nonatomic, strong) SIOrder* currentOrder;
-
-/**
- Perform full database update, shops, products, categories, formulas.
- When done, a SIDatabaseUpdateEndedNotification will be broadcast
- */
-
--(void) performDatabaseUpdate;
-
-/**
- SI specific operations
- */
-
--(BOOL) createNewUser:(SIUser*)user error:(NSError**)error;
-
-/**
- Perform order once the payment has been validated with paypal, the order state must be SIOrderStateValidated
- */
-
--(BOOL) performOrder:(SIOrder*)order forUser:(SIUser*)user error:(NSError**)error;
+-(void) performFullDatabasUpdate;
 
 /**
  Total price, wanted to handle this duty to SIOrder, but it has no knowledge of product price
@@ -133,6 +87,24 @@ extern NSString* const SIOutcomeSuccess;
 
 -(NSArray*) productsWithPositivePurchaseCountForOrder:(SIOrder*)order;
 
+
+/**
+ Update SIShop entries in CoreData database, if for some reason the update cannot be performed then the method will return NO and the error parameter will be filled. This method is asynchronous if it returns YES, it broadcasts a SIShopUpdateStartedNotification immediately and completion of the update is marked with a SIShopUpdateEndedNotification.
+ */
+
+-(BOOL) updateShopsError:(NSError**)pError;
+
+/**
+ Update SIProduct entries in CoreData database, if for some reason the update cannot be performed then the method will return NO and the error parameter will be filled. This method is asynchronous if it returns YES, it broadcasts a SIProductUpdateStartedNotification immediately and completion of the update is marked with a SIProductUpdateEndedNotification.
+ */
+
+-(BOOL) updateProductsError:(NSError**)pError;
+
+/**
+ Update SICategory entries in CoreData database, if for some reason the update cannot be performed then the method will return NO and the error parameter will be filled. This method is asynchronous if it returns YES, it broadcasts a SIProductUpdateStartedNotification immediately and completion of the update is marked with a SIProductUpdateEndedNotification.
+ */
+
+-(BOOL) updateCategoriesError:(NSError**)pError;
 
 /**
  Fetch an array containing all Shop instances
@@ -151,6 +123,12 @@ extern NSString* const SIOutcomeSuccess;
  */
 
 -(NSArray*) fetchAllProducts;
+
+/**
+ Fetch an array containing all the products for a given category
+ */
+
+-(NSArray*) fetchAllProductsForCategory:(SICategory*)category;
 
 /**
  Fetch a product with a given productID
