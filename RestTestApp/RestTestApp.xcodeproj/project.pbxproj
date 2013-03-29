@@ -45,6 +45,7 @@
 		109D511A16EB8A32000CFC4F /* SIProductCartCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 109D511916EB8A32000CFC4F /* SIProductCartCell.m */; };
 		109D511D16EC046E000CFC4F /* SIThemeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 109D511C16EC046E000CFC4F /* SIThemeManager.m */; };
 		10A6520817037A1C003F33B5 /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 10A6520717037A1C003F33B5 /* libz.1.2.5.dylib */; };
+		10B661D71704E9D500292679 /* SIDataManager+HTTP.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B661D61704E9D500292679 /* SIDataManager+HTTP.m */; };
 		10B9535E16BC176C007A23D2 /* SIHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B9535D16BC176C007A23D2 /* SIHTTPClient.m */; };
 		10B9536516BC275A007A23D2 /* SIModel1.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 10B9536316BC275A007A23D2 /* SIModel1.xcdatamodeld */; };
 		10B9536B16BC2BEA007A23D2 /* SIDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B9536A16BC2BEA007A23D2 /* SIDataManager.m */; };
@@ -142,6 +143,9 @@
 		109D511B16EC046E000CFC4F /* SIThemeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SIThemeManager.h; path = Classes/SIThemeManager.h; sourceTree = "<group>"; };
 		109D511C16EC046E000CFC4F /* SIThemeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SIThemeManager.m; path = Classes/SIThemeManager.m; sourceTree = "<group>"; };
 		10A6520717037A1C003F33B5 /* libz.1.2.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.5.dylib; path = usr/lib/libz.1.2.5.dylib; sourceTree = SDKROOT; };
+		10B661D11704E94200292679 /* SIDataManager+Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "SIDataManager+Private.h"; path = "Classes/SIDataManager+Private.h"; sourceTree = "<group>"; };
+		10B661D51704E9D500292679 /* SIDataManager+HTTP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SIDataManager+HTTP.h"; path = "Classes/SIDataManager+HTTP.h"; sourceTree = "<group>"; };
+		10B661D61704E9D500292679 /* SIDataManager+HTTP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "SIDataManager+HTTP.m"; path = "Classes/SIDataManager+HTTP.m"; sourceTree = "<group>"; };
 		10B9535C16BC176C007A23D2 /* SIHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SIHTTPClient.h; path = Classes/SIHTTPClient.h; sourceTree = "<group>"; };
 		10B9535D16BC176C007A23D2 /* SIHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SIHTTPClient.m; path = Classes/SIHTTPClient.m; sourceTree = "<group>"; };
 		10B9536416BC275A007A23D2 /* SIModel1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SIModel1.xcdatamodel; sourceTree = "<group>"; };
@@ -426,12 +430,15 @@
 			children = (
 				10F1496016BA9EFF00309C93 /* SIAppDelegate.h */,
 				10F1496116BA9EFF00309C93 /* SIAppDelegate.m */,
+				109D511B16EC046E000CFC4F /* SIThemeManager.h */,
+				109D511C16EC046E000CFC4F /* SIThemeManager.m */,
 				10B9535C16BC176C007A23D2 /* SIHTTPClient.h */,
 				10B9535D16BC176C007A23D2 /* SIHTTPClient.m */,
 				10B9536916BC2BEA007A23D2 /* SIDataManager.h */,
+				10B661D11704E94200292679 /* SIDataManager+Private.h */,
 				10B9536A16BC2BEA007A23D2 /* SIDataManager.m */,
-				109D511B16EC046E000CFC4F /* SIThemeManager.h */,
-				109D511C16EC046E000CFC4F /* SIThemeManager.m */,
+				10B661D51704E9D500292679 /* SIDataManager+HTTP.h */,
+				10B661D61704E9D500292679 /* SIDataManager+HTTP.m */,
 			);
 			name = "Delegate And Managers";
 			sourceTree = "<group>";
@@ -672,6 +679,7 @@
 				10E19C7116F26A1000121655 /* SIUser.m in Sources */,
 				10EC5F3716F4F7B400602B79 /* SIRootViewController.m in Sources */,
 				10EC5F3A16F504AF00602B79 /* SINoAnimationPushSegue.m in Sources */,
+				10B661D71704E9D500292679 /* SIDataManager+HTTP.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
